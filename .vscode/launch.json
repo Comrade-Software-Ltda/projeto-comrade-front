@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach Firefox Developer",
+      "type": "firefox",
+      "port":9222,
+      "request": "attach",
+      "pathMappings": [
+        {
+          "url": "webpack:///src",
+          "path": "${workspaceFolder}/src"
+        }
+      ]
+    },
+    {
+      "name": "Launch",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200/",
+      "port": 9222,
+      "sourceMaps": true,
+      "trace": true,
+      "webRoot": "${workspaceRoot}",
+      "userDataDir": "${workspaceRoot}/out/chrome"
+    },
+    {
+      "name": "Attach Chrome",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "url": "http://localhost:4200/",
+      "sourceMaps": true,
+      "trace": true,
+      "webRoot": "${workspaceRoot}"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+$fontFamily: Roboto;
+
+$grey1: #e5e5e5;
+$grey2: #c5c5c5;
+$grey3: #6c6d6e;
+$grey4: #5b5b5b;
+$grey5: #505050;
+$grey6: #373a3c;
+$grey7: #34303f;
+
+$blue1: #106ac6;
+
+$green1: #6cc12b;
+$green2: #2a652f;
+$green3: #022102;
+$green4: #022102;
+
+$white1: #ffffff;
+$black1: #000000;
+
+$orange1: #ff9300;
+
+$yellow1: #f1da1e;
+
+$red1: #ff0000;
+$red2: #d9534f;
+
+$kpmg-colors: (
+  grey1: $grey1,
+  grey2: $grey2,
+  grey3: $grey3,
+  grey4: $grey4,
+  grey5: $grey5,
+  grey6: $grey6,
+  grey7: $grey7,
+  blue1: $blue1,
+  green1: $green1,
+  green2: $green2,
+  green3: $green3,
+  green4: $green4,
+  white1: $white1,
+  black1: $black1,
+  orange1: $orange1,
+  yellow1: $yellow1,
+  red1: $red1,
+  red2: $red2,
+);
+
+@each $name, $value in $kpmg-colors {
+  .kpmg-color-#{'' + $name + ''} {
+    color: $value !important;
+
+    &:hover {
+      color: $value !important;
+    }
+  }
+
+  .kpmg-bg-color-#{'' + $name + ''} {
+    background-color: $value !important;
+  }
+  .kpmg-border-color-#{'' + $name + ''} {
+    border-color: $value !important;
+  }
+}

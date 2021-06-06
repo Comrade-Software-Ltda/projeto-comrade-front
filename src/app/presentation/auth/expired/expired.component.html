@@ -1,0 +1,41 @@
+<div class="auth login expired align-center">
+  <section>
+    <header></header>
+
+    <!-- ============================================================================================================= -->
+    <div class="content">
+      <div class="profile-picture" style="background-image: url('assets/img/user.png')"></div>
+      <form class="" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="expired-password">
+          <p>Sua senha expirou!</p>
+
+          <div class="fm-group fm-password">
+            <input
+              [attr.type]="isSenha ? 'password' : 'text'"
+              formControlName="senha"
+              placeholder="Digite uma nova senha"
+            />
+            <span (click)="mostrarSenha()" (mouseout)="this.isSenha = true"></span>
+          </div>
+
+          <div class="fm-group fm-password">
+            <input
+              placeholder="Digite novamente sua nova senha"
+              [attr.type]="isConfirmarSenha ? 'password' : 'text'"
+              formControlName="confirmeSenha"
+            />
+            <span
+              (click)="mostrarConfirmarSenha()"
+              (mouseout)="this.isConfirmarSenha = true"
+            ></span>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button mat-raised-button>Atualizar</button>
+          <a (click)="openSnackBar('Mensagem')" style="cursor: pointer"></a>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

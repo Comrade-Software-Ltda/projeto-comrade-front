@@ -1,0 +1,271 @@
+@import 'src/styles.scss';
+@import '../../../../mediaqueries.scss';
+@import '../../../../padroes_kpmg.scss';
+
+.item-acesso {
+  padding-left: 50px;
+}
+
+.login-background {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: -moz-linear-gradient(#ffffff, #2a6530);
+  background: -webkit-linear-gradient(#ffffff, #2a6530);
+  background: linear-gradient(#ffffff, #2a6530);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00b8b1', endColorstr='#19286e', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#19286e', endColorstr='#00b8b1', GradientType=1);
+  background-size: 220% 220%;
+  animation: anBgGradient 15s linear infinite;
+  -webkit-animation: anBgGradient 15s linear infinite;
+  -moz-animation: anBgGradient 15s linear infinite;
+
+  .login {
+    width: 100%;
+    margin-bottom: 150px;
+
+    @media only screen and (max-width: 599px) {
+      .img-titulo {
+        display: block;
+        margin: 0 40px 40px 40px;
+        height: 60px;
+        min-width: 100px;
+        max-width: 280px;
+      }
+    }
+
+    @media only screen and (min-width: 600px) {
+      .img-titulo {
+        display: block;
+        margin: 0 40px 40px 40px;
+        height: 100px;
+        min-width: 100px;
+        max-width: 280px;
+      }
+    }
+
+    .form-login {
+      text-align: center;
+      margin: 0 auto;
+
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+        -webkit-animation: autofill 0s forwards;
+        animation: autofill 0s forwards;
+        color: #000;
+      }
+
+      @keyframes autofill {
+        100% {
+          background: transparent;
+          color: #000;
+          font-family: $opensansregular;
+        }
+      }
+
+      @-webkit-keyframes autofill {
+        100% {
+          background: transparent;
+          color: #000;
+          font-family: $opensansregular;
+        }
+      }
+
+      .btn-entrar {
+        display: block;
+        margin: 20px auto;
+        background-image: linear-gradient(to bottom, #023223 33%, #006513);
+        border: none;
+        box-shadow: none;
+        box-sizing: border-box;
+        border-radius: 4rem;
+        padding: 0;
+        height: 60px;
+        width: 170px;
+        font-size: 16px;
+        font-weight: bolder;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.aligncenter {
+  text-align: center;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@keyframes anBgGradient {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+
+  25% {
+    background-position: 0% 100%;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  75% {
+    background-position: 100% 0%;
+  }
+}
+
+@-moz-keyframes anBgGradient {
+  0% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@-webkit-keyframes anBgGradient {
+  0% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@media (max-width: 599px) {
+  .container-troca-senha {
+    min-width: 150px;
+    max-width: 300px;
+    height: 100px;
+    border-radius: 20px;
+    border: solid 1px #e6e6e6;
+    background-color: #ffffff;
+    margin-top: 100px;
+    margin-right: 10px;
+    margin-left: 10px;
+    box-sizing: border-box;
+
+    .texto-container-troca-senha {
+      font-family: SegoeUI;
+      font-size: 8px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      text-align: left;
+      color: #373a3c;
+      margin: 20px 10px 10px 10px;
+    }
+
+    .link-container-troca-senha {
+      font-family: SegoeUI;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      text-align: left;
+      font-weight: bold;
+      color: #2a652f;
+    }
+
+    .texto-corpo-container-troca-senha {
+      font-family: SegoeUI;
+      font-size: 8px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      text-align: left;
+      color: #373a3c;
+      margin: 0 20px 0 20px;
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .container-troca-senha {
+    max-width: 460px;
+    height: 150px;
+    border-radius: 20px;
+    border: solid 1px #e6e6e6;
+    background-color: #ffffff;
+    margin-top: 40px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .texto-container-troca-senha {
+      font-family: SegoeUI;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      text-align: left;
+      color: #373a3c;
+      margin: 20px 24px 10px 24px;
+    }
+
+    .link-container-troca-senha {
+      font-family: SegoeUI;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      text-align: left;
+      font-weight: bold;
+      color: #2a652f;
+    }
+
+    .texto-corpo-container-troca-senha {
+      font-family: SegoeUI;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 2;
+      letter-spacing: normal;
+      text-align: left;
+      color: #373a3c;
+      margin: 0 34px 0 46px;
+    }
+  }
+}
+
+.ultima-linha {
+  margin-bottom: 27px;
+}
+
+.icone-seta-login {
+  width: 19.9px;
+  height: 10px;
+  margin-left: 10px;
+  object-fit: contain;
+}
+
+.acessar {
+  font-family: SegoeUI;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  object-fit: contain;
+  color: #ffffff;
+}

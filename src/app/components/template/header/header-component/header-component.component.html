@@ -1,0 +1,31 @@
+<header class="header-full" fxLayout="row">
+  <div fxFlex="100">
+    <div fxFlex="100" class="container-busca" fxHide.lt-sm>
+      <span class="d-none">
+        <i class="title-menu"
+          ><img src="../../../../assets/img/o-que-voce-precisa.svg" class="icone-busca"
+        /></i>
+      </span>
+    </div>
+    <div fxFlex="50px" class="container-icone-notificacao"></div>
+    <div fxFlex="224px" class="container-icone-usuario">
+      <div class="informacao-colaborador">
+        <div fxFlex="30" class="container-image">
+          <img src="../../../../../assets/img/avatar2.svg" class="card-image" />
+        </div>
+        <div fxFlex="70" class="container-nome-perfil">
+          <div fxLayout="row">
+            <span class="nome-usuario" *ngIf="nomeUsuario != undefined">
+              {{ nomeUsuario }}
+            </span>
+          </div>
+          <div class="container-cargo" fxLayout="row">
+            <span class="cargo-usuario">
+              {{ cargo }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

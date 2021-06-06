@@ -1,0 +1,83 @@
+<app-airplane-edit [airplane]="airplaneModal" (notify)="loadTable()"></app-airplane-edit>
+
+<form [formGroup]="registerForm">
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Q. Passageiros</th>
+          <th scope="col">Data de Registro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let airplane of airplanes; index as i" (click)="openEditModal(airplane)">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ airplane.codigo }}</td>
+          <td>{{ airplane.modelo }}</td>
+          <td>{{ airplane.quantidadePassageiro }}</td>
+          <td>{{ airplane.dataRegistro.toLocaleDateString() }}</td>
+        </tr>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">
+            <input
+              class="form-control"
+              name="codigo"
+              formControlName="codigo"
+              placeholder="Codigo"
+              type="number"
+              [readOnly]="inputReadOnly"
+            />
+          </th>
+          <th scope="col">
+            <input
+              class="form-control"
+              name="modelo"
+              formControlName="modelo"
+              placeholder="Modelo"
+              type="text"
+              [readOnly]="inputReadOnly"
+            />
+          </th>
+          <th scope="col">
+            <input
+              class="form-control"
+              name="quantidadePassageiro"
+              formControlName="quantidadePassageiro"
+              placeholder="Quantidade de Passageiro"
+              type="number"
+              [readonly]="inputReadOnly"
+            />
+          </th>
+          <th scope="col">
+            <button (click)="onSubmit()" [disabled]="inputReadOnly">></button>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="airplaneLenght"
+        [(page)]="pageFilter.pageNumber"
+        [pageSize]="pageFilter.pageSize"
+        (pageChange)="loadTable()"
+      >
+      </ngb-pagination>
+
+      <select
+        class="custom-select"
+        style="width: auto"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="pageFilter.pageSize"
+        (ngModelChange)="loadTable()"
+      >
+        <option [ngValue]="10">10 items per page</option>
+        <option [ngValue]="25">25 items per page</option>
+        <option [ngValue]="50">50 items per page</option>
+      </select>
+    </div>
+  </div>
+</form>

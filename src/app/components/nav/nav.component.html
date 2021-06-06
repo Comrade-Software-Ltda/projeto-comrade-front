@@ -1,0 +1,11 @@
+<div class="d-flex">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills" orientation="vertical">
+    <li *ngFor="let item of itens" ngbNavItem="{{ item.titulo }}">
+      <a ngbNavLink>{{ item.titulo }}</a>
+      <ng-template ngbNavContent>
+        <app-airplane-table *ngIf="item.content === 'app-airplane-table'"></app-airplane-table>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="ml-4"></div>
+</div>

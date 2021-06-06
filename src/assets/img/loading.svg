@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="97" height="97" viewBox="0 0 97 97">
+    <defs>
+        <style>
+            .cls-3{fill:none;stroke:#a3ce36;stroke-linecap:round;stroke-linejoin:round;stroke-width:5px}
+        </style>
+    </defs>
+    <g id="Grupo_3712" data-name="Grupo 3712" transform="translate(-631.5 -331.5)">
+        <path id="Caminho_1722" fill="none" stroke="#a3ce36" stroke-linecap="round" stroke-linejoin="round" stroke-width="5px" d="M18 3v18.4" data-name="Caminho 1722" opacity="0.05" transform="translate(662 331)"/>
+        <path id="Caminho_1723" fill="none" stroke="#a3ce36" stroke-linecap="round" stroke-linejoin="round" stroke-width="5px" d="M18 27v18.4" data-name="Caminho 1723" opacity="0.5" transform="translate(662 380.6)"/>
+        <path id="Caminho_1724" d="M7.395 7.395l13.018 13.018" class="cls-3" data-name="Caminho 1724" transform="translate(640.083 340.083)"/>
+        <path id="Caminho_1725" fill="none" stroke="#a3ce36" stroke-linecap="round" stroke-linejoin="round" stroke-width="5px" d="M24.36 24.36l13.018 13.018" data-name="Caminho 1725" opacity="0.4" transform="translate(675.144 375.144)"/>
+        <path id="Caminho_1726" d="M3 18h18.4" class="cls-3" data-name="Caminho 1726" transform="translate(631 362)"/>
+        <path id="Caminho_1727" fill="none" stroke="#a3ce36" stroke-linecap="round" stroke-linejoin="round" stroke-width="5px" d="M27 18h18.4" data-name="Caminho 1727" opacity="0.3" transform="translate(680.6 362)"/>
+        <path id="Caminho_1728" fill="none" stroke="#a3ce36" stroke-linecap="round" stroke-linejoin="round" stroke-width="5px" d="M7.395 37.378L20.413 24.36" data-name="Caminho 1728" opacity="0.6" transform="translate(640.083 375.144)"/>
+        <path id="Caminho_1729" fill="none" stroke="#a3ce36" stroke-linecap="round" stroke-linejoin="round" stroke-width="5px" d="M24.36 20.413L37.378 7.395" data-name="Caminho 1729" opacity="0.2" transform="translate(675.144 340.083)"/>
+    </g>
+</svg>

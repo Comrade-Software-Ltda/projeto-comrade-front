@@ -1,0 +1,24 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "watch",
+			"label": "watch",
+			"isBackground": true,
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"type": "npm",
+			"script": "typecheck-watch",
+			"label": "typecheck-watch",
+			"isBackground": true,
+			"problemMatcher": "$tsc-watch",
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		}
+	]
+}

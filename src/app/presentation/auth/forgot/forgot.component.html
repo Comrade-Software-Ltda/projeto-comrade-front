@@ -1,0 +1,42 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="login-background">
+  <div fxLayout="row"></div>
+
+  <div class="login">
+    <form class="" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div fxLayout="row" fxLayoutAlign="center center"></div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="100" class="text-center">
+          <h3 class="">Bem-vindo!</h3>
+        </div>
+      </div>
+
+      <div class="fm-group pb-4" fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex="15">
+          <input
+            class="form-control"
+            placeholder="Digite seu código"
+            formControlName="chave"
+            type="text"
+            autocomplete="off"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
+          />
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div class="form-login">
+          <div class="actions-form">
+            <button type="submit" class="btn-entrar">
+              <span class="acessar">Acessar</span>
+              <span>
+                <img src="../../../assets/img/seta-login.svg" class="icone-seta-login" />
+              </span>
+            </button>
+            <a [routerLink]="['/auth']">Voltar para login</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

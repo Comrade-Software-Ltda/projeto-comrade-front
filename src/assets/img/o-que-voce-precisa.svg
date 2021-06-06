@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="34" viewBox="0 0 220 34">
+    <g id="Grupo_1039" data-name="Grupo 1039" transform="translate(2 -9)">
+        <g id="menu" transform="translate(-2 9)">
+            <path id="Retângulo_202" fill="none" d="M0 0H34V34H0z" data-name="Retângulo 202"/>
+            <path id="magnify" fill="#818e94" d="M9.32 3a6.324 6.324 0 0 1 4.8 10.432l.263.263h.768l4.861 4.861-1.458 1.458-4.861-4.861v-.768l-.263-.263A6.321 6.321 0 1 1 9.32 3m0 1.945a4.375 4.375 0 1 0 4.375 4.375A4.357 4.357 0 0 0 9.32 4.945z" transform="translate(5.507 5.507)"/>
+        </g>
+        <text id="O_que_você_precisa_" fill="#818e94" data-name="O que você precisa?" font-family="Poppins-Regular, Poppins" font-size="18px" opacity="0.235" transform="translate(126 32)">
+            <tspan x="-91.395" y="0">O que você precisa?</tspan>
+        </text>
+    </g>
+</svg>
