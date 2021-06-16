@@ -46,7 +46,7 @@ export class ExpiredComponent implements OnInit {
   }
 
   showtoastService(message: string) {
-    this.toastService.show('');
+    this.toastService.showStandard(message);
   }
 
   public startForm() {
@@ -69,15 +69,11 @@ export class ExpiredComponent implements OnInit {
     this.isLoading = true;
     if (this.registerForm.errors?.verificarSenha) {
       this.isLoading = false;
-      this.toastService.show('As senhas não sao iguais, por favor digite novamente', {
-        duration: 3000,
-      });
+      this.toastService.showStandard('As senhas não sao iguais, por favor digite novamente');
       return;
     } else if (this.registerForm.invalid) {
       this.isLoading = false;
-      this.toastService.show('Caracteres insuficientes', {
-        duration: 3000,
-      });
+      this.toastService.showStandard('Caracteres insuficientes');
       return;
     }
     this.save();
@@ -102,34 +98,20 @@ export class ExpiredComponent implements OnInit {
       (x) => {
         this.isLoading = false;
         if (x.codigo && x.codigo === 200) {
-          this.toastService.show('Sua senha foi alterada com sucesso.', {
-            duration: 3000,
-            autohide: true,
-          });
+          this.toastService.showStandard('Sua senha foi alterada com sucesso.');
           this.router.navigate(['auth']);
         } else if (x.codigo && (x.codigo === 400 || 404)) {
-          this.toastService.show('Erro na validação. Por favor tente novamente.', {
-            duration: 3000,
-            autohide: true,
-          });
+          this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
-          this.toastService.show(
-            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-            {
-              duration: 3000,
-              autohide: true,
-            }
+          this.toastService.showStandard(
+            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
           );
         }
       },
       (e) => {
         this.isLoading = false;
-        this.toastService.show(
-          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-          {
-            duration: 3000,
-            autohide: true,
-          }
+        this.toastService.showStandard(
+          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
         );
       }
     );
