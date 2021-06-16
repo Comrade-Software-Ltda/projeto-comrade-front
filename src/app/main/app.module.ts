@@ -22,19 +22,19 @@ import { TokenWebRepository } from '../data/repository/token-web-reporitory/toke
 import { TokenRepository } from '../core/repositories/token.repository';
 import { UsuarioSistemaLookupRepository } from '../core/lookup-repository/usuario-sistema-lookup.repository';
 import { UsuarioSistemaLookupWebRepository } from '../data/lookup-repository/usuario-sistema-lookup-web.repository';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { kpmgTokenRepository } from '../core/repositories/kpmg-token.repository';
 import { kpmgTokenWebRepository } from '../data/repository/kpmg-token-web-repository/kpmg-token-web.repository';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository copy/airplane-web.repository';
+import { ToastComponent } from '../components/toast/toast.component';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ToastComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -44,7 +44,6 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     CoreModule,
     DataModule,
     HttpClientModule,
-    MatDialogModule,
     NgbModule,
   ],
   providers: [
@@ -58,7 +57,6 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
       useClass: AuthInterceptor,
       multi: true,
     },
-    { provide: MatDialogRef, useValue: {} },
     { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: kpmgTokenRepository, useClass: kpmgTokenWebRepository },
