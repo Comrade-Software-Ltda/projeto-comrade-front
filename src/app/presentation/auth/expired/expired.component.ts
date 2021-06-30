@@ -1,9 +1,9 @@
 import { Component, HostBinding, Input, OnInit, Directive, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostExpirarSenhaUsecase } from 'src/app/core/usecases/autenticacao/post-expirar-senha.usecase';
 import { AutenticacaoModel } from 'src/app/core/domain/autenticacao.model';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-expired',
@@ -22,7 +22,7 @@ export class ExpiredComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,
+    private toastService: ToastService,
     private postExpirarSenha: PostExpirarSenhaUsecase
   ) {
     if (this.router.getCurrentNavigation()?.extras.state) {
@@ -45,8 +45,8 @@ export class ExpiredComponent implements OnInit {
     this.isConfirmarSenha = !this.isConfirmarSenha;
   }
 
-  openSnackBar(message: string) {
-    this.snackBar.open('');
+  showtoastService(message: string) {
+    this.toastService.showStandard(message);
   }
 
   public startForm() {
@@ -69,15 +69,11 @@ export class ExpiredComponent implements OnInit {
     this.isLoading = true;
     if (this.registerForm.errors?.verificarSenha) {
       this.isLoading = false;
-      this.snackBar.open('As senhas não sao iguais, por favor digite novamente', 'Link', {
-        duration: 3000,
-      });
+      this.toastService.showStandard('As senhas não sao iguais, por favor digite novamente');
       return;
     } else if (this.registerForm.invalid) {
       this.isLoading = false;
-      this.snackBar.open('Caracteres insuficientes', 'Link', {
-        duration: 3000,
-      });
+      this.toastService.showStandard('Caracteres insuficientes');
       return;
     }
     this.save();
@@ -102,32 +98,20 @@ export class ExpiredComponent implements OnInit {
       (x) => {
         this.isLoading = false;
         if (x.codigo && x.codigo === 200) {
-          this.snackBar.open('Sua senha foi alterada com sucesso.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Sua senha foi alterada com sucesso.');
           this.router.navigate(['auth']);
         } else if (x.codigo && (x.codigo === 400 || 404)) {
-          this.snackBar.open('Erro na validação. Por favor tente novamente.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
-          this.snackBar.open(
-            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-            'Link',
-            {
-              duration: 3000,
-            }
+          this.toastService.showStandard(
+            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
           );
         }
       },
       (e) => {
         this.isLoading = false;
-        this.snackBar.open(
-          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-          'Link',
-          {
-            duration: 3000,
-          }
+        this.toastService.showStandard(
+          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
         );
       }
     );

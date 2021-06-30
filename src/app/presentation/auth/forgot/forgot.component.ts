@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacaoModel } from 'src/app/core/domain/autenticacao.model';
 import { PostEsquecerSenhaUsecase } from 'src/app/core/usecases/autenticacao/post-esquecer-senha.usecases';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-forgot',
@@ -20,7 +20,7 @@ export class ForgotComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar,
+    private toastService: ToastService,
     private postEsquecerSenha: PostEsquecerSenhaUsecase
   ) {
     if (this.router.getCurrentNavigation()?.extras.state) {
@@ -32,8 +32,8 @@ export class ForgotComponent implements OnInit {
     this.startForm();
   }
 
-  openSnackBar(message: string) {
-    this.snackBar.open('');
+  showtoastService(message: string) {
+    this.toastService.showStandard(message);
   }
 
   public startForm() {
@@ -49,9 +49,7 @@ export class ForgotComponent implements OnInit {
   onSubmit = () => {
     this.isLoading = true;
     if (this.registerForm.invalid) {
-      this.snackBar.open('Usuario incorreto, por favor digite novamente', 'Link', {
-        duration: 3000,
-      });
+      this.toastService.showStandard('Usuario incorreto, por favor digite novamente');
       return;
     }
     this.save();
@@ -67,35 +65,21 @@ export class ForgotComponent implements OnInit {
       (x) => {
         this.isLoading = false;
         if (x.codigo && x.codigo === 200) {
-          this.snackBar.open('Sua pedido foi atendido.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Sua pedido foi atendido.');
         } else if (x.codigo && x.codigo === 1001) {
-          this.snackBar.open('Usuario invalido, por favor digite novamente.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Usuario invalido, por favor digite novamente.');
         } else if (x.codigo && (x.codigo === 400 || 404)) {
-          this.snackBar.open('Erro na validação. Por favor tente novamente.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
-          this.snackBar.open(
-            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-            'Link',
-            {
-              duration: 3000,
-            }
+          this.toastService.showStandard(
+            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
           );
         }
       },
       (e) => {
         this.isLoading = false;
-        this.snackBar.open(
-          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-          'Link',
-          {
-            duration: 3000,
-          }
+        this.toastService.showStandard(
+          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
         );
       }
     );

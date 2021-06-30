@@ -9,7 +9,6 @@ import { NgxMaskModule } from 'ngx-mask';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
 import { TemplateModule } from '../../components/template/template.module';
-import { NavModule } from 'src/app/components/nav/nav.module';
 import { ScreenModalModule } from '../../components/screen-modal/screen-modal.module';
 @NgModule({
   imports: [
@@ -21,7 +20,6 @@ import { ScreenModalModule } from '../../components/screen-modal/screen-modal.mo
     NgxMaskModule.forRoot(),
     CommonModule,
     TemplateModule,
-    NavModule,
     ScreenModalModule,
   ],
   exports: [],

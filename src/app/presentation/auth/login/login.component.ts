@@ -1,9 +1,9 @@
 import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostLoginUsecase } from '../../../core/usecases/token/post-login.usecase';
 import { AutenticacaoModel } from '../../../core/domain/autenticacao.model';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private postLogin: PostLoginUsecase,
-    private snackBar: MatSnackBar
+    private toastService: ToastService,
+    private postLogin: PostLoginUsecase
   ) {}
 
   ngOnInit() {
@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
     this.startForm();
   }
 
-  openSnackBar(message: string) {
-    this.snackBar.open('');
+  showtoastService(message: string) {
+    this.toastService.showStandard(message);
   }
 
   verificarToken() {
@@ -58,9 +58,7 @@ export class LoginComponent implements OnInit {
   onSubmit = () => {
     this.isLoading = true;
     if (this.registerForm.invalid) {
-      this.snackBar.open('Usuario ou senha invalida', 'Link', {
-        duration: 3000,
-      });
+      this.toastService.showStandard('Usuario ou senha invalida');
       this.isLoading = false;
       return;
     }
@@ -80,38 +78,24 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('kpmgPermissaoToken', kpmgToken || '');
           this.router.navigate(['/home']);
         } else if (x.codigo && x.codigo === 1001) {
-          this.snackBar.open('Usuario ou senha invalida', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Usuario ou senha invalida');
         } else if (x.codigo && x.codigo === 1002) {
-          this.snackBar.open('Senha expirada, por favor entre uma nova senha.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Senha expirada, por favor entre uma nova senha.');
           this.router.navigate(['auth/expired-password'], {
             state: { chave: this.registerForm.value.chave },
           });
         } else if (x.codigo && (x.codigo === 400 || 404)) {
-          this.snackBar.open('Erro na validação. Por favor tente novamente.', 'Link', {
-            duration: 3000,
-          });
+          this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
-          this.snackBar.open(
-            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-            'Link',
-            {
-              duration: 3000,
-            }
+          this.toastService.showStandard(
+            'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
           );
         }
       },
       (e) => {
         this.isLoading = false;
-        this.snackBar.open(
-          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.',
-          'Link',
-          {
-            duration: 3000,
-          }
+        this.toastService.showStandard(
+          'Aconteceu um imprevisto, tente novamente. Se o erro persistir contate o suporte.'
         );
       }
     );
