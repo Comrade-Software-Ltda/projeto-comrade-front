@@ -26,20 +26,20 @@
               <div class="container-usuario col-12 col-lg-6 p-0">
                 <span
                   [ngClass]="isMobile ? 'fonte-mobile' : ''"
-                  class="nome-template kpmg-color-grey7"
+                  class="nome-template comrade-color-grey7"
                 >
                   Bem-Vindo,
                 </span>
                 <br />
                 <span
                   [ngClass]="isMobile ? 'fonte-mobile' : ''"
-                  class="matricula-template kpmg-color-grey3"
+                  class="matricula-template comrade-color-grey3"
                 >
                 </span>
               </div>
               <!-- <div fxFlex.gt-xs="600px" fxFlex.xs="250px" fxLayoutAlign="end center"> -->
               <div class="col-12 col-lg-6 p-0 d-flex alignForMobile">
-                <ng-content select="[kpmg-header]"></ng-content>
+                <ng-content select="[comrade-header]"></ng-content>
               </div>
             </div>
             <div fxLayout="row">
@@ -60,18 +60,18 @@
 </div>
 
 <ng-template #thenBlock>
-  <div fxFlex.gt-sm="260px" class="menu-kpmg" fxHide.lt-sm>
-    <div id="collapseParametro" class="menu-kpmg-container">
+  <div fxFlex.gt-sm="260px" class="menu-comrade" fxHide.lt-sm>
+    <div id="collapseParametro" class="menu-comrade-container">
       <app-menu-full (acaoFechaMenu)="fechaMenu($event)" class="menu-desktop-full"></app-menu-full>
     </div>
   </div>
-  <div class="menu-kpmg" fxHide.gt-xs>
-    <div id="collapseParametro" class="menu-kpmg-container"></div>
+  <div class="menu-comrade" fxHide.gt-xs>
+    <div id="collapseParametro" class="menu-comrade-container"></div>
   </div>
 </ng-template>
 <ng-template #elseBlock>
-  <div fxFlex.gt-sm="82px" class="menu-kpmg" fxHide.lt-sm>
-    <div id="collapseParametro" class="menu-kpmg-container">
+  <div fxFlex.gt-sm="82px" class="menu-comrade" fxHide.lt-sm>
+    <div id="collapseParametro" class="menu-comrade-container">
       <app-menu-collapse
         (notify)="expadirMenu($event)"
         class="menu-desktop-collapse"

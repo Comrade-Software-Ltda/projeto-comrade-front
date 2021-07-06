@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   verificarToken() {
-    var verificarToken = localStorage.getItem('kpmgPermissaoToken');
+    var verificarToken = localStorage.getItem('comradePermissaoToken');
     if (verificarToken) {
       const token = JSON.parse(verificarToken);
       if (token != '') {
@@ -74,8 +74,8 @@ export class LoginComponent implements OnInit {
       (x) => {
         this.isLoading = false;
         if (x.codigo && x.codigo === 200) {
-          let kpmgToken = x.data?.token.replace(/"/g, '');
-          localStorage.setItem('kpmgPermissaoToken', kpmgToken || '');
+          let comradeToken = x.data?.token.replace(/"/g, '');
+          localStorage.setItem('comradePermissaoToken', comradeToken || '');
           this.router.navigate(['/home']);
         } else if (x.codigo && x.codigo === 1001) {
           this.toastService.showStandard('Usuario ou senha invalida');

@@ -3,16 +3,17 @@ import { UseCase } from '../../base/use-case';
 import { Observable } from 'rxjs';
 import { AutenticacaoRepository } from '../../repositories/autenticacao.repository';
 import { AutenticacaoModel } from '../../domain/autenticacao.model';
-import { SinglekpmgResponseModel } from '../../utils/single-kpmg-response-model';
+import { SinglecomradeResponseModel } from '../../utils/single-comrade-response-model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostEsquecerSenhaUsecase
-  implements UseCase<AutenticacaoModel, SinglekpmgResponseModel<AutenticacaoModel>> {
+  implements UseCase<AutenticacaoModel, SinglecomradeResponseModel<AutenticacaoModel>>
+{
   constructor(private processoRepository: AutenticacaoRepository) {}
 
-  execute(params: AutenticacaoModel): Observable<SinglekpmgResponseModel<AutenticacaoModel>> {
+  execute(params: AutenticacaoModel): Observable<SinglecomradeResponseModel<AutenticacaoModel>> {
     return this.processoRepository.postEsquecerSenha(params);
   }
 }

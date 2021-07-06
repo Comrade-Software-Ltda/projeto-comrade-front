@@ -10,7 +10,7 @@ import { AirplaneModel } from 'src/app/core/domain/airplane.model';
 import { PageResponseModel } from 'src/app/core/utils/page-response.model';
 import { PageFilterModel } from 'src/app/core/utils/page-filter.model';
 import { makeParamFilterGrid } from '../../helper.repository';
-import { SinglekpmgResponseModel } from '../../../core/utils/single-kpmg-response-model';
+import { SinglecomradeResponseModel } from '../../../core/utils/single-comrade-response-model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +22,10 @@ export class AirplaneWebRepository extends AirplaneRepository {
     super();
   }
 
-  getAirplaneById(id: number): Observable<SinglekpmgResponseModel<AirplaneModel>> {
+  getAirplaneById(id: number): Observable<SinglecomradeResponseModel<AirplaneModel>> {
     PageResponseModel;
     return this.http
-      .get<SinglekpmgResponseModel<AirplaneWebEntity>>(
+      .get<SinglecomradeResponseModel<AirplaneWebEntity>>(
         `${environment.AUTORIZACAO}Airplane/obter`,
         id
       )

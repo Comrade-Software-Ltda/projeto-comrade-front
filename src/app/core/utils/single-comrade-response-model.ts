@@ -1,4 +1,4 @@
-export class SinglekpmgResponseModel<T> {
+export class SinglecomradeResponseModel<T> {
   data?: T;
   codigo?: number;
   sucesso?: boolean;

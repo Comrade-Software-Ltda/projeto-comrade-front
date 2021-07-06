@@ -25,7 +25,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
 
       if (error.status === 401) {
         if (!error.error) {
-          console.log('Sessão expirada! Faça login novamente para acessar o sistema kpmg.');
+          console.log('Sessão expirada! Faça login novamente para acessar o sistema comrade.');
         } else {
           console.log(error.error);
         }

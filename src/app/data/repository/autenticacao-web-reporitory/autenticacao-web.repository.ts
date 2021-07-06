@@ -1,4 +1,4 @@
-import { SinglekpmgResponseModel } from '../../../core/utils/single-kpmg-response-model';
+import { SinglecomradeResponseModel } from '../../../core/utils/single-comrade-response-model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap, take, toArray } from 'rxjs/operators';
@@ -21,9 +21,9 @@ export class AutenticacaoWebRepository extends AutenticacaoRepository {
 
   postExpirarSenha(
     param: AutenticacaoModel
-  ): Observable<SinglekpmgResponseModel<AutenticacaoModel>> {
+  ): Observable<SinglecomradeResponseModel<AutenticacaoModel>> {
     var request = this.http
-      .post<SinglekpmgResponseModel<AutenticacaoWebEntity>>(
+      .post<SinglecomradeResponseModel<AutenticacaoWebEntity>>(
         `${environment.AUTORIZACAO}Autenticacao/expirar-senha`,
         this.mapper.mapTo(param)
       )
@@ -38,9 +38,9 @@ export class AutenticacaoWebRepository extends AutenticacaoRepository {
 
   postEsquecerSenha(
     param: AutenticacaoModel
-  ): Observable<SinglekpmgResponseModel<AutenticacaoModel>> {
+  ): Observable<SinglecomradeResponseModel<AutenticacaoModel>> {
     var request = this.http
-      .post<SinglekpmgResponseModel<AutenticacaoWebEntity>>(
+      .post<SinglecomradeResponseModel<AutenticacaoWebEntity>>(
         `${environment.CONTRATOVERBA}autenticacao/esquecer-senha`,
         this.mapper.mapTo(param)
       )

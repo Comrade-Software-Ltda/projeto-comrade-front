@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-loading',
   template: `
     <div class="overlay">
-      <div class="preloading-kpmg">
-        <div class="kpmg-1"></div>
+      <div class="preloading-comrade">
+        <div class="comrade-1"></div>
       </div>
     </div>
   `,

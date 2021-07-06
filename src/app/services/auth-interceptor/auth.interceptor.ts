@@ -2,13 +2,13 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { kpmgPermissaoTokenModel } from '../../core/utils/kpmg-permissao-token.model';
+import { comradePermissaoTokenModel } from '../../core/utils/comrade-permissao-token.model';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!environment.disablePermissions) {
-      const tokenPermissao = localStorage.getItem('kpmgPermissaoToken');
+      const tokenPermissao = localStorage.getItem('comradePermissaoToken');
 
       if (tokenPermissao) {
         req = req.clone({

@@ -1,5 +1,5 @@
 @import '../../../../mediaqueries.scss';
-@import '../../../../padroes_kpmg.scss';
+@import '../../../../comrade-patterns.scss';
 @import 'src/styles.scss';
 
 .container {
@@ -51,13 +51,13 @@
   margin-left: 30px;
 }
 
-.menu-kpmg {
+.menu-comrade {
   flex: 1 1 auto;
   box-sizing: border-box;
   display: flex;
 }
 
-.menu-kpmg-container {
+.menu-comrade-container {
   flex: 1 1 auto;
   box-sizing: border-box;
   display: flex;
