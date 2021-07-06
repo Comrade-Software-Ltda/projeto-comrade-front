@@ -71,7 +71,7 @@ export class HttpService {
       .pipe(
         shareReplay(),
         retry(0),
-        delay(this.randomInteger(350, 750)),
+        delay(this.randomInteger(250, 450)),
         map((x) => this.onsuccess<T>(type, x))
       );
 
@@ -99,13 +99,13 @@ export class HttpService {
 
   private oncatch<T>(e: any) {
     const result = new DefaultResponse<T>();
-    result.error(e);
+    result.responseError(e);
     return result;
   }
 
   private onsuccess<T>(type: any, e: any) {
     const result = new DefaultResponse<T>();
-    result.success(type, e);
+    result.responseSuccess(type, e);
     return result;
   }
 }

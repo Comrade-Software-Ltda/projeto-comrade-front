@@ -41,7 +41,7 @@ export class OauthCustomService {
           console.log(err);
           localStorage.clear();
           localStorage.setItem(
-            'mensagemErroLogin',
+            'messageErroLogin',
             JSON.stringify('Conta de usuário não esta cadastrada.')
           );
           this.router.navigate(['login']);

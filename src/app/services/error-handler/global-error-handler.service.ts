@@ -11,7 +11,6 @@ export class GlobalErrorHandlerService implements ErrorHandler {
   handleError(error: any) {
     const router = this.injector.get(Router);
 
-    // if (!environment.production) {
     if (true) {
       console.log('URL: ' + router.url);
 
@@ -54,7 +53,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
               {
                 status: error.status,
                 titulo: error.error.title,
-                mensagem: error.error.userMessage,
+                message: error.error.userMessage,
               },
             ],
             {
@@ -70,7 +69,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
               {
                 status: '0_0',
                 titulo: 'Erro não identificado',
-                mensagem: 'Erro inesperado o sistema não identificou o erro e as mensagens',
+                message: 'Erro inesperado o sistema não identificou o erro e as messages',
               },
             ],
             {

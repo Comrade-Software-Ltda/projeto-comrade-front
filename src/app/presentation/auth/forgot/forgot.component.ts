@@ -1,8 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AutenticacaoModel } from 'src/app/core/domain/autenticacao.model';
-import { PostEsquecerSenhaUsecase } from 'src/app/core/usecases/autenticacao/post-esquecer-senha.usecases';
+import { AuthenticationModel } from 'src/app/core/domain/authentication.model';
+import { ForgotPasswordUsecase } from 'src/app/core/usecases/authentication/forgot-password.usecase';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
@@ -14,17 +14,17 @@ export class ForgotComponent implements OnInit {
   @HostBinding('[@routeTransition]')
   routeTransition = false;
   public registerForm!: FormGroup;
-  chave = '';
+  key = '';
   isLoading = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    private postEsquecerSenha: PostEsquecerSenhaUsecase
+    private forgotPassword: ForgotPasswordUsecase
   ) {
     if (this.router.getCurrentNavigation()?.extras.state) {
-      this.chave = this.router.getCurrentNavigation()?.extras.state?.chave;
+      this.key = this.router.getCurrentNavigation()?.extras.state?.key;
     }
   }
 
@@ -38,7 +38,7 @@ export class ForgotComponent implements OnInit {
 
   public startForm() {
     this.registerForm = this.fb.group({
-      chave: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      key: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }
 
@@ -56,19 +56,19 @@ export class ForgotComponent implements OnInit {
   };
 
   async save() {
-    const data: AutenticacaoModel = {
-      chave: this.registerForm.value.chave,
-      senha: this.registerForm.value.senha,
+    const data: AuthenticationModel = {
+      key: this.registerForm.value.key,
+      password: this.registerForm.value.password,
     };
 
-    this.postEsquecerSenha.execute(data).subscribe(
+    this.forgotPassword.execute(data).subscribe(
       (x) => {
         this.isLoading = false;
-        if (x.codigo && x.codigo === 200) {
+        if (x.code && x.code === 200) {
           this.toastService.showStandard('Sua pedido foi atendido.');
-        } else if (x.codigo && x.codigo === 1001) {
+        } else if (x.code && x.code === 1001) {
           this.toastService.showStandard('Usuario invalido, por favor digite novamente.');
-        } else if (x.codigo && (x.codigo === 400 || 404)) {
+        } else if (x.code && (x.code === 400 || 404)) {
           this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
           this.toastService.showStandard(

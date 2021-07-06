@@ -7,20 +7,20 @@
       <div class="profile-picture" style="background-image: url('assets/img/user.png')"></div>
       <form class="" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="expired-password">
-          <p>Sua senha expirou!</p>
+          <p>Sua password expirou!</p>
 
           <div class="fm-group fm-password">
             <input
               [attr.type]="isSenha ? 'password' : 'text'"
-              formControlName="senha"
-              placeholder="Digite uma nova senha"
+              formControlName="password"
+              placeholder="Digite uma nova password"
             />
             <span (click)="mostrarSenha()" (mouseout)="this.isSenha = true"></span>
           </div>
 
           <div class="fm-group fm-password">
             <input
-              placeholder="Digite novamente sua nova senha"
+              placeholder="Digite novamente sua nova password"
               [attr.type]="isConfirmarSenha ? 'password' : 'text'"
               formControlName="confirmeSenha"
             />

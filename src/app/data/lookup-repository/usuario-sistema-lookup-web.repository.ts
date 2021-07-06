@@ -3,24 +3,24 @@ import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LookupModel } from 'src/app/core/utils/lookup.model';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
-import { environment } from 'src/environments/environment.prod';
-import { UsuarioSistemaLookupRepository } from '../../core/lookup-repository/usuario-sistema-lookup.repository';
+import { environment } from 'src/environments/environment';
+import { SystemUserLookupRepository } from '../../core/lookup-repository/usuario-sistema-lookup.repository';
 import { LookupWebEntity } from './helpers/lookup-web-entity';
 import { LookupWebRepositoryMapper } from './helpers/lookup-web-repository-mapper';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioSistemaLookupWebRepository extends UsuarioSistemaLookupRepository {
+export class SystemUserLookupWebRepository extends SystemUserLookupRepository {
   mapper = new LookupWebRepositoryMapper();
 
   constructor(public http: BaseHttpService) {
     super();
   }
 
-  listar(): Observable<LookupModel[]> {
+  GetAll(): Observable<LookupModel[]> {
     return this.http
-      .getAll<LookupWebEntity[]>(`${environment.AUTORIZACAO}Comum/lookup-ba-usu`)
+      .getAll<LookupWebEntity[]>(`${environment.COMRADE}common/lookup-system-user`)
       .pipe(
         map((item) => {
           return item.data;
@@ -33,9 +33,11 @@ export class UsuarioSistemaLookupWebRepository extends UsuarioSistemaLookupRepos
       );
   }
 
-  listarPorNome(nome: string): Observable<LookupModel[]> {
+  GetAllByName(nome: string): Observable<LookupModel[]> {
     return this.http
-      .getAll<LookupWebEntity[]>(`${environment.AUTORIZACAO}Comum/lookup-ba-usu-por-nome/${nome}`)
+      .getAll<LookupWebEntity[]>(
+        `${environment.COMRADE}common/lookup-predicate-system-user-by-name/${nome}`
+      )
       .pipe(
         map((item) => {
           return item.data;

@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { AutenticacaoModel } from '../domain/autenticacao.model';
+import { AuthenticationModel } from '../domain/authentication.model';
 import { TokenModel } from '../domain/token.model';
-import { SinglecomradeResponseModel } from '../utils/single-comrade-response-model';
+import { SingleResultModel } from '../utils/single-result.model';
 
 export abstract class TokenRepository {
-  abstract postLogin(param: AutenticacaoModel): Observable<SinglecomradeResponseModel<TokenModel>>;
+  abstract postGenerateToken(param: AuthenticationModel): Observable<SingleResultModel<TokenModel>>;
 }

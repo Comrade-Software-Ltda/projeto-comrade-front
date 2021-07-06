@@ -16,7 +16,7 @@
           <input
             class="form-control"
             placeholder="Digite seu código"
-            formControlName="chave"
+            formControlName="key"
             type="text"
             autocomplete="off"
             oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');"
@@ -28,9 +28,9 @@
         <div fxFlex="15">
           <input
             class="form-control"
-            placeholder="Digite sua senha"
+            placeholder="Digite sua password"
             type="password"
-            formControlName="senha"
+            formControlName="password"
           />
         </div>
       </div>
@@ -45,7 +45,7 @@
               </span>
             </button>
             <a class="forgot-password" [routerLink]="['/auth/forgot-password']">
-              Esqueceu sua senha?
+              Esqueceu sua password?
             </a>
           </div>
         </div>

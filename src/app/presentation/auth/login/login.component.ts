@@ -1,8 +1,8 @@
 import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostLoginUsecase } from '../../../core/usecases/token/post-login.usecase';
-import { AutenticacaoModel } from '../../../core/domain/autenticacao.model';
+import { GenerateTokenUsecase } from '../../../core/usecases/token/generate-token.usecase';
+import { AuthenticationModel } from '../../../core/domain/authentication.model';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
@@ -15,14 +15,14 @@ export class LoginComponent implements OnInit {
   @HostBinding('[@routeTransition]')
   routeTransition = false;
   public registerForm!: FormGroup;
-  chave = '';
+  key = '';
   isLoading = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    private postLogin: PostLoginUsecase
+    private generateToken: GenerateTokenUsecase
   ) {}
 
   ngOnInit() {
@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
 
   public startForm() {
     this.registerForm = this.fb.group({
-      chave: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      senha: ['', Validators.required],
+      key: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      password: ['', Validators.required],
     });
   }
 
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   onSubmit = () => {
     this.isLoading = true;
     if (this.registerForm.invalid) {
-      this.toastService.showStandard('Usuario ou senha invalida');
+      this.toastService.showStandard('Usuario ou password invalida');
       this.isLoading = false;
       return;
     }
@@ -66,25 +66,25 @@ export class LoginComponent implements OnInit {
   };
 
   async save() {
-    const data: AutenticacaoModel = {
-      chave: this.registerForm.value.chave,
-      senha: this.registerForm.value.senha,
+    const data: AuthenticationModel = {
+      key: this.registerForm.value.key,
+      password: this.registerForm.value.password,
     };
-    this.postLogin.execute(data).subscribe(
+    this.generateToken.execute(data).subscribe(
       (x) => {
         this.isLoading = false;
-        if (x.codigo && x.codigo === 200) {
+        if (x.code && x.code === 200) {
           let comradeToken = x.data?.token.replace(/"/g, '');
           localStorage.setItem('comradePermissaoToken', comradeToken || '');
           this.router.navigate(['/home']);
-        } else if (x.codigo && x.codigo === 1001) {
-          this.toastService.showStandard('Usuario ou senha invalida');
-        } else if (x.codigo && x.codigo === 1002) {
-          this.toastService.showStandard('Senha expirada, por favor entre uma nova senha.');
+        } else if (x.code && x.code === 1001) {
+          this.toastService.showStandard('Usuario ou password invalida');
+        } else if (x.code && x.code === 1002) {
+          this.toastService.showStandard('Senha expirada, por favor entre uma nova password.');
           this.router.navigate(['auth/expired-password'], {
-            state: { chave: this.registerForm.value.chave },
+            state: { key: this.registerForm.value.key },
           });
-        } else if (x.codigo && (x.codigo === 400 || 404)) {
+        } else if (x.code && (x.code === 400 || 404)) {
           this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
           this.toastService.showStandard(

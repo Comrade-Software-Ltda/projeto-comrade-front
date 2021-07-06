@@ -1,6 +1,6 @@
 export interface ProdutoGeralModel {
   id?: number;
-  codigoProduto?: any;
+  codeProduto?: any;
   descricaoProduto?: string;
   fabricanteProduto?: string;
   completed?: boolean;

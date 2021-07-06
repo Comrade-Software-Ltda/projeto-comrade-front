@@ -1,7 +1,7 @@
 export interface AirplaneWebEntity {
   id?: number;
-  codigo: string;
-  modelo: string;
-  quantidadePassageiro: number;
-  dataRegistro: string;
+  code: string;
+  model: string;
+  passengerQuantity: number;
+  registerDate: string;
 }
