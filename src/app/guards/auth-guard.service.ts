@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate, OnDestroy {
@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate, OnDestroy {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (!environment.disablePermissions) {
-      const tokenPermissao = localStorage.getItem('kpmgPermissaoToken');
+      const tokenPermissao = localStorage.getItem('comradePermissaoToken');
 
       if (tokenPermissao) {
         return true;

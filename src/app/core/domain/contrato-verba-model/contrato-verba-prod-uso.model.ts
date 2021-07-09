@@ -1,6 +1,6 @@
 export interface ContratoVerbaProdUsoModel {
   id?: number;
-  codigoProdutoUso?: any;
+  codeProdutoUso?: any;
   descricaoProdutoUso?: string;
   quantidadeItemUso?: number;
   valorLimiteItemUso?: string;

@@ -7,10 +7,10 @@ import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
 import { AirplaneRepository } from 'src/app/core/repositories/airplane.repository';
 import { AirplaneModel } from 'src/app/core/domain/airplane.model';
-import { PageResponseModel } from 'src/app/core/utils/page-response.model';
+import { PageResultModel } from 'src/app/core/utils/page-result.model';
 import { PageFilterModel } from 'src/app/core/utils/page-filter.model';
 import { makeParamFilterGrid } from '../../helper.repository';
-import { SinglekpmgResponseModel } from '../../../core/utils/single-kpmg-response-model';
+import { SingleResultModel } from '../../../core/utils/single-result.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,20 +22,17 @@ export class AirplaneWebRepository extends AirplaneRepository {
     super();
   }
 
-  getAirplaneById(id: number): Observable<SinglekpmgResponseModel<AirplaneModel>> {
-    PageResponseModel;
+  getAirplaneById(id: number): Observable<SingleResultModel<AirplaneModel>> {
+    PageResultModel;
     return this.http
-      .get<SinglekpmgResponseModel<AirplaneWebEntity>>(
-        `${environment.AUTORIZACAO}Airplane/obter`,
-        id
-      )
+      .get<SingleResultModel<AirplaneWebEntity>>(`${environment.COMRADE}airplane/get-by-id`, id)
       .pipe(map((x) => this.mapper.responseWebMapFrom(x.data)));
   }
 
-  getAllAirplane(filter: PageFilterModel): Observable<PageResponseModel<AirplaneModel>> {
+  getAllAirplane(filter: PageFilterModel): Observable<PageResultModel<AirplaneModel>> {
     var request = this.http
-      .getAll<PageResponseModel<AirplaneWebEntity>>(
-        `${environment.AUTORIZACAO}Airplane/listar${makeParamFilterGrid(filter)}`
+      .getAll<PageResultModel<AirplaneWebEntity>>(
+        `${environment.COMRADE}airplane/get-all${makeParamFilterGrid(filter)}`
       )
       .pipe(
         map((x) => {
@@ -47,22 +44,19 @@ export class AirplaneWebRepository extends AirplaneRepository {
 
   postAirplane(param: AirplaneModel) {
     return this.http
-      .post<AirplaneWebEntity>(
-        `${environment.AUTORIZACAO}Airplane/incluir`,
-        this.mapper.mapTo(param)
-      )
+      .post<AirplaneWebEntity>(`${environment.COMRADE}airplane/create`, this.mapper.mapTo(param))
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 
   putAirplane(param: AirplaneModel) {
     return this.http
-      .put<void>(`${environment.AUTORIZACAO}Airplane/editar`, this.mapper.mapTo(param))
+      .put<void>(`${environment.COMRADE}airplane/edit`, this.mapper.mapTo(param))
       .pipe(map((x) => x.data));
   }
 
   deleteAirplane(id: number): Observable<void> {
     return this.http
-      .delete<void>(`${environment.AUTORIZACAO}Airplane/excluir/${id}`, id)
+      .delete<void>(`${environment.COMRADE}airplane/delete/${id}`, id)
       .pipe(map((x) => x.data));
   }
 }

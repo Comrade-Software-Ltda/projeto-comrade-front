@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { UseCase } from '../../base/use-case';
 import { Observable, Subject } from 'rxjs';
-import { kpmgTokenRepository } from '../../repositories/kpmg-token.repository';
-import { kpmgPermissaoTokenModel } from '../../utils/kpmg-permissao-token.model';
+import { comradeTokenRepository } from '../../repositories/comrade-token.repository';
+import { comradePermissaoTokenModel } from '../../utils/comrade-permissao-token.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GetNomeUsuarioLogadoFormatadoUsecase implements UseCase<void, string> {
-  constructor(private kpmgTokenRepository: kpmgTokenRepository) {}
+  constructor(private comradeTokenRepository: comradeTokenRepository) {}
 
   execute(): Observable<string> {
     const subject = new Subject<string>();
 
-    this.kpmgTokenRepository
-      .getkpmgPermissaoToken()
-      .subscribe((result: kpmgPermissaoTokenModel) => {
+    this.comradeTokenRepository
+      .getComradePermissaoToken()
+      .subscribe((result: comradePermissaoTokenModel) => {
         if (result) {
           let nomeUsuario = result.nome.replace(
             /(\w)(\w*)/g,

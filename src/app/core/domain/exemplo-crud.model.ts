@@ -2,7 +2,7 @@ export interface ExemploCrudModel {
   id: number;
   nome: string;
   condigo: string;
-  modelo: string;
+  model: string;
   quatidadePassageiro: number;
-  dataRegistro: Date;
+  registerDate: Date;
 }

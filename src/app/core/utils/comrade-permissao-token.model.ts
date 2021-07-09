@@ -1,4 +1,4 @@
-export interface kpmgPermissaoTokenModel {
+export interface comradePermissaoTokenModel {
   unique_name: string;
   nome: string;
   role: string;

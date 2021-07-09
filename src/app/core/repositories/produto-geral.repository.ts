@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 import { ProdutoGeralModel } from '../domain/produto-geral.model';
 import { PageFilterModel } from '../utils/page-filter.model';
-import { PageResponseModel } from '../utils/page-response.model';
+import { PageResultModel } from '../utils/page-result.model';
 
 export abstract class ProdutoGeralRepository {
   abstract getAllProdutoGeral(
     filter: PageFilterModel
-  ): Observable<PageResponseModel<ProdutoGeralModel>>;
-  abstract listarPorNome(nome: string): Observable<ProdutoGeralModel[]>;
+  ): Observable<PageResultModel<ProdutoGeralModel>>;
+  abstract GetAllByName(nome: string): Observable<ProdutoGeralModel[]>;
 }

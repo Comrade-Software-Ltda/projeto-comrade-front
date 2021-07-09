@@ -25,7 +25,7 @@ $yellow1: #f1da1e;
 $red1: #ff0000;
 $red2: #d9534f;
 
-$kpmg-colors: (
+$comrade-colors: (
   grey1: $grey1,
   grey2: $grey2,
   grey3: $grey3,
@@ -46,8 +46,8 @@ $kpmg-colors: (
   red2: $red2,
 );
 
-@each $name, $value in $kpmg-colors {
-  .kpmg-color-#{'' + $name + ''} {
+@each $name, $value in $comrade-colors {
+  .comrade-color-#{'' + $name + ''} {
     color: $value !important;
 
     &:hover {
@@ -55,10 +55,10 @@ $kpmg-colors: (
     }
   }
 
-  .kpmg-bg-color-#{'' + $name + ''} {
+  .comrade-bg-color-#{'' + $name + ''} {
     background-color: $value !important;
   }
-  .kpmg-border-color-#{'' + $name + ''} {
+  .comrade-border-color-#{'' + $name + ''} {
     border-color: $value !important;
   }
 }

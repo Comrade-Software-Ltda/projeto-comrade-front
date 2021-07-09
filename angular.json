@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kpmg-erp": {
+    "comrade-erp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,13 +21,13 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "baseHref": "/",
-            "outputPath": "dist/kpmg-erp",
+            "outputPath": "dist/comrade-erp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.lib.json",
             "aot": true,
-            "allowedCommonJsDependencies": ["chart.js"],
+            "allowedCommonJsDependencies": [],
             "assets": ["src/favicon.ico", "src/assets", "src/assets/svg/*"],
             "styles": ["src/styles.scss"],
             "scripts": []
@@ -78,15 +78,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kpmg-erp:build",
+            "browserTarget": "comrade-erp:build",
             "host": "0.0.0.0"
           },
           "configurations": {
             "local": {
-              "browserTarget": "kpmg-erp:build:local"
+              "browserTarget": "comrade-erp:build:local"
             },
             "production": {
-              "browserTarget": "kpmg-erp:build:production"
+              "browserTarget": "comrade-erp:build:production"
             }
           }
         },
@@ -112,21 +112,21 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "kpmg-erp:serve"
+            "devServerTarget": "comrade-erp:serve"
           },
           "configurations": {
             "local": {
-              "devServerTarget": "kpmg-erp:serve:local"
+              "devServerTarget": "comrade-erp:serve:local"
             },
             "production": {
-              "devServerTarget": "kpmg-erp:serve:production"
+              "devServerTarget": "comrade-erp:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "kpmg-erp",
+  "defaultProject": "comrade-erp",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics",
     "analytics": "ad1dec1e-abd6-43d1-bebb-163d8044f2d6"

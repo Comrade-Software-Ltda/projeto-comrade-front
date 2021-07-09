@@ -6,20 +6,20 @@ export class AirplaneWebRepositoryMapper extends Mapper<AirplaneWebEntity, Airpl
   mapFrom(param: AirplaneWebEntity): AirplaneModel {
     return {
       id: param.id,
-      codigo: param.codigo,
-      modelo: param.modelo,
-      quantidadePassageiro: param.quantidadePassageiro,
-      dataRegistro: new Date(param.dataRegistro),
+      code: param.code,
+      model: param.model,
+      passengerQuantity: param.passengerQuantity,
+      registerDate: new Date(param.registerDate),
     };
   }
 
   mapTo(param: AirplaneModel): AirplaneWebEntity {
     return {
       id: param?.id,
-      codigo: param.codigo,
-      modelo: param.modelo,
-      quantidadePassageiro: param.quantidadePassageiro,
-      dataRegistro: param.dataRegistro.toISOString(),
+      code: param.code,
+      model: param.model,
+      passengerQuantity: param.passengerQuantity,
+      registerDate: param.registerDate.toISOString(),
     };
   }
 }

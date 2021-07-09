@@ -1,9 +1,13 @@
+import { ValidationResultModel } from 'src/app/core/utils/validation-result.model';
+
 export class DefaultResponse<T> {
-  codigo: number | undefined;
-  sucesso: boolean | undefined;
+  code: number | undefined;
+  success: boolean | undefined;
   data!: T;
-  mensagem: string | undefined;
-  mensagens: string[] | undefined;
+  message: string | undefined;
+  messages: string[] | undefined;
+  ExceptionMessage: string | undefined;
+  validationResult: ValidationResultModel[] | undefined;
 
   constructor() {}
 
@@ -15,24 +19,24 @@ export class DefaultResponse<T> {
    * @param _code Campo do erro ocorrido
    * @param _message  Erro ocorrido
    */
-  error(_payload: any, _code: number = 400, _message: string = 'Error') {
+  responseError(_payload: any, _code: number = 400, _message: string = 'Error') {
     try {
       console.log(_payload);
     } catch {
-      this.codigo = _code;
-      this.mensagem = _message;
+      this.code = _code;
+      this.message = _message;
     }
   }
 
   /**
    *
-   * Método que lança objeto de sucesso
+   * Método que lança objeto de success
    *
    * @param _data Objeto de retorno
    * @param _code Campo do erro ocorrido
    * @param _title  Erro ocorrido
    */
-  success(_type: string, _data: T, _code: number = 200, _title: string = 'Success') {
+  responseSuccess(_type: string, _data: T, _code: number = 200, _title: string = 'Success') {
     switch (_type.toUpperCase()) {
       case 'GET':
       case 'DELETE':

@@ -1,7 +1,7 @@
 export interface AirplaneModel {
   id?: number;
-  codigo: string;
-  modelo: string;
-  quantidadePassageiro: number;
-  dataRegistro: Date;
+  code: string;
+  model: string;
+  passengerQuantity: number;
+  registerDate: Date;
 }

@@ -1,8 +1,8 @@
 import { Component, HostBinding, Input, OnInit, Directive, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostExpirarSenhaUsecase } from 'src/app/core/usecases/autenticacao/post-expirar-senha.usecase';
-import { AutenticacaoModel } from 'src/app/core/domain/autenticacao.model';
+import { UpdatePasswordUsecase } from 'src/app/core/usecases/authentication/update-password.usecase';
+import { AuthenticationModel } from 'src/app/core/domain/authentication.model';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
@@ -16,22 +16,22 @@ export class ExpiredComponent implements OnInit {
   public registerForm!: FormGroup;
   isSenha = true;
   isConfirmarSenha = true;
-  chave = '';
+  key = '';
   isLoading = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private toastService: ToastService,
-    private postExpirarSenha: PostExpirarSenhaUsecase
+    private updatePassword: UpdatePasswordUsecase
   ) {
     if (this.router.getCurrentNavigation()?.extras.state) {
-      this.chave = this.router.getCurrentNavigation()?.extras.state?.chave;
+      this.key = this.router.getCurrentNavigation()?.extras.state?.key;
     }
   }
 
   ngOnInit() {
-    if (this.chave === '') {
+    if (this.key === '') {
       this.router.navigate(['auth']);
     }
     this.startForm();
@@ -52,7 +52,7 @@ export class ExpiredComponent implements OnInit {
   public startForm() {
     this.registerForm = this.fb.group(
       {
-        senha: ['', Validators.compose([Validators.minLength(4), Validators.required])],
+        password: ['', Validators.compose([Validators.minLength(4), Validators.required])],
         confirmeSenha: ['', Validators.required],
       },
       { validators: this.loginValidator }
@@ -69,7 +69,7 @@ export class ExpiredComponent implements OnInit {
     this.isLoading = true;
     if (this.registerForm.errors?.verificarSenha) {
       this.isLoading = false;
-      this.toastService.showStandard('As senhas não sao iguais, por favor digite novamente');
+      this.toastService.showStandard('As passwords não sao iguais, por favor digite novamente');
       return;
     } else if (this.registerForm.invalid) {
       this.isLoading = false;
@@ -80,27 +80,27 @@ export class ExpiredComponent implements OnInit {
   };
 
   loginValidator: any = (control: FormGroup): ValidationErrors | null => {
-    const senha = control.get('senha');
+    const password = control.get('password');
     const confirmeSenha = control.get('confirmeSenha');
-    if (senha && confirmeSenha) {
-      return senha.value !== confirmeSenha.value ? { verificarSenha: true } : null;
+    if (password && confirmeSenha) {
+      return password.value !== confirmeSenha.value ? { verificarSenha: true } : null;
     }
     return null;
   };
 
   async save() {
-    const data: AutenticacaoModel = {
-      chave: this.chave,
-      senha: this.registerForm.value.senha,
+    const data: AuthenticationModel = {
+      key: this.key,
+      password: this.registerForm.value.password,
     };
 
-    this.postExpirarSenha.execute(data).subscribe(
+    this.updatePassword.execute(data).subscribe(
       (x) => {
         this.isLoading = false;
-        if (x.codigo && x.codigo === 200) {
-          this.toastService.showStandard('Sua senha foi alterada com sucesso.');
+        if (x.code && x.code === 200) {
+          this.toastService.showStandard('Sua password foi alterada com success.');
           this.router.navigate(['auth']);
-        } else if (x.codigo && (x.codigo === 400 || 404)) {
+        } else if (x.code && (x.code === 400 || 404)) {
           this.toastService.showStandard('Erro na validação. Por favor tente novamente.');
         } else {
           this.toastService.showStandard(
