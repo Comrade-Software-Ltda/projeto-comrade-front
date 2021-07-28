@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExpiredComponent } from './expired/expired.component';
-import { ForgotComponent } from './forgot/forgot.component';
+import { ExpiredPasswordComponent } from './expired-password/expired-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -11,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'forgot-password',
-    component: ForgotComponent,
+    component: ForgotPasswordComponent,
   },
   {
     path: 'expired-password',
-    component: ExpiredComponent,
+    component: ExpiredPasswordComponent,
   },
 ];
 
@@ -23,5 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-
 export class AuthRoutingModule {}

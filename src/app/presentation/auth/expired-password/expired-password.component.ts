@@ -6,11 +6,11 @@ import { AuthenticationModel } from 'src/app/core/domain/authentication.model';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
-  selector: 'app-expired',
-  templateUrl: './expired.component.html',
-  styleUrls: ['./expired.component.scss'],
+  selector: 'app-expired-password',
+  templateUrl: './expired-password.component.html',
+  styleUrls: ['./expired-password.component.scss'],
 })
-export class ExpiredComponent implements OnInit {
+export class ExpiredPasswordComponent implements OnInit {
   @HostBinding('[@routeTransition]')
   routeTransition = false;
   public registerForm!: FormGroup;

@@ -6,11 +6,11 @@ import { ForgotPasswordUsecase } from 'src/app/core/usecases/authentication/forg
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
-  selector: 'app-forgot',
-  templateUrl: './forgot.component.html',
-  styleUrls: ['./forgot.component.scss'],
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss'],
 })
-export class ForgotComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
   @HostBinding('[@routeTransition]')
   routeTransition = false;
   public registerForm!: FormGroup;
