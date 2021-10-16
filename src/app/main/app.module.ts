@@ -24,7 +24,6 @@ import { SystemUserLookupRepository } from '../core/lookup-repository/usuario-si
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/usuario-sistema-lookup-web.repository';
 import { comradeTokenRepository } from '../core/repositories/comrade-token.repository';
 import { comradeTokenWebRepository } from '../data/repository/comrade-token-web-repository/comrade-token-web.repository';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository copy/airplane-web.repository';
 import { ToastComponent } from '../components/toast/toast.component';
@@ -44,7 +43,6 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     CoreModule,
     DataModule,
     HttpClientModule,
-    NgbModule,
   ],
   providers: [
     {

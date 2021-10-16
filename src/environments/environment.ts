@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  disablePermissions: false,
+  disablePermissions: true,
   disableAuthGuard: false,
   logRequest: false,
   traceRequest: false,
