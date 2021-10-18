@@ -1,6 +1,6 @@
 {
   "name": "comrade-erp",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "node .bless.js && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --configuration=local",
     "build:analyze": "ng build --stats-json",
@@ -47,9 +47,9 @@
     "@angular-eslint/template-parser": "^12.5.0",
     "@angular/cli": "~12.2.10",
     "@types/jasmine": "~3.10.0",
-    "@types/node": "^16.11.0",
-    "@typescript-eslint/eslint-plugin": "5.0.0",
-    "@typescript-eslint/parser": "5.0.0",
+    "@types/node": "^16.11.1",
+    "@typescript-eslint/eslint-plugin": "5.1.0",
+    "@typescript-eslint/parser": "5.1.0",
     "eslint": "^8.0.1",
     "eslint-plugin-import": "2.25.2",
     "eslint-plugin-prefer-arrow": "1.2.3",
