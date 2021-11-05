@@ -8,8 +8,8 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
-import { TemplateModule } from '../../components/template/template.module';
 import { ScreenModalModule } from '../../components/screen-modal/screen-modal.module';
+import { TemplateModule } from 'src/app/components/template/template.module';
 @NgModule({
   imports: [
     HomeRoutingModule,
@@ -19,10 +19,10 @@ import { ScreenModalModule } from '../../components/screen-modal/screen-modal.mo
     CdkTableModule,
     NgxMaskModule.forRoot(),
     CommonModule,
-    TemplateModule,
     ScreenModalModule,
   ],
   exports: [],
   declarations: [HomeComponent],
+  providers: [TemplateModule],
 })
 export class HomeModule {}

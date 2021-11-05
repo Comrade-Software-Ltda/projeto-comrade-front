@@ -1,8 +1,5 @@
 import { Component, HostBinding, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { GetAllAirplaneUsecase } from 'src/app/core/usecases/airplane/get-all-airplane.usecase';
-import { PageFilterModel } from 'src/app/core/utils/page-filter.model';
-import { ScreenModalService } from '../../components/screen-modal/screen-modal.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
