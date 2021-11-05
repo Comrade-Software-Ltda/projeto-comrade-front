@@ -14,6 +14,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'pricing-tier',
+    loadChildren: () =>
+      import('../presentation/pricing-tier/pricing-tier.module').then((m) => m.PricingTierModule),
+  },
+  {
     path: 'auth',
     loadChildren: () => import('../presentation/auth/auth.module').then((m) => m.AuthModule),
   },

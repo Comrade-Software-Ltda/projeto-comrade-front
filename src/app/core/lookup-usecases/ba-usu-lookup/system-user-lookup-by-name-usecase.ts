@@ -7,7 +7,7 @@ import { LookupModel } from '../../lookups/lookup.model';
 @Injectable({
   providedIn: 'root',
 })
-export class SystemUserLookupPorNomeUsecase implements UseCase<string, LookupModel[]> {
+export class SystemUserLookupByNameUsecase implements UseCase<string, LookupModel[]> {
   constructor(private lookupRepository: SystemUserLookupRepository) {}
 
   execute(nome: string): Observable<LookupModel[]> {
