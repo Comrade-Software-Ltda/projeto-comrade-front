@@ -3,7 +3,7 @@ import { UseCase } from '../../base/use-case';
 import { Observable } from 'rxjs';
 import { AirplaneModel } from '../../domain/airplane.model';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
-import { SingleResultModel } from '../../utils/single-result.model';
+import { SingleResultModel } from '../../response-results/single-result.model';
 
 @Injectable({
   providedIn: 'root',

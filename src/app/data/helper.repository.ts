@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
-import { PageCustomFilterModel } from '../core/utils/page-custom-filter.model';
-import { PageFilterModel, ParamCustom } from '../core/utils/page-filter.model';
+import { PageCustomFilterModel } from '../core/filters/page-custom-filter.model';
+import { PageFilterModel, ParamCustom } from '../core/filters/page-filter.model';
 
 export const makeParamFilterGrid = (filter: PageFilterModel): string => {
   const filters = [];

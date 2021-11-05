@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenModel } from 'src/app/core/domain/token.model';
-import { SingleResultModel } from 'src/app/core/utils/single-result.model';
+import { SingleResultModel } from 'src/app/core/response-results/single-result.model';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
 import { TokenWebEntity } from './token-web-entity';

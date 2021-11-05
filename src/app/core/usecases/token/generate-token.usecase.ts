@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UseCase } from '../../base/use-case';
 import { Observable } from 'rxjs';
-import { SingleResultModel } from '../../utils/single-result.model';
+import { SingleResultModel } from '../../response-results/single-result.model';
 import { TokenModel } from '../../domain/token.model';
 import { TokenRepository } from '../../repositories/token.repository';
 import { AuthenticationModel } from 'src/app/core/domain/authentication.model';

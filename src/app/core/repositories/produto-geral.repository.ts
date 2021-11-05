@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { ProdutoGeralModel } from '../domain/produto-geral.model';
-import { PageFilterModel } from '../utils/page-filter.model';
-import { PageResultModel } from '../utils/page-result.model';
+import { PageFilterModel } from '../filters/page-filter.model';
+import { PageResultModel } from '../response-results/page-result.model';
 
 export abstract class ProdutoGeralRepository {
   abstract getAllProdutoGeral(

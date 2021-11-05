@@ -1,5 +1,5 @@
 import { Mapper } from 'src/app/core/base/mapper';
-import { LookupModel } from 'src/app/core/utils/lookup.model';
+import { LookupModel } from 'src/app/core/lookups/lookup.model';
 import { LookupWebEntity } from './lookup-web-entity';
 
 export class LookupWebRepositoryMapper extends Mapper<LookupWebEntity, LookupModel> {

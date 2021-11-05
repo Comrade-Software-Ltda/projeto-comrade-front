@@ -1,4 +1,4 @@
-import { ValidationResultModel } from 'src/app/core/utils/validation-result.model';
+import { ValidationResultModel } from 'src/app/core/response-results/validation-result.model';
 
 export class DefaultResponse<T> {
   code: number | undefined;

@@ -3,7 +3,7 @@ import { UseCase } from '../../base/use-case';
 import { Observable } from 'rxjs';
 import { AuthenticationRepository } from '../../repositories/authentication.repository';
 import { AuthenticationModel } from '../../domain/authentication.model';
-import { SingleResultModel } from '../../utils/single-result.model';
+import { SingleResultModel } from '../../response-results/single-result.model';
 
 @Injectable({
   providedIn: 'root',

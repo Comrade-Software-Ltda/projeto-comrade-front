@@ -1,28 +1,31 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { CdkTableModule } from '@angular/cdk/table';
 import { NgxMaskModule } from 'ngx-mask';
 
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
 import { ScreenModalModule } from '../../components/screen-modal/screen-modal.module';
-import { TemplateModule } from 'src/app/components/template/template.module';
+import { throwIfAlreadyLoaded } from 'src/app/guards/module-import.guard';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   imports: [
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CdkTableModule,
     NgxMaskModule.forRoot(),
     CommonModule,
     ScreenModalModule,
   ],
   exports: [],
   declarations: [HomeComponent],
-  providers: [TemplateModule],
+  providers: [],
 })
-export class HomeModule {}
+export class HomeModule {
+  constructor(@Optional() @SkipSelf() parentModule: HomeModule) {
+    throwIfAlreadyLoaded(parentModule, 'HomeModule');
+  }
+}

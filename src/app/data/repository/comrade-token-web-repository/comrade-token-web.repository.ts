@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { comradeTokenRepository } from '../../../core/repositories/comrade-token.repository';
-import { comradePermissaoTokenModel } from '../../../core/utils/comrade-permissao-token.model';
+import { comradePermissaoTokenModel } from '../../../core/tokens/comrade-permissao-token.model';
 import jwt_decode from 'jwt-decode';
+import { ComradeTokenRepository } from 'src/app/core/repositories/comrade-token.repository';
 
 @Injectable({
   providedIn: 'root',
 })
-export class comradeTokenWebRepository extends comradeTokenRepository {
+export class ComradeTokenWebRepository extends ComradeTokenRepository {
   constructor(private http: HttpClient) {
     super();
   }

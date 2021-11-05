@@ -7,10 +7,10 @@ import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
 import { AirplaneRepository } from 'src/app/core/repositories/airplane.repository';
 import { AirplaneModel } from 'src/app/core/domain/airplane.model';
-import { PageResultModel } from 'src/app/core/utils/page-result.model';
-import { PageFilterModel } from 'src/app/core/utils/page-filter.model';
+import { PageResultModel } from 'src/app/core/response-results/page-result.model';
+import { PageFilterModel } from 'src/app/core/filters/page-filter.model';
 import { makeParamFilterGrid } from '../../helper.repository';
-import { SingleResultModel } from '../../../core/utils/single-result.model';
+import { SingleResultModel } from '../../../core/response-results/single-result.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { LookupModel } from '../utils/lookup.model';
+import { LookupModel } from './lookup.model';
 
 export abstract class SystemUserLookupRepository {
   abstract GetAll(): Observable<LookupModel[]>;

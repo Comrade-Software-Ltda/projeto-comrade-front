@@ -1,4 +1,4 @@
-import { SingleResultModel } from '../../utils/single-result.model';
+import { SingleResultModel } from '../../response-results/single-result.model';
 import { Injectable } from '@angular/core';
 import { UseCase } from '../../base/use-case';
 import { Observable } from 'rxjs';

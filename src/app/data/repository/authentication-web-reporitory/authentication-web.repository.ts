@@ -1,4 +1,4 @@
-import { SingleResultModel } from '../../../core/utils/single-result.model';
+import { SingleResultModel } from '../../../core/response-results/single-result.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap, take, toArray } from 'rxjs/operators';

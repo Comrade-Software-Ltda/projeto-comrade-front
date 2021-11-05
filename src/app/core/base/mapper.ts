@@ -1,5 +1,5 @@
-import { PageResultModel } from '../utils/page-result.model';
-import { SingleResultModel } from '../utils/single-result.model';
+import { PageResultModel } from '../response-results/page-result.model';
+import { SingleResultModel } from '../response-results/single-result.model';
 
 export abstract class Mapper<I, O> {
   abstract mapFrom(param: I): O;

@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { comradePermissaoTokenModel } from '../../core/utils/comrade-permissao-token.model';
+import { comradePermissaoTokenModel } from '../../core/tokens/comrade-permissao-token.model';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
