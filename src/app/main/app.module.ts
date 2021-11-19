@@ -23,7 +23,7 @@ import { TokenRepository } from '../core/repositories/token.repository';
 import { SystemUserLookupRepository } from '../core/lookups/usuario-sistema-lookup.repository';
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/usuario-sistema-lookup-web.repository';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
-import { AirplaneWebRepository } from '../data/repository/airplane-web-repository copy/airplane-web.repository';
+import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
 import { ComradeTokenRepository } from '../core/repositories/comrade-token.repository';
 import { ComradeTokenWebRepository } from '../data/repository/comrade-token-web-repository/comrade-token-web.repository';
 
