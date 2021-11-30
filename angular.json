@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "comrade-erp": {
+    "comrade-project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "baseHref": "/",
-            "outputPath": "dist/comrade-erp",
+            "outputPath": "dist/comrade-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -43,53 +43,67 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "aot": true,
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "extractLicenses": true,
-              "namedChunks": false,
+              "namedChunks": true,
               "commonChunk": true,
-              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
+                  "baseline": "800kb",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "baseline": "162kb",
+                  "maximumWarning": "8kb",
+                  "maximumError": "16kb"
                 }
               ]
             },
-            "local": {
+            "debug": {
               "progress": true,
               "optimization": false,
               "buildOptimizer": false,
               "aot": false,
-              "outputHashing": "none",
               "sourceMap": true,
               "extractLicenses": false,
               "namedChunks": true,
               "commonChunk": true,
-              "vendorChunk": true
+              "vendorChunk": true,
+              "verbose": true
+            },
+            "optimized": {
+              "aot": true,
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": false,
+              "namedChunks": true,
+              "commonChunk": true,
+              "buildOptimizer": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "comrade-erp:build",
+            "browserTarget": "comrade-project:build",
             "host": "0.0.0.0"
           },
           "configurations": {
-            "local": {
-              "browserTarget": "comrade-erp:build:local"
+            "debug": {
+              "browserTarget": "comrade-project:build:debug"
+            },
+            "optimized": {
+              "browserTarget": "comrade-project:build:optimized"
             },
             "production": {
-              "browserTarget": "comrade-erp:build:production"
+              "browserTarget": "comrade-project:build:production"
             }
           }
         },
@@ -115,21 +129,21 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "comrade-erp:serve"
+            "devServerTarget": "comrade-project:serve"
           },
           "configurations": {
             "local": {
-              "devServerTarget": "comrade-erp:serve:local"
+              "devServerTarget": "comrade-project:serve:local"
             },
             "production": {
-              "devServerTarget": "comrade-erp:serve:production"
+              "devServerTarget": "comrade-project:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "comrade-erp",
+  "defaultProject": "comrade-project",
   "cli": {
     "cache": {
       "enabled": true,

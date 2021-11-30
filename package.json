@@ -1,10 +1,11 @@
 {
-  "name": "comrade-erp",
+  "name": "comrade-project",
   "version": "0.0.1",
   "scripts": {
-    "start": "node .bless.js && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --configuration=local --hmr",
+    "start:debug": "node .bless.js && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --configuration=debug --hmr",
+    "start:optimized": "node .bless.js && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --configuration=optimized --hmr",
     "build:analyze": "ng build --stats-json",
-    "build:prd": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --configurations=production",
+    "build:prd": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --configuration=production",
     "lite-server": "lite-server --baseDir='dist'",
     "express": "node express/app.js",
     "test": "ng test",
