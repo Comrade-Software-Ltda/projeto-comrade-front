@@ -1,6 +1,7 @@
 {
   "editor.insertSpaces": false,
   "files.exclude": {
+    ".cache": true,
     ".git": true,
     "e2e": false,
     "node_modules": true
