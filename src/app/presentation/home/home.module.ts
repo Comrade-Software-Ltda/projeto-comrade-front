@@ -10,6 +10,7 @@ import { ScreenModalModule } from '../../components/screen-modal/screen-modal.mo
 import { throwIfAlreadyLoaded } from 'src/app/guards/module-import.guard';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DxButtonModule } from 'devextreme-angular';
 @NgModule({
   imports: [
     HomeRoutingModule,
@@ -19,6 +20,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NgxMaskModule.forRoot(),
     CommonModule,
     ScreenModalModule,
+    DxButtonModule,
   ],
   exports: [],
   declarations: [HomeComponent],

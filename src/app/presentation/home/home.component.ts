@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit() {}
 
+  helloWorld() {
+    console.log('oi 333');
+  }
+
   logout() {
     localStorage.clear();
     this.router.navigate(['/auth']);
