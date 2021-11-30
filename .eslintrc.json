@@ -30,10 +30,10 @@
           }
         ],
         "@angular-eslint/no-empty-lifecycle-method": "warn",
-        "@typescript-eslint/no-inferrable-types":"off",
-        "@angular-eslint/no-output-rename":"warn",
-        "@angular-eslint/no-input-rename":"warn",
-        "@angular-eslint/no-host-metadata-property":"warn"
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@angular-eslint/no-output-rename": "warn",
+        "@angular-eslint/no-input-rename": "warn",
+        "@angular-eslint/no-host-metadata-property": "warn"
       }
     },
     {

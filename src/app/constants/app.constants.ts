@@ -32,5 +32,4 @@ export class AppConstants {
 export class AppConfig {
   public static InfoMessageRunTimeConfigs =
     'runtime configurations not found, using compile time configurations';
-
 }

@@ -9,8 +9,8 @@
     "express": "node express/app.js",
     "test": "ng test",
     "lint": "eslint --color --fix -c .eslintrc.json --ext .ts ./src/app",
-    "format": "prettier --write --ignore-path .gitignore '**/*.{js,ts,json,html}'",
-    "format:enforce": "prettier --check --ignore-path .gitignore '**/*.{js,ts,json,html}'"
+    "format:override": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,json,html}\"",
+    "format:enforce": "prettier --check --ignore-path .gitignore \"**/*.{js,ts,json,html}\""
   },
   "private": true,
   "dependencies": {

@@ -28,7 +28,7 @@ export class BaseHttpService {
     return this._http.put<T>(url, body, useDefaultHeader, useFormData);
   }
 
-  patch<T>(url: string, body: any,): Observable<DefaultResponse<T>> {
+  patch<T>(url: string, body: any): Observable<DefaultResponse<T>> {
     return this._http.patch<T>(url, body);
   }
 
@@ -47,5 +47,4 @@ export class BaseHttpService {
   delete<T>(url: string, id: number): Observable<DefaultResponse<T>> {
     return this._http.delete<T>(url, id);
   }
-
 }
