@@ -52,7 +52,6 @@
               ],
               "aot": true,
               "optimization": true,
-              "outputHashing": "all",
               "sourceMap": false,
               "extractLicenses": true,
               "namedChunks": true,
@@ -61,13 +60,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "baseline": "800kb",
+                  "baseline": "2.2mb",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "baseline": "162kb",
+                  "baseline": "200kb",
                   "maximumWarning": "8kb",
                   "maximumError": "16kb"
                 }

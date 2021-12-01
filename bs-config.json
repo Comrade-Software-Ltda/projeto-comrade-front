@@ -1,5 +1,6 @@
 {
-  "port": 4200,
+  "port": 4500,
   "files": ["./src/**/*.{html,htm,css,js}"],
-  "server": { "baseDir": "./dist/comrade" }
+  "server": { "baseDir": "./dist/comrade-project" },
+  "open": false
 }

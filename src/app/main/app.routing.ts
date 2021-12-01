@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthGuardService } from '../services';
 import { AuthGuard } from '../services/guards/auth-guard.service';
+import {
+  LoginFormComponent,
+  ResetPasswordFormComponent,
+  CreateAccountFormComponent,
+  ChangePasswordFormComponent,
+} from '../view/components';
 
 const routes: Routes = [
   {
@@ -19,8 +26,28 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'login-form',
+    component: LoginFormComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordFormComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'create-account',
+    component: CreateAccountFormComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'change-password/:recoveryCode',
+    component: ChangePasswordFormComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
     path: '**',
-    redirectTo: 'profile',
+    redirectTo: 'home',
   },
 ];
 
