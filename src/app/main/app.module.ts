@@ -8,8 +8,6 @@ import {
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '../services/auth-interceptor/auth.interceptor';
-import { GlobalErrorHandlerService } from '../services/error-handler/global-error-handler.service';
 import { AuthenticationWebRepository } from '../data/repository/authentication-web-reporitory/authentication-web.repository';
 import { AuthenticationRepository } from '../core/repositories/authentication.repository';
 import { TokenWebRepository } from '../data/repository/token-web-reporitory/token-web.repository';
@@ -29,12 +27,14 @@ import {
   CreateAccountFormModule,
   ChangePasswordFormModule,
   LoginFormModule,
-} from '../views/components';
+} from '../view/components';
 import {
   SideNavOuterToolbarModule,
   SideNavInnerToolbarModule,
   SingleCardModule,
-} from '../views/layouts';
+} from '../view/layouts';
+import { GlobalErrorHandlerService } from '../services/handlers/global-error-handler.service';
+import { AuthInterceptor } from '../services/interceptors/auth.interceptor';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
