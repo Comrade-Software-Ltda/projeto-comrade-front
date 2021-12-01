@@ -53,6 +53,7 @@
               "aot": true,
               "optimization": true,
               "sourceMap": false,
+              "outputHashing": "bundles",
               "extractLicenses": true,
               "namedChunks": true,
               "commonChunk": true,
