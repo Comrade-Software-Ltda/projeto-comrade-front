@@ -25,13 +25,16 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.lib.json",
+            "tsConfig": "tsconfig.app.json",
             "aot": true,
             "allowedCommonJsDependencies": [],
             "assets": ["src/favicon.ico", "src/assets", "src/assets/svg/*"],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/devextreme/dist/css/dx.light.css",
+              "node_modules/devextreme/dist/css/dx.common.css",
+              "src/themes/generated/theme.base.css",
+              "src/themes/generated/theme.additional.css",
+              "src/dx-styles.scss",
               "src/styles.scss"
             ],
             "scripts": [

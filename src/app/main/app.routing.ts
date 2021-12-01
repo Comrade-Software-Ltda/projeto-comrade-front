@@ -1,12 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import {
+  LoginFormComponent,
+  ResetPasswordFormComponent,
+  CreateAccountFormComponent,
+  ChangePasswordFormComponent,
+} from '../components';
 import { AuthGuard } from '../guards/auth-guard.service';
+import { AuthGuardService } from '../services';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: 'task',
+    loadChildren: () => import('../presentation/task/task.module').then((m) => m.TaskModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('../presentation/profile/profile.module').then((m) => m.ProfileModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'home',
@@ -14,15 +27,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'pricing-tier',
-    loadChildren: () =>
-      import('../presentation/pricing-tier/pricing-tier.module').then((m) => m.PricingTierModule),
+    path: '**',
+    redirectTo: 'profile',
   },
-  {
-    path: 'auth',
-    loadChildren: () => import('../presentation/auth/auth.module').then((m) => m.AuthModule),
-  },
-  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

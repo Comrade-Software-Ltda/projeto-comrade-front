@@ -6,22 +6,10 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
-import { ScreenModalModule } from '../../components/screen-modal/screen-modal.module';
 import { throwIfAlreadyLoaded } from 'src/app/guards/module-import.guard';
-import { ComponentsModule } from 'src/app/components/components.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { DxButtonModule } from 'devextreme-angular';
+
 @NgModule({
-  imports: [
-    HomeRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
-    NgxMaskModule.forRoot(),
-    CommonModule,
-    ScreenModalModule,
-    DxButtonModule,
-  ],
+  imports: [HomeRoutingModule],
   exports: [],
   declarations: [HomeComponent],
   providers: [],

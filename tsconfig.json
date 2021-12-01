@@ -9,30 +9,13 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": false,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2017",
     "module": "es2020",
-    "lib": ["es2020", "dom"],
-    "paths": {
-      "jszip": [
-        "node_modules/jszip/dist/jszip.min.js"
-      ],
-      "globalize": [
-        "node_modules/globalize/dist/globalize"
-      ],
-      "globalize/*": [
-        "node_modules/globalize/dist/globalize/*"
-      ],
-      "cldr": [
-        "node_modules/cldrjs/dist/cldr"
-      ],
-      "cldr/*": [
-        "node_modules/cldrjs/dist/cldr/*"
-      ]
-    }
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

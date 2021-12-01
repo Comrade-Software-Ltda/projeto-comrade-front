@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../base/use-case';
+import { UseCase } from '../../bases/use-case';
 import { Observable, Subject } from 'rxjs';
 import { comradePermissaoTokenModel } from '../../tokens/comrade-permissao-token.model';
 import { ComradeTokenRepository } from '../../repositories/comrade-token.repository';

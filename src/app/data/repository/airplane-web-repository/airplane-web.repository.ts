@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
 import { AirplaneRepository } from 'src/app/core/repositories/airplane.repository';
-import { AirplaneModel } from 'src/app/core/domain/airplane.model';
+import { AirplaneModel } from 'src/app/core/domains/airplane.model';
 import { PageResultModel } from 'src/app/core/response-results/page-result.model';
 import { PageFilterModel } from 'src/app/core/filters/page-filter.model';
 import { makeParamFilterGrid } from '../../helper.repository';
