@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { SingleCardModule } from '../views/layouts/single-card/single-card.component';
+import { SingleCardModule } from '../view/layouts/single-card/single-card.component';
 
 @Component({
   selector: 'app-not-authorized-container',
