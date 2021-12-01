@@ -1,4 +1,4 @@
-import { Mapper } from '../../../core/bases/mapper';
+import { Mapper } from '../../../core/utils/bases/mapper';
 import { AirplaneWebEntity } from './airplane-web-entity';
 import { AirplaneModel } from 'src/app/core/domains/airplane.model';
 

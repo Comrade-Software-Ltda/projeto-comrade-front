@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../bases/use-case';
+import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
 import { AirplaneModel } from '../../domains/airplane.model';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
-import { SingleResultModel } from '../../response-results/single-result.model';
+import { SingleResultModel } from '../../utils/responses/single-result.model';
 
 @Injectable({
   providedIn: 'root',

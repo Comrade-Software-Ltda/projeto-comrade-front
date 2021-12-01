@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../bases/use-case';
+import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
-import { comradePermissaoTokenModel } from '../../tokens/comrade-permissao-token.model';
+import { comradeTokenModel } from '../../utils/tokens/comrade-token.model';
 import { ComradeTokenRepository } from '../../repositories/comrade-token.repository';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetComradePermissaoTokenUsecase implements UseCase<void, comradePermissaoTokenModel> {
+export class GetComradeTokenUsecase implements UseCase<void, comradeTokenModel> {
   constructor(private comradeTokenRepository: ComradeTokenRepository) {}
 
-  execute(): Observable<comradePermissaoTokenModel> {
-    return this.comradeTokenRepository.getComradePermissaoToken();
+  execute(): Observable<comradeTokenModel> {
+    return this.comradeTokenRepository.getComradeToken();
   }
 }

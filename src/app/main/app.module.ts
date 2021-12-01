@@ -14,23 +14,27 @@ import { AuthenticationWebRepository } from '../data/repository/authentication-w
 import { AuthenticationRepository } from '../core/repositories/authentication.repository';
 import { TokenWebRepository } from '../data/repository/token-web-reporitory/token-web.repository';
 import { TokenRepository } from '../core/repositories/token.repository';
-import { SystemUserLookupRepository } from '../core/lookups/usuario-sistema-lookup.repository';
+import { SystemUserLookupRepository } from '../core/lookups/ba-usu-lookup/system-user-lookup.repository';
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/usuario-sistema-lookup-web.repository';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
 import { ComradeTokenRepository } from '../core/repositories/comrade-token.repository';
 import { ComradeTokenWebRepository } from '../data/repository/comrade-token-web-repository/comrade-token-web.repository';
-import { SideNavOuterToolbarModule, SideNavInnerToolbarModule, SingleCardModule } from '../layouts';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthService, ScreenService, AppInfoService } from '../services';
 import {
   FooterModule,
   ResetPasswordFormModule,
   CreateAccountFormModule,
   ChangePasswordFormModule,
   LoginFormModule,
-} from '../components';
-import { AuthService, ScreenService, AppInfoService } from '../services';
+} from '../views/components';
+import {
+  SideNavOuterToolbarModule,
+  SideNavInnerToolbarModule,
+  SingleCardModule,
+} from '../views/layouts';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
