@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { comradePermissaoTokenModel } from '../tokens/comrade-permissao-token.model';
+import { comradeTokenModel } from '../utils/tokens/comrade-token.model';
 
 export abstract class ComradeTokenRepository {
   [x: string]: any;
-  abstract getComradePermissaoToken(): Observable<comradePermissaoTokenModel>;
-  abstract setComradePermissaoToken(param: string): Observable<void>;
+  abstract getComradeToken(): Observable<comradeTokenModel>;
+  abstract setComradeToken(param: string): Observable<void>;
 }

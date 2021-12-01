@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { comradePermissaoTokenModel } from '../../../core/tokens/comrade-permissao-token.model';
+import { comradeTokenModel } from '../../../core/utils/tokens/comrade-token.model';
 import jwt_decode from 'jwt-decode';
 import { ComradeTokenRepository } from 'src/app/core/repositories/comrade-token.repository';
 
@@ -13,16 +13,16 @@ export class ComradeTokenWebRepository extends ComradeTokenRepository {
     super();
   }
 
-  setComradePermissaoToken(param: string): Observable<void> {
-    localStorage.setItem('comradePermissaoToken', param);
+  setComradeToken(param: string): Observable<void> {
+    localStorage.setItem('comradeToken', param);
 
     return scheduled([], asyncScheduler);
   }
 
-  getComradePermissaoToken(): Observable<comradePermissaoTokenModel> {
-    const token = localStorage.getItem('comradePermissaoToken');
+  getComradeToken(): Observable<comradeTokenModel> {
+    const token = localStorage.getItem('comradeToken');
 
-    var tokenDecode = jwt_decode(token || '') as comradePermissaoTokenModel;
+    var tokenDecode = jwt_decode(token || '') as comradeTokenModel;
 
     if (token) {
       return scheduled([tokenDecode], asyncScheduler);

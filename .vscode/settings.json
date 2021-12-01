@@ -3,6 +3,7 @@
   "files.exclude": {
     ".cache": true,
     ".git": true,
+    "dist": true,
     "e2e": false,
     "node_modules": true
   },

@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+import { AuthService, ScreenService, AppInfoService } from '../services';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  notificationsCounter = 1000;
-  isSyncAnimated = true;
-  magicLevel = 0;
+export class AppComponent {
+  @HostBinding('class') get getClass() {
+    return Object.keys(this.screen.sizes)
+      .filter((cl) => this.screen.sizes[cl])
+      .join(' ');
+  }
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private screen: ScreenService,
+    public appInfo: AppInfoService
+  ) {}
 
-  isIframe = false;
-
-  ngOnInit(): void {
-    this.isIframe = window !== window.parent && !window.opener;
+  isAuthenticated() {
+    return this.authService.loggedIn;
   }
 }

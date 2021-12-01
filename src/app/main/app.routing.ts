@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { AuthGuard } from '../guards/auth-guard.service';
+import { AuthGuardService } from '../services';
+import { AuthGuard } from '../services/guards/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('../presentation/home/home.module').then((m) => m.HomeModule),
+    path: 'task',
+    loadChildren: () => import('../views/presentation/task/task.module').then((m) => m.TaskModule),
     canActivate: [AuthGuard],
   },
   {
-    path: 'pricing-tier',
+    path: 'profile',
     loadChildren: () =>
-      import('../presentation/pricing-tier/pricing-tier.module').then((m) => m.PricingTierModule),
+      import('../views/presentation/profile/profile.module').then((m) => m.ProfileModule),
+    canActivate: [AuthGuard],
   },
   {
-    path: 'auth',
-    loadChildren: () => import('../presentation/auth/auth.module').then((m) => m.AuthModule),
+    path: 'home',
+    loadChildren: () => import('../views/presentation/home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
   },
-  { path: '**', redirectTo: 'home' },
+  {
+    path: '**',
+    redirectTo: 'profile',
+  },
 ];
 
 @NgModule({

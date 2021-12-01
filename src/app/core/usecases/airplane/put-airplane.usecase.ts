@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../base/use-case';
+import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
-import { ExemploCrudModel } from '../../domain/exemplo-crud.model';
-import { ExemploCrudRepository } from '../../repositories/exemplo-crud.repository';
-import { AirplaneModel } from '../../domain/airplane.model';
+import { AirplaneModel } from '../../domains/airplane.model';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
 
 @Injectable({

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../base/use-case';
+import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
 import { AuthenticationRepository } from '../../repositories/authentication.repository';
-import { AuthenticationModel } from '../../domain/authentication.model';
-import { SingleResultModel } from '../../response-results/single-result.model';
+import { AuthenticationModel } from '../../domains/authentication.model';
+import { SingleResultModel } from '../../utils/responses/single-result.model';
 
 @Injectable({
   providedIn: 'root',

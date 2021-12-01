@@ -1,6 +1,6 @@
-import { Mapper } from '../../../core/base/mapper';
+import { Mapper } from '../../../core/utils/bases/mapper';
 import { AirplaneWebEntity } from './airplane-web-entity';
-import { AirplaneModel } from 'src/app/core/domain/airplane.model';
+import { AirplaneModel } from 'src/app/core/domains/airplane.model';
 
 export class AirplaneWebRepositoryMapper extends Mapper<AirplaneWebEntity, AirplaneModel> {
   mapFrom(param: AirplaneWebEntity): AirplaneModel {

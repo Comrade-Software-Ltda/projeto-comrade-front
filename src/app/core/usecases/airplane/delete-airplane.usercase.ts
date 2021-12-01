@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../base/use-case';
+import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
 

@@ -1,5 +1,5 @@
-import { AuthenticationModel } from 'src/app/core/domain/authentication.model';
-import { Mapper } from '../../../core/base/mapper';
+import { AuthenticationModel } from 'src/app/core/domains/authentication.model';
+import { Mapper } from '../../../core/utils/bases/mapper';
 import { AuthenticationWebEntity } from './authentication-web-entity';
 
 export class AuthenticationWebRepositoryMapper extends Mapper<

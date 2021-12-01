@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
-import { AirplaneModel } from '../domain/airplane.model';
-import { PageFilterModel } from '../filters/page-filter.model';
-import { PageResultModel } from '../response-results/page-result.model';
-import { SingleResultModel } from '../response-results/single-result.model';
+import { AirplaneModel } from '../domains/airplane.model';
+import { PageFilterModel } from '../utils/filters/page-filter.model';
+import { PageResultModel } from '../utils/responses/page-result.model';
+import { SingleResultModel } from '../utils/responses/single-result.model';
 
 export abstract class AirplaneRepository {
   abstract getAirplaneById(id: number): Observable<SingleResultModel<AirplaneModel>>;

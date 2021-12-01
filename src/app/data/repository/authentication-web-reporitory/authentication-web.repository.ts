@@ -1,10 +1,10 @@
-import { SingleResultModel } from '../../../core/response-results/single-result.model';
+import { SingleResultModel } from '../../../core/utils/responses/single-result.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, mergeMap, take, toArray } from 'rxjs/operators';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
-import { AuthenticationModel } from 'src/app/core/domain/authentication.model';
+import { AuthenticationModel } from 'src/app/core/domains/authentication.model';
 import { AuthenticationWebEntity } from './authentication-web-entity';
 import { AuthenticationWebRepositoryMapper } from './authentication-web-repository-mapper';
 import { AuthenticationRepository } from 'src/app/core/repositories/authentication.repository';

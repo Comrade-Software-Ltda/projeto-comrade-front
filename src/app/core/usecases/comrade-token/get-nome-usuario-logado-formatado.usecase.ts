@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UseCase } from '../../base/use-case';
+import { UseCase } from '../../utils/bases/use-case';
 import { Observable, Subject } from 'rxjs';
-import { comradePermissaoTokenModel } from '../../tokens/comrade-permissao-token.model';
+import { comradeTokenModel } from '../../utils/tokens/comrade-token.model';
 import { ComradeTokenRepository } from '../../repositories/comrade-token.repository';
 
 @Injectable({
@@ -13,20 +13,18 @@ export class GetNomeUsuarioLogadoFormatadoUsecase implements UseCase<void, strin
   execute(): Observable<string> {
     const subject = new Subject<string>();
 
-    this.comradeTokenRepository
-      .getComradePermissaoToken()
-      .subscribe((result: comradePermissaoTokenModel) => {
-        if (result) {
-          let nomeUsuario = result.nome.replace(
-            /(\w)(\w*)/g,
-            (g0, g1, g2) => g1.toUpperCase() + g2.toLowerCase()
-          );
+    this.comradeTokenRepository.getComradeToken().subscribe((result: comradeTokenModel) => {
+      if (result) {
+        let nomeUsuario = result.nome.replace(
+          /(\w)(\w*)/g,
+          (g0, g1, g2) => g1.toUpperCase() + g2.toLowerCase()
+        );
 
-          nomeUsuario = nomeUsuario.replace(/\W*(\w+).*?(\w+)\W*$/, (g0, g1, g2) => g1 + ' ' + g2);
+        nomeUsuario = nomeUsuario.replace(/\W*(\w+).*?(\w+)\W*$/, (g0, g1, g2) => g1 + ' ' + g2);
 
-          subject.next(nomeUsuario);
-        }
-      });
+        subject.next(nomeUsuario);
+      }
+    });
 
     return subject.asObservable();
   }
