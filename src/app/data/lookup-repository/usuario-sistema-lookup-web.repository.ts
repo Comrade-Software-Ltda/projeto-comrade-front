@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LookupModel } from 'src/app/core/domains/lookup.model';
+import { LookupModel } from 'src/app/core/models/lookup.model';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
 import { SystemUserLookupRepository } from '../../core/lookups/ba-usu-lookup/system-user-lookup.repository';
@@ -20,7 +20,7 @@ export class SystemUserLookupWebRepository extends SystemUserLookupRepository {
 
   GetAll(): Observable<LookupModel[]> {
     return this.http
-      .getAll<LookupWebEntity[]>(`${environment.COMRADE}common/lookup-system-user`)
+      .getAll<LookupWebEntity[]>(`${environment.SYSTEMUSER}common/lookup-system-user`)
       .pipe(
         map((item) => {
           return item.data;
@@ -36,7 +36,7 @@ export class SystemUserLookupWebRepository extends SystemUserLookupRepository {
   GetAllByName(nome: string): Observable<LookupModel[]> {
     return this.http
       .getAll<LookupWebEntity[]>(
-        `${environment.COMRADE}common/lookup-predicate-system-user-by-name/${nome}`
+        `${environment.SYSTEMUSER}common/lookup-predicate-system-user-by-name/${nome}`
       )
       .pipe(
         map((item) => {

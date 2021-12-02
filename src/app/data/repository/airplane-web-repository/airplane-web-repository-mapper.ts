@@ -1,6 +1,6 @@
 import { Mapper } from '../../../core/utils/bases/mapper';
 import { AirplaneWebEntity } from './airplane-web-entity';
-import { AirplaneModel } from 'src/app/core/domains/airplane.model';
+import { AirplaneModel } from 'src/app/core/models/airplane.model';
 
 export class AirplaneWebRepositoryMapper extends Mapper<AirplaneWebEntity, AirplaneModel> {
   mapFrom(param: AirplaneWebEntity): AirplaneModel {
@@ -19,7 +19,7 @@ export class AirplaneWebRepositoryMapper extends Mapper<AirplaneWebEntity, Airpl
       code: param.code,
       model: param.model,
       passengerQuantity: param.passengerQuantity,
-      registerDate: param.registerDate.toISOString(),
+      registerDate: param.registerDate,
     };
   }
 }

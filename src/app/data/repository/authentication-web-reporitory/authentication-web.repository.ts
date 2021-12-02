@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, mergeMap, take, toArray } from 'rxjs/operators';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
-import { AuthenticationModel } from 'src/app/core/domains/authentication.model';
+import { AuthenticationModel } from 'src/app/core/models/authentication.model';
 import { AuthenticationWebEntity } from './authentication-web-entity';
 import { AuthenticationWebRepositoryMapper } from './authentication-web-repository-mapper';
 import { AuthenticationRepository } from 'src/app/core/repositories/authentication.repository';
@@ -22,7 +22,7 @@ export class AuthenticationWebRepository extends AuthenticationRepository {
   updatePassword(param: AuthenticationModel): Observable<SingleResultModel<AuthenticationModel>> {
     var request = this.http
       .post<SingleResultModel<AuthenticationWebEntity>>(
-        `${environment.COMRADE}authentication/update-password`,
+        `${environment.SYSTEMUSER}authentication/update-password`,
         this.mapper.mapTo(param)
       )
       .pipe(
@@ -37,7 +37,7 @@ export class AuthenticationWebRepository extends AuthenticationRepository {
   forgotPassword(param: AuthenticationModel): Observable<SingleResultModel<AuthenticationModel>> {
     var request = this.http
       .post<SingleResultModel<AuthenticationWebEntity>>(
-        `${environment.COMRADE}authentication/forgot-password`,
+        `${environment.SYSTEMUSER}authentication/forgot-password`,
         this.mapper.mapTo(param)
       )
       .pipe(

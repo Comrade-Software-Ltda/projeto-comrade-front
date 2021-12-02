@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
-import { AirplaneModel } from '../../domains/airplane.model';
+import { AirplaneModel } from '../../models/airplane.model';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
 import { SingleResultModel } from '../../utils/responses/single-result.model';
 

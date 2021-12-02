@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { AuthenticationModel } from '../domains/authentication.model';
+import { AuthenticationModel } from '../models/authentication.model';
 import { SingleResultModel } from '../utils/responses/single-result.model';
 
 export abstract class AuthenticationRepository {

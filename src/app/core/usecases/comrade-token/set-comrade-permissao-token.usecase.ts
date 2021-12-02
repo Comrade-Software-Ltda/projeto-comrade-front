@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UseCase } from '../../utils/bases/use-case';
-import { Observable } from 'rxjs';
+import { asyncScheduler, Observable, scheduled } from 'rxjs';
 import { ComradeTokenRepository } from '../../repositories/comrade-token.repository';
 
 @Injectable({
@@ -10,6 +10,8 @@ export class SetComradeTokenUsecase implements UseCase<string, void> {
   constructor(private comradeTokenRepository: ComradeTokenRepository) {}
 
   execute(param: string): Observable<void> {
-    return this.comradeTokenRepository.setComradeToken(param);
+    localStorage.setItem('comradeToken', param);
+
+    return scheduled([], asyncScheduler);
   }
 }

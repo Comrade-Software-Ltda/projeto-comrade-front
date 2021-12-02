@@ -18,4 +18,14 @@ export const navigation = [
       },
     ],
   },
+  {
+    text: 'qwe123',
+    icon: 'folder',
+    items: [
+      {
+        text: 'System User',
+        path: '/system-user',
+      },
+    ],
+  },
 ];

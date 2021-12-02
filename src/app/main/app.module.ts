@@ -7,7 +7,7 @@ import {
 } from '@angular/common';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationWebRepository } from '../data/repository/authentication-web-reporitory/authentication-web.repository';
 import { AuthenticationRepository } from '../core/repositories/authentication.repository';
 import { TokenWebRepository } from '../data/repository/token-web-reporitory/token-web.repository';
@@ -17,7 +17,6 @@ import { SystemUserLookupWebRepository } from '../data/lookup-repository/usuario
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
 import { ComradeTokenRepository } from '../core/repositories/comrade-token.repository';
-import { ComradeTokenWebRepository } from '../data/repository/comrade-token-web-repository/comrade-token-web.repository';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthService, ScreenService, AppInfoService } from '../services';
@@ -35,6 +34,8 @@ import {
 } from '../view/layouts';
 import { GlobalErrorHandlerService } from '../services/handlers/global-error-handler.service';
 import { AuthInterceptor } from '../services/interceptors/auth.interceptor';
+import { SystemUserRepository } from '../core/repositories/system-user.repository';
+import { SystemUserWebRepository } from '../data/repository/system-user-web-repository/system-user-web.repository';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
@@ -54,6 +55,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     LoginFormModule,
     UnauthenticatedContentModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [
     AuthService,
@@ -72,8 +74,8 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     { provide: ErrorHandler, useClass: GlobalErrorHandlerService },
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: AirplaneRepository, useClass: AirplaneWebRepository },
+    { provide: SystemUserRepository, useClass: SystemUserWebRepository },
     { provide: AuthenticationRepository, useClass: AuthenticationWebRepository },
-    { provide: ComradeTokenRepository, useClass: ComradeTokenWebRepository },
     { provide: TokenRepository, useClass: TokenWebRepository },
     { provide: SystemUserLookupRepository, useClass: SystemUserLookupWebRepository },
   ],

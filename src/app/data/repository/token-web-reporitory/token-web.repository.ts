@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TokenModel } from 'src/app/core/domains/token.model';
+import { TokenModel } from 'src/app/core/models/token.model';
 import { SingleResultModel } from 'src/app/core/utils/responses/single-result.model';
 import { BaseHttpService } from 'src/app/services/http/base-http.service';
 import { environment } from 'src/environments/environment';
@@ -9,7 +9,7 @@ import { TokenWebEntity } from './token-web-entity';
 import { TokenWebRepositoryMapper } from './token-web-repository-mapper';
 import { TokenRepository } from '../../../core/repositories/token.repository';
 import { AuthenticationWebRepositoryMapper } from '../authentication-web-reporitory/authentication-web-repository-mapper';
-import { AuthenticationModel } from 'src/app/core/domains/authentication.model';
+import { AuthenticationModel } from 'src/app/core/models/authentication.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class TokenWebRepository extends TokenRepository {
   postGenerateToken(param: AuthenticationModel): Observable<SingleResultModel<TokenModel>> {
     var request = this.http
       .post<SingleResultModel<TokenWebEntity>>(
-        `${environment.COMRADE}token/generate-token`,
+        `${environment.SYSTEMUSER}token/generate-token`,
         this.authenticationMapper.mapTo(param)
       )
       .pipe(

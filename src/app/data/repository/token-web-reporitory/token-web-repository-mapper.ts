@@ -1,4 +1,4 @@
-import { TokenModel } from 'src/app/core/domains/token.model';
+import { TokenModel } from 'src/app/core/models/token.model';
 import { Mapper } from '../../../core/utils/bases/mapper';
 import { TokenWebEntity } from './token-web-entity';
 
