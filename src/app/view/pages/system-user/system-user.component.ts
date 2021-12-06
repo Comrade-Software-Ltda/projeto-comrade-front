@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Service, Employee, State } from './service';
 import { GetAllSystemUserUsecase } from '../../../core/usecases/system-user/get-all-airplane.usecase';
 import { SystemUserModel } from '../../../core/models/system-user.model';
 import { PageResultModel } from '../../../core/utils/responses/page-result.model';
@@ -8,11 +7,11 @@ import { PageResultModel } from '../../../core/utils/responses/page-result.model
   selector: 'app-system-user',
   templateUrl: 'system-user.component.html',
   styleUrls: ['system-user.component.scss'],
-  providers: [Service],
+  providers: [],
 })
 export class SystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
-  constructor(private service: Service, private getAllSystemUser: GetAllSystemUserUsecase) {}
+  constructor(private getAllSystemUser: GetAllSystemUserUsecase) {}
 
   ngOnInit(): void {
     this.getAllSystemUser

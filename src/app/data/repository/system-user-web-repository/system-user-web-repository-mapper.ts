@@ -8,7 +8,6 @@ export class SystemUserWebRepositoryMapper extends Mapper<SystemUserWebEntity, S
       id: param.id,
       name: param.name,
       email: param.email,
-      password: param.password,
       registration: param.registration,
       registerDate: new Date(param.registerDate),
     };
@@ -19,7 +18,6 @@ export class SystemUserWebRepositoryMapper extends Mapper<SystemUserWebEntity, S
       id: param.id,
       name: param.name,
       email: param.email,
-      password: param.password,
       registration: param.registration,
       registerDate: param.registerDate,
     };
