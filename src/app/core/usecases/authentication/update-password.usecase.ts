@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
 import { AuthenticationRepository } from '../../repositories/authentication.repository';
-import { AuthenticationModel } from '../../domains/authentication.model';
+import { AuthenticationModel } from '../../models/authentication.model';
 
 @Injectable({
   providedIn: 'root',

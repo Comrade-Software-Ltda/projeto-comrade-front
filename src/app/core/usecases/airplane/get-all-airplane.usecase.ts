@@ -3,7 +3,7 @@ import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
 import { PageFilterModel } from '../../utils/filters/page-filter.model';
 import { PageResultModel } from '../../utils/responses/page-result.model';
-import { AirplaneModel } from '../../domains/airplane.model';
+import { AirplaneModel } from '../../models/airplane.model';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
 
 @Injectable({

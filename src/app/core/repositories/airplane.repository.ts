@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { AirplaneModel } from '../domains/airplane.model';
+import { AirplaneModel } from '../models/airplane.model';
 import { PageFilterModel } from '../utils/filters/page-filter.model';
 import { PageResultModel } from '../utils/responses/page-result.model';
 import { SingleResultModel } from '../utils/responses/single-result.model';

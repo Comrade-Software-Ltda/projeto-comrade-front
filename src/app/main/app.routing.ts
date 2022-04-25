@@ -26,6 +26,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'system-user',
+    loadChildren: () =>
+      import('../view/pages/system-user/system-user.module').then((m) => m.SystemUserModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'login-form',
     component: LoginFormComponent,
     canActivate: [AuthGuardService],

@@ -1,4 +1,4 @@
-import { AuthenticationModel } from 'src/app/core/domains/authentication.model';
+import { AuthenticationModel } from 'src/app/core/models/authentication.model';
 import { Mapper } from '../../../core/utils/bases/mapper';
 import { AuthenticationWebEntity } from './authentication-web-entity';
 
