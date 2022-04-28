@@ -28,4 +28,9 @@ export const navigation = [
       },
     ],
   },
+  {
+    text: 'Upload de Arquivos',
+    path: '/file-upload',
+    icon: 'folder',
+  },
 ];
