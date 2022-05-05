@@ -26,6 +26,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'file-upload',
+    loadChildren: () =>
+      import('../view/pages/file-upload/file-upload.module').then((m) => m.FileUploadModule),
+    canActivate: [AuthGuard],
+  },
+
+  {
     path: 'system-user',
     loadChildren: () =>
       import('../view/pages/system-user/system-user.module').then((m) => m.SystemUserModule),
