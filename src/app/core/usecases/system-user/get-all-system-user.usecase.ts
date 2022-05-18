@@ -15,6 +15,7 @@ export class GetAllSystemUserUsecase
   constructor(private systemUserRepository: SystemUserRepository) {}
 
   execute(filter: PageFilterModel): Observable<PageResultModel<SystemUserModel>> {
+    console.log('teste2');
     return this.systemUserRepository.getAllSystemUser(filter);
   }
 }
