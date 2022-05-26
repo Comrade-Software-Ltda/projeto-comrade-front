@@ -22,7 +22,8 @@
       "sourceMaps": true,
       "trace": true,
       "webRoot": "${workspaceRoot}",
-      "userDataDir": "${workspaceRoot}/out/chrome"
+      "userDataDir": "${workspaceRoot}/out/chrome",
+      "preLaunchTask": "npm: start:debug",
     },
     {
       "name": "Attach Chrome",

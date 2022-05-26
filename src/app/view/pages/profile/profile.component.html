@@ -1,18 +1,44 @@
 <h2 class="content-block">Profile</h2>
-
 <div class="content-block dx-card responsive-paddings">
-  <div class="form-avatar">
-    <img src="https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/{{ employee.Picture }}" />
+  <div class="form">
+    <div class="dx-fieldset">
+      <div class="dx-field">
+        <dx-text-box
+          label="Nome"
+          [(value)]="user.nome"
+          class="dx-field-value"
+          name="name"
+        ></dx-text-box>
+      </div>
+      <div class="dx-field">
+        <dx-text-box
+          label="E-mail"
+          [(value)]="user.email"
+          class="dx-field-value"
+          name="email"
+        ></dx-text-box>
+      </div>
+      <div class="dx-field">
+        <dx-date-box
+          label="Data de nascimento"
+          [(value)]="user.dataDeNascimento"
+          class="dx-field-value"
+          type="date"
+        >
+        </dx-date-box>
+      </div>
+      <div class="dx-field">
+        <dx-select-box
+          [(value)]="user.genero"
+          label="Gênero"
+          class="dx-field-value"
+          [items]="generos"
+        ></dx-select-box>
+      </div>
+      <div class="dx-field">
+        <dx-button text="Confirmar" type="normal" (click)="onClick($event)"> </dx-button>
+      </div>
+    </div>
+    <dx-gallery #gallery id="gallery" height="20vh" showIndicator="true"></dx-gallery>
   </div>
-  <span>{{ employee.Notes }}</span>
-</div>
-
-<div class="content-block dx-card responsive-paddings">
-  <dx-form
-    id="form"
-    [formData]="employee"
-    labelLocation="top"
-    [colCountByScreen]="colCountByScreen"
-  >
-  </dx-form>
 </div>

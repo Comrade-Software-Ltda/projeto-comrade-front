@@ -5,6 +5,6 @@ export const environment = {
   logRequest: false,
   traceRequest: false,
   googleMapsApiKey: '',
-  TOKEN: 'https://localhost:44304/api/v1/',
-  SYSTEMUSER: 'https://localhost:44304/api/v1/',
+  TOKEN: 'http://localhost:4000/',
+  SYSTEMUSER: 'http://localhost:4000/',
 };
