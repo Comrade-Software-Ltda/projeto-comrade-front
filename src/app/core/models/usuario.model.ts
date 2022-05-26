@@ -10,4 +10,5 @@ export interface UsuarioModel {
   telefoneNumero?: string;
   idadeMinima?: number;
   idadeMaxima?: number;
+  fotos?: string[];
 }

@@ -1,24 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllUsuarioUsecase } from 'src/app/core/usecases/usuario/get-all-airplane.usecase';
-import { GetUsuarioByIdUsecase } from 'src/app/core/usecases/usuario/get-by-id-airplane.usecase';
+import { UsuarioModel } from 'src/app/core/models/usuario.model';
+import { GetAllFotoUsecase } from 'src/app/core/usecases/foto/get-all-foto-by-usuario.usecase';
+import { GetUsuariosByUserPreferenciaUsecase } from 'src/app/core/usecases/usuario/get-usuario-by-user-preferencia.usecase';
 @Component({
   templateUrl: 'home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  dataSource: string[];
+  usuarios: UsuarioModel[] = [];
+  currentUsuario?: UsuarioModel = { dataDeNascimento: new Date(), email: '', genero: '', nome: '' };
+
   constructor(
-    private getAllUsuarioUsecase: GetAllUsuarioUsecase,
-    private getUsuarioByIdUsecase: GetUsuarioByIdUsecase
-  ) {
-    this.dataSource = [
-      'https://www.rbsdirect.com.br/imagesrc/25743537.jpg',
-      'https://www.petz.com.br/blog/wp-content/uploads/2020/01/vira-lata-caramelo.jpg',
-      'https://static1.patasdacasa.com.br/articles/1/39/1/@/1318-vira-lata-caramelo-nao-importa-onde-voc-articles_media_mobile-4.jpg',
-    ]; //PhotoService
-  }
+    private getUsuariosByUserPreferenciaUsecase: GetUsuariosByUserPreferenciaUsecase,
+    private getAllFotoUsecase: GetAllFotoUsecase
+  ) {}
+
+  onClick(isCurtida: boolean) {}
+
   ngOnInit(): void {
-    this.getAllUsuarioUsecase.execute().subscribe((e) => console.log);
-    this.getUsuarioByIdUsecase.execute(1).subscribe((e) => e);
+    this.loadUsuarios(1);
+  }
+
+  getFotos(user: UsuarioModel) {
+    user.fotos = [];
+    this.getAllFotoUsecase.execute(user?.id!).subscribe((e) => {
+      e.data?.forEach((e) => user?.fotos?.push(e.url));
+    });
+  }
+
+  getAge(user: UsuarioModel) {
+    let timeDiff = Math.abs(Date.now() - user.dataDeNascimento.getTime());
+    let age = Math.floor(timeDiff / (1000 * 3600 * 24) / 365.25);
+    return age;
+  }
+
+  loadUsuarios(userId: number) {
+    this.getUsuariosByUserPreferenciaUsecase.execute(userId).subscribe((e) => {
+      this.usuarios = e.data ?? [];
+      this.currentUsuario = this.usuarios?.pop();
+      if (this.currentUsuario?.id) this.getFotos(this.currentUsuario);
+    });
+  }
+
+  nextUser() {
+    if (this.usuarios.length == 0) {
+      this.loadUsuarios(1);
+    } else {
+      this.currentUsuario = this.usuarios?.pop();
+      if (this.currentUsuario?.id) this.getFotos(this.currentUsuario);
+    }
   }
 }

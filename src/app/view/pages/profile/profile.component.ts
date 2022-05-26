@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/core/models/usuario.model';
-import { GetUsuarioByIdUsecase } from 'src/app/core/usecases/usuario/get-by-id-airplane.usecase';
+import { GetUsuarioByIdUsecase } from 'src/app/core/usecases/usuario/get-by-id-usuario.usecase';
 import { PostUpdateUsuarioUsecase } from 'src/app/core/usecases/usuario/post-update-usuario.usecase';
 
 @Component({

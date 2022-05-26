@@ -1,13 +1,31 @@
 <div class="content-block">
   <div class="dx-card responsive-paddings">
-    <dx-gallery
-      #gallery
-      id="gallery"
-      [dataSource]="dataSource"
-      height="80vh"
-      showIndicator="true"
-    ></dx-gallery>
-    <dx-button icon="minus" stylingMode="outlined" type="danger" style="float: left"> </dx-button>
-    <dx-button icon="plus" stylingMode="outlined" type="success" style="float: right"> </dx-button>
+    <div ng-if="!currentUsuario">
+      <span>{{ currentUsuario.nome }}</span>
+      <br />
+      <span>{{ getAge(currentUsuario) }}</span>
+      <dx-gallery
+        id="gallery"
+        [dataSource]="currentUsuario.fotos"
+        height="60vh"
+        showIndicator="true"
+      ></dx-gallery>
+      <dx-button
+        icon="minus"
+        stylingMode="outlined"
+        type="danger"
+        style="float: left"
+        (click)="onClick(true)"
+      >
+      </dx-button>
+      <dx-button
+        icon="plus"
+        stylingMode="outlined"
+        type="success"
+        style="float: right"
+        (click)="onClick(false)"
+      >
+      </dx-button>
+    </div>
   </div>
 </div>

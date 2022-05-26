@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import dxTooltip from 'devextreme/ui/tooltip';
 import { UsuarioModel } from 'src/app/core/models/usuario.model';
-import { GetUsuarioByIdUsecase } from 'src/app/core/usecases/usuario/get-by-id-airplane.usecase';
+import { GetUsuarioByIdUsecase } from 'src/app/core/usecases/usuario/get-by-id-usuario.usecase';
 import { PostUpdateUsuarioPreferenceUsecase } from 'src/app/core/usecases/usuario/post-update-usaurio-preference';
 
 @Component({

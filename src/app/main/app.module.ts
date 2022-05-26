@@ -14,7 +14,6 @@ import { TokenWebRepository } from '../data/repository/token-web-reporitory/toke
 import { TokenRepository } from '../core/repositories/token.repository';
 import { SystemUserLookupRepository } from '../core/lookups/ba-usu-lookup/system-user-lookup.repository';
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/usuario-sistema-lookup-web.repository';
-import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
 import { ComradeTokenRepository } from '../core/repositories/comrade-token.repository';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
@@ -38,6 +37,9 @@ import { SystemUserRepository } from '../core/repositories/system-user.repositor
 import { SystemUserWebRepository } from '../data/repository/system-user-web-repository/system-user-web.repository';
 import { UsuarioRepository } from '../core/repositories/usuario.repository';
 import { UsuarioWebRepository } from '../data/repository/usuario-web-repository/usuario-web.repository';
+import { FotoRepository } from '../core/repositories/foto.repository';
+import { FotoWebRepository } from '../data/repository/foto-web-repository/foto-web.repository';
+import { AirplaneRepository } from '../core/repositories/airplane.repository';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
@@ -81,6 +83,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     { provide: TokenRepository, useClass: TokenWebRepository },
     { provide: SystemUserLookupRepository, useClass: SystemUserLookupWebRepository },
     { provide: UsuarioRepository, useClass: UsuarioWebRepository },
+    { provide: FotoRepository, useClass: FotoWebRepository },
   ],
   bootstrap: [AppComponent],
 })

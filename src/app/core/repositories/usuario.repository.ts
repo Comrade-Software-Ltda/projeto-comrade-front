@@ -14,4 +14,5 @@ export abstract class UsuarioRepository {
     id: number,
     usuario: UsuarioModel
   ): Observable<SingleResultModel<UsuarioModel>>;
+  abstract getUsuariosByUserPreferencia(id: number): Observable<PageResultModel<UsuarioModel>>;
 }

@@ -31,6 +31,19 @@ export class UsuarioWebRepository extends UsuarioRepository {
     return request;
   }
 
+  getUsuariosByUserPreferencia(id: number): Observable<PageResultModel<UsuarioModel>> {
+    var request = this.http
+      .getAll<PageResultModel<UsuarioWebEntity>>(
+        `${environment.SYSTEMUSER}usuario/ByPreferences/${id}`
+      )
+      .pipe(
+        map((x) => {
+          return this.mapper.responseGridWebMapFrom(x.data);
+        })
+      );
+    return request;
+  }
+
   getUsuarioById(id: number): Observable<SingleResultModel<UsuarioModel>> {
     PageResultModel;
     return this.http
