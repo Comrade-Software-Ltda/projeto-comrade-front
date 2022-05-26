@@ -1,11 +1,30 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import {
+  DxDataGridModule,
+  DxFormModule,
+  DxTextBoxModule,
+  DxFileUploaderModule,
+  DxButtonModule,
+  DxDateBoxModule,
+  DxSelectBoxModule,
+  DxGalleryModule,
+} from 'devextreme-angular';
 import { ProfileComponent } from './profile.component';
 import { ProfileRoutingModule } from './profile.routing';
 import { throwIfAlreadyLoaded } from '../../../services/guards/module-import.guard';
 
 @NgModule({
-  imports: [DxDataGridModule, DxFormModule, ProfileRoutingModule],
+  imports: [
+    DxDataGridModule,
+    DxFormModule,
+    ProfileRoutingModule,
+    DxTextBoxModule,
+    DxFileUploaderModule,
+    DxButtonModule,
+    DxDateBoxModule,
+    DxSelectBoxModule,
+    DxGalleryModule,
+  ],
   exports: [],
   declarations: [ProfileComponent],
   providers: [],

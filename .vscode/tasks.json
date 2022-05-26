@@ -1,23 +1,30 @@
 {
   "version": "2.0.0",
-  "Task": [
+  "tasks": [
     {
       "type": "npm",
-      "script": "watch",
-      "label": "watch",
+      "script": "start:debug",
+      "label": "npm: start:debug",
+      "detail": "node .bless.js && node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng serve --configuration=debug --hmr",
       "isBackground": true,
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
-    },
-    {
-      "type": "npm",
-      "script": "typecheck-watch",
-      "label": "typecheck-watch",
-      "isBackground": true,
-      "problemMatcher": "$tsc-watch",
-      "runOptions": {
-        "runOn": "folderOpen"
+      "problemMatcher": {
+        "owner": "typescript",
+        "source": "ts",
+        "applyTo": "closedDocuments",
+        "fileLocation": [
+          "relative",
+          "${cwd}"
+        ],
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "Compiled |Failed to compile."
+          }
+        }
       }
     }
   ]

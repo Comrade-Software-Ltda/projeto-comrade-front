@@ -1,0 +1,35 @@
+<h2 class="content-block">Preferências</h2>
+<div class="content-block dx-card responsive-paddings">
+  <div class="form">
+    <div class="dx-fieldset">
+      <div class="dx-field-header">Faixa etária</div>
+      <div class="dx-field">
+        <div class="dx-field-value">
+          <dx-range-slider
+            [min]="18"
+            [max]="85"
+            [(start)]="userPreferences.idadeMinima"
+            [(end)]="userPreferences.idadeMaxima"
+            [tooltip]="tooltip"
+            height="100"
+            width="100%"
+            label="Faixa etária"
+          ></dx-range-slider>
+        </div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-value">
+          <dx-select-box
+            [(value)]="userPreferences.preferenciaGenero"
+            label="Gênero"
+            class="dx-field-value"
+            [items]="generos"
+          ></dx-select-box>
+        </div>
+      </div>
+      <div class="dx-field">
+        <dx-button text="Confirmar" type="normal" (click)="onClick($event)"> </dx-button>
+      </div>
+    </div>
+  </div>
+</div>

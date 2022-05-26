@@ -11,8 +11,9 @@ import {
 
 const routes: Routes = [
   {
-    path: 'task',
-    loadChildren: () => import('../view/pages/task/task.module').then((m) => m.TaskModule),
+    path: 'preferences',
+    loadChildren: () =>
+      import('../view/pages/preference/preference.module').then((m) => m.PreferenceModule),
     canActivate: [AuthGuard],
   },
   {
@@ -23,12 +24,6 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('../view/pages/home/home.module').then((m) => m.HomeModule),
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'system-user',
-    loadChildren: () =>
-      import('../view/pages/system-user/system-user.module').then((m) => m.SystemUserModule),
     canActivate: [AuthGuard],
   },
   {
