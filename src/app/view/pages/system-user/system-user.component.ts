@@ -20,4 +20,8 @@ export class SystemUserComponent implements OnInit {
         this.dataSource = grid.data!;
       });
   }
+
+  testeCesar(oto: string): void {
+    console.log(oto);
+  }
 }
