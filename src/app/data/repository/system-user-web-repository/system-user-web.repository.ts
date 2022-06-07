@@ -22,7 +22,7 @@ export class SystemUserWebRepository extends SystemUserRepository {
     super();
   }
 
-  getSystemUserById(id: number): Observable<SingleResultModel<SystemUserModel>> {
+  getSystemUserById(id: string): Observable<SingleResultModel<SystemUserModel>> {
     PageResultModel;
     return this.http
       .get<SingleResultModel<SystemUserWebEntity>>(
@@ -60,7 +60,7 @@ export class SystemUserWebRepository extends SystemUserRepository {
       .pipe(map((x) => x.data));
   }
 
-  deleteSystemUser(id: number): Observable<void> {
+  deleteSystemUser(id: string): Observable<void> {
     return this.http
       .delete<void>(`${environment.SYSTEMUSER}system-user/delete/${id}`, id)
       .pipe(map((x) => x.data));

@@ -6,10 +6,10 @@ import { SystemUserRepository } from '../../repositories/system-user.repository'
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteSystemUserUsercase implements UseCase<number, void> {
+export class DeleteSystemUserUsercase implements UseCase<string, void> {
   constructor(private systemUserRepository: SystemUserRepository) {}
 
-  execute(id: number): Observable<void> {
+  execute(id: string): Observable<void> {
     return this.systemUserRepository.deleteSystemUser(id);
   }
 }

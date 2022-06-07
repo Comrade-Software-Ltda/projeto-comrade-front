@@ -32,7 +32,7 @@ export class BaseHttpService {
     return this._http.patch<T>(url, body);
   }
 
-  get<T>(url: string, id: number): Observable<DefaultResponse<T>> {
+  get<T>(url: string, id: string): Observable<DefaultResponse<T>> {
     return this._http.get<T>(`${url}/${id}`);
   }
 
@@ -44,7 +44,7 @@ export class BaseHttpService {
     return this._http.download(`${url}`);
   }
 
-  delete<T>(url: string, id: number): Observable<DefaultResponse<T>> {
+  delete<T>(url: string, id: string): Observable<DefaultResponse<T>> {
     return this._http.delete<T>(url, id);
   }
 }

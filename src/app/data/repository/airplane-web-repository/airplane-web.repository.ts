@@ -22,7 +22,7 @@ export class AirplaneWebRepository extends AirplaneRepository {
     super();
   }
 
-  getAirplaneById(id: number): Observable<SingleResultModel<AirplaneModel>> {
+  getAirplaneById(id: string): Observable<SingleResultModel<AirplaneModel>> {
     PageResultModel;
     return this.http
       .get<SingleResultModel<AirplaneWebEntity>>(`${environment.SYSTEMUSER}airplane/get-by-id`, id)
@@ -54,7 +54,7 @@ export class AirplaneWebRepository extends AirplaneRepository {
       .pipe(map((x) => x.data));
   }
 
-  deleteAirplane(id: number): Observable<void> {
+  deleteAirplane(id: string): Observable<void> {
     return this.http
       .delete<void>(`${environment.SYSTEMUSER}airplane/delete/${id}`, id)
       .pipe(map((x) => x.data));

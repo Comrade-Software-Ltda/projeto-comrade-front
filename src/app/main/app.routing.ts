@@ -60,7 +60,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      initialNavigation: 'enabled',
       preloadingStrategy: PreloadAllModules,
       scrollPositionRestoration: 'top',
     }),

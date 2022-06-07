@@ -43,5 +43,6 @@
       "source.fixAll.eslint": true
     },
     "editor.formatOnSave": true
-  }
+  },
+  "i18n-ally.localesPaths": []
 }
