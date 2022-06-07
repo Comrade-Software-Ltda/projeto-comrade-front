@@ -21,7 +21,9 @@ export class SystemUserComponent implements OnInit {
       });
   }
 
-  testeCesar(oto: string): void {
-    console.log(oto);
+  testeCesar(e: any): void {
+    var rowIndex = e.component.getRowIndexByKey(e.key);
+    console.log(rowIndex);
+    console.log(e.key);
   }
 }

@@ -4,7 +4,7 @@
     [dataSource]="dataSource"
     keyExpr="id"
     [showBorders]="true"
-    (onRowRemoving)="testeCesar('teste')"
+    (onRowRemoving)="testeCesar($event)"
   >
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
