@@ -9,11 +9,11 @@ import { SingleResultModel } from '../../utils/responses/single-result.model';
   providedIn: 'root',
 })
 export class GetSystemUserByIdUsecase
-  implements UseCase<number, SingleResultModel<SystemUserModel>>
+  implements UseCase<string, SingleResultModel<SystemUserModel>>
 {
   constructor(private systemUserRepository: SystemUserRepository) {}
 
-  execute(id: number): Observable<SingleResultModel<SystemUserModel>> {
+  execute(id: string): Observable<SingleResultModel<SystemUserModel>> {
     return this.systemUserRepository.getSystemUserById(id);
   }
 }
