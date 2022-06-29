@@ -45,7 +45,7 @@ export class SystemUserWebRepository extends SystemUserRepository {
     return request;
   }
 
-  postSystemUser(param: SystemUserModel) {
+  createSystemUser(param: SystemUserModel) {
     return this.http
       .post<SystemUserWebEntity>(
         `${environment.SYSTEMUSER}system-user/create`,
@@ -54,7 +54,7 @@ export class SystemUserWebRepository extends SystemUserRepository {
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 
-  putSystemUser(param: SystemUserModel) {
+  updateSystemUser(param: SystemUserModel) {
     return this.http
       .put<void>(`${environment.SYSTEMUSER}system-user/edit`, this.mapper.mapTo(param))
       .pipe(map((x) => x.data));

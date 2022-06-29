@@ -8,19 +8,19 @@
   >
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
-      <dxo-popup title="Employee Info" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
+      <dxo-popup title="Airplane" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
       <dxo-form>
         <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
-          <dxi-item dataField="name"></dxi-item>
-          <dxi-item dataField="email"></dxi-item>
-          <dxi-item dataField="registration"></dxi-item>
+          <dxi-item dataField="code"></dxi-item>
+          <dxi-item dataField="model"></dxi-item>
+          <dxi-item dataField="passengerQuantity"></dxi-item>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
 
-    <dxi-column dataField="name" caption="Title"></dxi-column>
-    <dxi-column dataField="email"></dxi-column>
-    <dxi-column dataField="registration"></dxi-column>
+    <dxi-column dataField="code" caption="Title"></dxi-column>
+    <dxi-column dataField="model"></dxi-column>
+    <dxi-column dataField="passengerQuantity"></dxi-column>
     <dxi-column dataField="registerDate"></dxi-column>
   </dx-data-grid>
 </div>

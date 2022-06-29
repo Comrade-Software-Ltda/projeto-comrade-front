@@ -1,7 +1,8 @@
-import { GetAllSystemUserUsecase } from './../../../core/usecases/system-user/get-all-system-user.usecase';
 import { Component, OnInit } from '@angular/core';
-import { SystemUserModel } from '../../../core/models/system-user.model';
-import { PageResultModel } from '../../../core/utils/responses/page-result.model';
+import { PageResultModel } from 'src/app/core/utils/responses/page-result.model';
+import { SystemUserModel } from 'src/app/core/models/system-user.model';
+import { DeleteSystemUserUsecase } from 'src/app/core/usecases/system-user/delete-system-user.usecase';
+import { GetAllSystemUserUsecase } from 'src/app/core/usecases/system-user/get-all-system-user.usecase';
 
 @Component({
   selector: 'app-system-user',
@@ -11,7 +12,10 @@ import { PageResultModel } from '../../../core/utils/responses/page-result.model
 })
 export class SystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
-  constructor(private getAllSystemUser: GetAllSystemUserUsecase) {}
+  constructor(
+    private getAllSystemUser: GetAllSystemUserUsecase,
+    private deleteSystemUser: DeleteSystemUserUsecase
+  ) {}
 
   ngOnInit(): void {
     this.getAllSystemUser
@@ -21,9 +25,7 @@ export class SystemUserComponent implements OnInit {
       });
   }
 
-  testeCesar(e: any): void {
-    var rowIndex = e.component.getRowIndexByKey(e.key);
-    console.log(rowIndex);
-    console.log(e.key);
+  delete(e: any): void {
+    this.deleteSystemUser.execute(e.key).subscribe();
   }
 }

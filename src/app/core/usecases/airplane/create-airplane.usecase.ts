@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
+import { AirplaneModel } from '../../models/airplane.model';
 import { AirplaneRepository } from '../../repositories/airplane.repository';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteAirplaneUsercase implements UseCase<string, void> {
+export class CreateAirplaneUsecase implements UseCase<AirplaneModel, AirplaneModel> {
   constructor(private airplaneRepository: AirplaneRepository) {}
 
-  execute(id: string): Observable<void> {
-    return this.airplaneRepository.deleteAirplane(id);
+  execute(params: AirplaneModel): Observable<AirplaneModel> {
+    return this.airplaneRepository.createAirplane(params);
   }
 }

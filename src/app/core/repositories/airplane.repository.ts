@@ -7,7 +7,7 @@ import { SingleResultModel } from '../utils/responses/single-result.model';
 export abstract class AirplaneRepository {
   abstract getAirplaneById(id: string): Observable<SingleResultModel<AirplaneModel>>;
   abstract getAllAirplane(filter: PageFilterModel): Observable<PageResultModel<AirplaneModel>>;
-  abstract postAirplane(param: AirplaneModel): Observable<AirplaneModel>;
-  abstract putAirplane(param: AirplaneModel): Observable<void>;
+  abstract createAirplane(param: AirplaneModel): Observable<AirplaneModel>;
+  abstract updateAirplane(param: AirplaneModel): Observable<void>;
   abstract deleteAirplane(id: string): Observable<void>;
 }

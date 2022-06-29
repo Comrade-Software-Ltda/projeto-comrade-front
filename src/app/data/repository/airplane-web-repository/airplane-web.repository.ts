@@ -25,38 +25,39 @@ export class AirplaneWebRepository extends AirplaneRepository {
   getAirplaneById(id: string): Observable<SingleResultModel<AirplaneModel>> {
     PageResultModel;
     return this.http
-      .get<SingleResultModel<AirplaneWebEntity>>(`${environment.SYSTEMUSER}airplane/get-by-id`, id)
+      .get<SingleResultModel<AirplaneWebEntity>>(`${environment.AIRPLANE}airplane/get-by-id`, id)
       .pipe(map((x) => this.mapper.responseWebMapFrom(x.data)));
   }
 
   getAllAirplane(filter: PageFilterModel): Observable<PageResultModel<AirplaneModel>> {
     var request = this.http
       .getAll<PageResultModel<AirplaneWebEntity>>(
-        `${environment.SYSTEMUSER}airplane/get-all${makeParamFilterGrid(filter)}`
+        `${environment.AIRPLANE}airplane/get-all${makeParamFilterGrid(filter)}`
       )
       .pipe(
         map((x) => {
+          console.log(x);
           return this.mapper.responseGridWebMapFrom(x.data);
         })
       );
     return request;
   }
 
-  postAirplane(param: AirplaneModel) {
+  createAirplane(param: AirplaneModel) {
     return this.http
-      .post<AirplaneWebEntity>(`${environment.SYSTEMUSER}airplane/create`, this.mapper.mapTo(param))
+      .post<AirplaneWebEntity>(`${environment.AIRPLANE}airplane/create`, this.mapper.mapTo(param))
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 
-  putAirplane(param: AirplaneModel) {
+  updateAirplane(param: AirplaneModel) {
     return this.http
-      .put<void>(`${environment.SYSTEMUSER}airplane/edit`, this.mapper.mapTo(param))
+      .put<void>(`${environment.AIRPLANE}airplane/update`, this.mapper.mapTo(param))
       .pipe(map((x) => x.data));
   }
 
   deleteAirplane(id: string): Observable<void> {
     return this.http
-      .delete<void>(`${environment.SYSTEMUSER}airplane/delete/${id}`, id)
+      .delete<void>(`${environment.AIRPLANE}airplane/delete/${id}`, id)
       .pipe(map((x) => x.data));
   }
 }
