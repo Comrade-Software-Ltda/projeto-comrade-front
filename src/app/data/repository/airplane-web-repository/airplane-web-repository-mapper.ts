@@ -4,7 +4,6 @@ import { AirplaneModel } from 'src/app/core/models/airplane.model';
 
 export class AirplaneWebRepositoryMapper extends Mapper<AirplaneWebEntity, AirplaneModel> {
   mapFrom(param: AirplaneWebEntity): AirplaneModel {
-    console.log(param);
     return {
       id: param.id,
       code: param.code,

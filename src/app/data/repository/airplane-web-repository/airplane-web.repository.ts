@@ -36,7 +36,6 @@ export class AirplaneWebRepository extends AirplaneRepository {
       )
       .pipe(
         map((x) => {
-          console.log(x);
           return this.mapper.responseGridWebMapFrom(x.data);
         })
       );

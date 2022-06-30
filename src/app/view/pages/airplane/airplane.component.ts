@@ -25,12 +25,24 @@ export class AirplaneComponent implements OnInit {
     this.getAllAirplane
       .execute({ pageSize: 20, pageNumber: 1 })
       .subscribe((grid: PageResultModel<AirplaneModel>) => {
-        console.log(grid);
         this.dataSource = grid.data!;
       });
   }
 
   delete(e: any): void {
     this.deleteAirplane.execute(e.key).subscribe();
+  }
+
+  beforeSave(e: any): void {
+    e.data.registerDate = new Date();
+  }
+
+  save(e: any): void {
+    this.createAirplane.execute(e.data).subscribe();
+  }
+
+  update(e: any): void {
+    console.log(e.data);
+    this.updateAirplane.execute(e.data).subscribe();
   }
 }
