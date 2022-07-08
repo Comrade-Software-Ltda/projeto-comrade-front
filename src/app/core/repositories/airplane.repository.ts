@@ -8,6 +8,6 @@ export abstract class AirplaneRepository {
   abstract getAirplaneById(id: string): Observable<SingleResultModel<AirplaneModel>>;
   abstract getAllAirplane(filter: PageFilterModel): Observable<PageResultModel<AirplaneModel>>;
   abstract createAirplane(param: AirplaneModel): Observable<AirplaneModel>;
-  abstract updateAirplane(param: AirplaneModel): Observable<void>;
+  abstract editAirplane(param: AirplaneModel): Observable<void>;
   abstract deleteAirplane(id: string): Observable<void>;
 }

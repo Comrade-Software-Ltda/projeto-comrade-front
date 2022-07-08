@@ -7,10 +7,10 @@ import { AirplaneRepository } from '../../repositories/airplane.repository';
 @Injectable({
   providedIn: 'root',
 })
-export class UpdateAirplaneUsecase implements UseCase<AirplaneModel, void> {
+export class EditAirplaneUsecase implements UseCase<AirplaneModel, void> {
   constructor(private processoRepository: AirplaneRepository) {}
 
   execute(params: AirplaneModel): Observable<void> {
-    return this.processoRepository.updateAirplane(params);
+    return this.processoRepository.editAirplane(params);
   }
 }

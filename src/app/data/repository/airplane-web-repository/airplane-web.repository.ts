@@ -48,9 +48,9 @@ export class AirplaneWebRepository extends AirplaneRepository {
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 
-  updateAirplane(param: AirplaneModel) {
+  editAirplane(param: AirplaneModel) {
     return this.http
-      .put<void>(`${environment.AIRPLANE}airplane/update`, this.mapper.mapTo(param))
+      .put<void>(`${environment.AIRPLANE}airplane/edit`, this.mapper.mapTo(param))
       .pipe(map((x) => x.data));
   }
 

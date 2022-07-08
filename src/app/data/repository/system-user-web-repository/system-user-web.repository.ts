@@ -54,7 +54,7 @@ export class SystemUserWebRepository extends SystemUserRepository {
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
   }
 
-  updateSystemUser(param: SystemUserModel) {
+  editSystemUser(param: SystemUserModel) {
     return this.http
       .put<void>(`${environment.SYSTEMUSER}system-user/edit`, this.mapper.mapTo(param))
       .pipe(map((x) => x.data));

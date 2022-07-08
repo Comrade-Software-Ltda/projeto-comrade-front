@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetAllAirplaneUsecase } from 'src/app/core/usecases/airplane/get-all-airplane.usecase';
 import { CreateAirplaneUsecase } from 'src/app/core/usecases/airplane/create-airplane.usecase';
 import { DeleteAirplaneUsecase } from 'src/app/core/usecases/airplane/delete-airplane.usecase';
-import { UpdateAirplaneUsecase } from 'src/app/core/usecases/airplane/update-airplane.usecase';
+import { EditAirplaneUsecase } from 'src/app/core/usecases/airplane/edit-airplane.usecase';
 import { AirplaneModel } from 'src/app/core/models/airplane.model';
 import { PageResultModel } from 'src/app/core/utils/responses/page-result.model';
 
@@ -18,7 +18,7 @@ export class AirplaneComponent implements OnInit {
     private getAllAirplane: GetAllAirplaneUsecase,
     private createAirplane: CreateAirplaneUsecase,
     private deleteAirplane: DeleteAirplaneUsecase,
-    private updateAirplane: UpdateAirplaneUsecase
+    private editAirplane: EditAirplaneUsecase
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +42,6 @@ export class AirplaneComponent implements OnInit {
   }
 
   update(e: any): void {
-    console.log(e.data);
-    this.updateAirplane.execute(e.data).subscribe();
+    this.editAirplane.execute(e.data).subscribe();
   }
 }
