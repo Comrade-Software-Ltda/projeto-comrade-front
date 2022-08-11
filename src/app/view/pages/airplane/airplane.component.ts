@@ -1,3 +1,4 @@
+import { ModalService } from './../../components/modal/modal.service';
 import { Component, OnInit } from '@angular/core';
 import { GetAllAirplaneUsecase } from 'src/app/core/usecases/airplane/get-all-airplane.usecase';
 import { CreateAirplaneUsecase } from 'src/app/core/usecases/airplane/create-airplane.usecase';
@@ -18,7 +19,8 @@ export class AirplaneComponent implements OnInit {
     private getAllAirplane: GetAllAirplaneUsecase,
     private createAirplane: CreateAirplaneUsecase,
     private deleteAirplane: DeleteAirplaneUsecase,
-    private editAirplane: EditAirplaneUsecase
+    private editAirplane: EditAirplaneUsecase,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -43,5 +45,14 @@ export class AirplaneComponent implements OnInit {
 
   update(e: any): void {
     this.editAirplane.execute(e.data).subscribe();
+  }
+
+  showInfo() {
+    console.log('teste');
+    this.modalService.open('modal-pesquisa');
+  }
+
+  closeDialog(rowIndex: any) {
+    return this.modalService.close('modal-pesquisa');
   }
 }

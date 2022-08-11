@@ -13,10 +13,13 @@
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
       <dxo-popup title="Airplane" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
       <dxo-form>
-        <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
           <dxi-item dataField="code"></dxi-item>
           <dxi-item dataField="model"></dxi-item>
           <dxi-item dataField="passengerQuantity"></dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="1">
+          <dx-button class="button-info" text="Details" (onClick)="showInfo()"> </dx-button>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
@@ -27,3 +30,11 @@
     <dxi-column dataField="registerDate"></dxi-column>
   </dx-data-grid>
 </div>
+
+<app-modal
+  id="modal-pesquisa"
+  [cssModal]=""
+  [className]="'teste'"
+  [title]="'Resultado da Pesquisa'"
+>
+</app-modal>

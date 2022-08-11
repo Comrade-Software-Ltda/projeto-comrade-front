@@ -1,11 +1,26 @@
+import { ModalModule } from './../../components/modal/modal.module';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import {
+  DxButtonModule,
+  DxDataGridModule,
+  DxFormModule,
+  DxPopupModule,
+  DxTemplateModule,
+} from 'devextreme-angular';
 import { AirplaneRoutingModule } from './airplane.routing';
 import { throwIfAlreadyLoaded } from '../../../services/guards/module-import.guard';
 import { AirplaneComponent } from './airplane.component';
 
 @NgModule({
-  imports: [DxDataGridModule, DxFormModule, AirplaneRoutingModule],
+  imports: [
+    DxPopupModule,
+    DxButtonModule,
+    DxTemplateModule,
+    ModalModule,
+    DxDataGridModule,
+    DxFormModule,
+    AirplaneRoutingModule,
+  ],
   exports: [],
   declarations: [AirplaneComponent],
   providers: [],
