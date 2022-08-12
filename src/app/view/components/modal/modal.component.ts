@@ -4,27 +4,8 @@ import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-modal',
-  template: `
-    <div class="modal" data-target="#modal">
-      <section class="dialog {{ className }}">
-        <header>
-          <h1>{{ title }}</h1>
-        </header>
-
-        <div class="content">
-          <ng-content></ng-content>
-        </div>
-
-        <ul class="dialog-actions">
-          <li *ngIf="hasCloseIcon">
-            <button (click)="close()">+</button>
-          </li>
-        </ul>
-      </section>
-
-      <div class="overlay" (click)="close()"></div>
-    </div>
-  `,
+  templateUrl: 'modal.component.html',
+  styleUrls: ['modal.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class ModalComponent implements OnInit, OnDestroy {

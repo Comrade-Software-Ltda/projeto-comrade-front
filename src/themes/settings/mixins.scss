@@ -1,0 +1,677 @@
+/* =========================================================================================================== */
+/* media queries */
+
+@mixin gt-md {
+  @media #{$media-gt-md} {
+    @content;
+  }
+}
+
+@mixin md {
+  @media #{$media-md} {
+    @content;
+  }
+}
+
+@mixin lt-sm {
+  @media #{$media-lt-sm} {
+    @content;
+  }
+}
+
+/* =========================================================================================================== */
+/* Typeface */
+
+$breakpoints: (
+  small: 768px,
+  medium: 1024px,
+  large: 1200px,
+);
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    } @else {
+      /* If $fs-font-size is a key that exists in $fs-breakpoints, use the value */
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+/* =========================================================================================================== */
+/* styles */
+
+@mixin box-shadow($box-shadow) {
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+@mixin border-radius($border-radius) {
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: ($opacity * 100);
+  filter: #{alpha(opacity=$opacity-ie)};
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+  // usage @include transition (all 0.1s ease-in-out);
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  animation: $animation;
+  // usage @include animation (slide-in 0.5s forwards);
+}
+
+@mixin multiple-transition($transition, $animation) {
+  -webkit-transition: $transition, $animation;
+  -moz-transition: $transition, $animation;
+  -o-transition: $transition, $animation;
+  transition: $transition, $animation;
+
+  // usage @include multiple-transition (all 0.1s ease-in);
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+@mixin rotate($rotate) {
+  -webkit-transform: rotate($rotate);
+  -moz-transform: rotate($rotate);
+  -ms-transform: rotate($rotate);
+  -o-transform: rotate($rotate);
+  transform: rotate($rotate);
+}
+
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+
+@mixin scale($scale) {
+  -webkit-transform: scale($scale);
+  -moz-transform: scale($scale);
+  -ms-transform: scale($scale);
+  -o-transform: scale($scale);
+  transform: scale($scale);
+}
+
+@mixin blur($blur) {
+  -webkit-filter: blur($blur);
+  -moz-filter: blur($blur);
+  -ms-filter: blur($blur);
+  -o-filter: blur($blur);
+  filter: blur($blur);
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  :-ms-input-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+}
+
+@mixin hidden-text() {
+  font-size: 1px;
+  text-indent: -9999px;
+  color: transparent;
+}
+
+@mixin appearance($value) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}
+
+@mixin gradient($gradient-deg, $gradient-start, $gradient-end) {
+  background: $gradient-start;
+  background: -webkit-linear-gradient($gradient-deg, $gradient-start, $gradient-end);
+  background: -moz-linear-gradient($gradient-deg, $gradient-start, $gradient-end);
+  background: -ms-linear-gradient($gradient-deg, $gradient-start, $gradient-end);
+  background: -o-linear-gradient($gradient-deg, $gradient-start, $gradient-end);
+  background: linear-gradient($gradient-deg, $gradient-start, $gradient-end);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$gradient-start', endColorstr='$gradient-end',GradientType=1 );
+}
+
+@mixin background-transition($transition) {
+  -webkit-animation: backgroundTransition $transition;
+  -moz-animation: backgroundTransition $transition;
+  -o-animation: backgroundTransition $transition;
+  animation: backgroundTransition $transition;
+
+  @-webkit-keyframes backgroundTransition {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes backgroundTransition {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-o-keyframes backgroundTransition {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes backgroundTransition {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  background-size: 800% 800%;
+
+  /* usage @include background-transition (20s ease infinite); */
+}
+
+@mixin loading-transition($transition) {
+  -webkit-animation: loadingTransition $transition;
+  -moz-animation: loadingTransition $transition;
+  -o-animation: loadingTransition $transition;
+  animation: loadingTransition $transition;
+
+  @-webkit-keyframes loadingTransition {
+    to {
+      @include rotate(1turn);
+    }
+  }
+  @-moz-keyframes loadingTransition {
+    to {
+      @include rotate(1turn);
+    }
+  }
+  @-o-keyframes loadingTransition {
+    to {
+      @include rotate(1turn);
+    }
+  }
+  @keyframes loadingTransition {
+    to {
+      @include rotate(1turn);
+    }
+  }
+
+  background-size: 800% 800%;
+
+  /* usage @include loading-transition (20s ease infinite); */
+}
+
+@mixin spinner-rotate($spin-rotate) {
+  -webkit-animation: spin $spin-rotate;
+  -moz-animation: spin $spin-rotate;
+  animation: spin $spin-rotate;
+
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  //usage @include spinner-rotate(2s linear infinite);
+}
+
+@mixin flexbox {
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -moz-box;
+  display: flex;
+}
+
+@mixin inline-flex {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -moz-inline-box;
+  display: inline-flex;
+}
+
+@mixin flex-wrap($flex-wrap) {
+  -webkit-flex-wrap: $flex-wrap;
+  -ms-flex-wrap: $flex-wrap;
+  flex-wrap: $flex-wrap;
+  /* usage @include flex-wrap(nowrap); */
+  /* usage @include flex-wrap(wrap); */
+}
+
+@mixin flex-direction($flexdirection) {
+  -webkit-flex-direction: $flexdirection;
+  -ms-flex-direction: $flexdirection;
+  flex-direction: $flexdirection;
+}
+
+@mixin flex-align-items($flex-align-items) {
+  -ms-flex-align: $flex-align-items; /* position vertically ie */
+  align-items: $flex-align-items;
+  /* usage @include flex-align-items(center); */
+}
+
+@mixin flex-justify-content($flex-justify-content) {
+  -webkit-justify-content: $flex-justify-content;
+  justify-content: $flex-justify-content;
+  -ms-flex-pack: $flex-justify-content;
+  /* usage @include flex-justify-content(center); */
+}
+
+@mixin flex-justify-content-end {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: justify;
+}
+
+@mixin columns($columns) {
+  -webkit-columns: $columns;
+  -moz-columns: $columns;
+  columns: $columns;
+  /* usage @include columns(2); */
+  /* remember use @include break-inside(); in li tag */
+}
+
+@mixin column-gap($column-gap) {
+  -webkit-column-gap: $column-gap;
+  -moz-column-gap: $column-gap;
+  column-gap: $column-gap;
+  /*@include column-gap(40px);*/
+  /*@include column-gap(0);*/
+}
+
+@mixin column-rule($column-rule) {
+  -webkit-column-rule: $column-rule;
+  -moz-column-rule: $column-rule;
+  column-rule: $column-rule;
+  /*@include column-rule(1px solid black);*/
+}
+
+@mixin break-inside {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+@mixin position-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  :-ms-input-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+}
+
+/*usage:
+@include placeholder {
+				 font-style:italic;
+				 color: white;
+				 font-weight:100;
+			 }*/
+
+@mixin input-number-hidden-spin {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+@mixin tap-highlight() {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin slide-in() {
+  @keyframes slide-in {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @-webkit-keyframes slide-in {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@mixin slide-out {
+  @keyframes slide-out {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @-webkit-keyframes slide-out {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@mixin spinner {
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin cardBorder() {
+  border: 1px solid $color__border;
+}
+
+/* =========================================================================================================== */
+/* padding page */
+
+@mixin responsivePadding($dir: all, $reverse: false) {
+  @if $reverse == false {
+    @if $dir == 'all' {
+      padding: $padding__page;
+
+      @include gt-md {
+        padding: $padding__page__small;
+      }
+    } @else if $dir == 'top' {
+      padding-top: $padding__page;
+
+      @include gt-md {
+        padding-top: $padding__page__small;
+      }
+    } @else if $dir == 'right' {
+      padding-right: $padding__page;
+
+      @include gt-md {
+        padding-right: $padding__page__small;
+      }
+    } @else if $dir == 'bottom' {
+      padding-bottom: $padding__page;
+
+      @include gt-md {
+        padding-bottom: $padding__page__small;
+      }
+    } @else if $dir == 'left' {
+      padding-left: $padding__page;
+
+      @include gt-md {
+        padding-left: $padding__page__small;
+      }
+    }
+  } @else if $reverse == true {
+    @if $dir == 'all' {
+      margin: -$padding__page;
+
+      @include gt-md {
+        margin: -$padding__page__small;
+      }
+    } @else if $dir == 'top' {
+      margin-top: -$padding__page;
+
+      @include gt-md {
+        margin-top: -$padding__page__small;
+      }
+    } @else if $dir == 'right' {
+      margin-right: -$padding__page;
+
+      @include gt-md {
+        margin-right: -$padding__page__small;
+      }
+    } @else if $dir == 'bottom' {
+      margin-bottom: -$padding__page;
+
+      @include gt-md {
+        margin-bottom: -$padding__page__small;
+      }
+    } @else if $dir == 'left' {
+      margin-left: -$padding__page;
+
+      @include gt-md {
+        margin-left: -$padding__page__small;
+      }
+    }
+  }
+}
+
+@mixin responsivePaddingHalf($dir: all, $reverse: false) {
+  @if $reverse == false {
+    @if $dir == 'all' {
+      padding: $padding__page__half;
+
+      @include gt-md {
+        padding: $padding__page__small__half;
+      }
+    } @else if $dir == 'top' {
+      padding-top: $padding__page__half;
+
+      @include gt-md {
+        padding-top: $padding__page__small__half;
+      }
+    } @else if $dir == 'right' {
+      padding-right: $padding__page__half;
+
+      @include gt-md {
+        padding-right: $padding__page__small__half;
+      }
+    } @else if $dir == 'bottom' {
+      padding-bottom: $padding__page__half;
+
+      @include gt-md {
+        padding-bottom: $padding__page__small__half;
+      }
+    } @else if $dir == 'left' {
+      padding-left: $padding__page__half;
+
+      @include gt-md {
+        padding-left: $padding__page__small__half;
+      }
+    }
+  } @else if $reverse == true {
+    @if $dir == 'all' {
+      margin: -$padding__page__half;
+
+      @include gt-md {
+        margin: -$padding__page__small__half;
+      }
+    } @else if $dir == 'top' {
+      margin-top: -$padding__page__half;
+
+      @include gt-md {
+        margin-top: -$padding__page__small__half;
+      }
+    } @else if $dir == 'right' {
+      margin-right: -$padding__page__half;
+
+      @include gt-md {
+        margin-right: -$padding__page__small__half;
+      }
+    } @else if $dir == 'bottom' {
+      margin-bottom: -$padding__page__half;
+
+      @include gt-md {
+        margin-bottom: -$padding__page__small__half;
+      }
+    } @else if $dir == 'left' {
+      margin-left: -$padding__page__half;
+
+      @include gt-md {
+        margin-left: -$padding__page__small__half;
+      }
+    }
+  }
+}
+
+@mixin responsiveMargin($dir: all) {
+  @if $dir == 'all' {
+    margin: $padding__page;
+
+    @include gt-md {
+      margin: $padding__page__small;
+    }
+  } @else if $dir == 'top' {
+    margin-top: $padding__page;
+
+    @include gt-md {
+      margin-top: $padding__page__small;
+    }
+  } @else if $dir == 'right' {
+    margin-right: $padding__page;
+
+    @include gt-md {
+      margin-right: $padding__page__small;
+    }
+  } @else if $dir == 'bottom' {
+    margin-bottom: $padding__page;
+
+    @include gt-md {
+      margin-bottom: $padding__page__small;
+    }
+  } @else if $dir == 'left' {
+    margin-left: $padding__page;
+
+    @include gt-md {
+      margin-left: $padding__page__small;
+    }
+  }
+}
+
+@mixin responsiveMarginHalf($dir: all) {
+  @if $dir == 'all' {
+    margin: $margin__page__half;
+
+    @include gt-md {
+      margin: $margin__page__small__half;
+    }
+  } @else if $dir == 'top' {
+    margin-top: $margin__page__half;
+
+    @include gt-md {
+      margin-top: $margin__page__small__half;
+    }
+  } @else if $dir == 'right' {
+    margin-right: $margin__page__half;
+
+    @include gt-md {
+      margin-right: $margin__page__small__half;
+    }
+  } @else if $dir == 'bottom' {
+    margin-bottom: $margin__page__half;
+
+    @include gt-md {
+      margin-bottom: $margin__page__small__half;
+    }
+  } @else if $dir == 'left' {
+    margin-left: $margin__page__half;
+
+    @include gt-md {
+      margin-left: $margin__page__small__half;
+    }
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: '';
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
