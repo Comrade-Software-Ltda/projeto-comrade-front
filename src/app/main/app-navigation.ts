@@ -30,6 +30,10 @@ export const navigation = [
         text: 'System User',
         path: '/system-user',
       },
+      {
+        text: 'System Role',
+        path: '/system-role',
+      },
     ],
   },
 ];

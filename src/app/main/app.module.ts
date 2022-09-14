@@ -13,6 +13,8 @@ import { AuthenticationRepository } from '../core/repositories/authentication.re
 import { TokenWebRepository } from '../data/repository/token-web-reporitory/token-web.repository';
 import { TokenRepository } from '../core/repositories/token.repository';
 import { SystemUserLookupRepository } from '../core/lookups/ba-usu-lookup/system-user-lookup.repository';
+import { SystemRoleLookupRepository } from '../core/lookups/ba-usu-lookup/system-role-lookup.repository';
+import { SystemRoleLookupWebRepository } from '../data/lookup-repository/cargo-sistema-lookup-web.repository';
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/system-user-lookup-web.repository';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
@@ -36,7 +38,8 @@ import { GlobalErrorHandlerService } from '../services/handlers/global-error-han
 import { AuthInterceptor } from '../services/interceptors/auth.interceptor';
 import { SystemUserRepository } from '../core/repositories/system-user.repository';
 import { SystemUserWebRepository } from '../data/repository/system-user-web-repository/system-user-web.repository';
-
+import { SystemRoleRepository } from '../core/repositories/system-role.repository';
+import { SystemRoleWebRepository } from '../data/repository/system-role-web-repository/system-role-web.repository';
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
 }
@@ -75,9 +78,13 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: AirplaneRepository, useClass: AirplaneWebRepository },
     { provide: SystemUserRepository, useClass: SystemUserWebRepository },
+    { provide: SystemRoleRepository, useClass: SystemRoleWebRepository },
     { provide: AuthenticationRepository, useClass: AuthenticationWebRepository },
     { provide: TokenRepository, useClass: TokenWebRepository },
-    { provide: SystemUserLookupRepository, useClass: SystemUserLookupWebRepository },
+    {
+      provide: SystemRoleLookupRepository,
+      useClass: SystemRoleLookupWebRepository,
+    },
   ],
   bootstrap: [AppComponent],
 })

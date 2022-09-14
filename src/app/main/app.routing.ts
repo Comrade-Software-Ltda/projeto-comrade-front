@@ -37,6 +37,14 @@ const routes: Routes = [
       import('../view/pages/system-user/system-user.module').then((m) => m.SystemUserModule),
     canActivate: [AuthGuard],
   },
+
+  {
+    path: 'system-role',
+    loadChildren: () =>
+      import('../view/pages/system-role/system-role.module').then((m) => m.SystemRoleModule),
+    canActivate: [AuthGuard],
+  },
+
   {
     path: 'login-form',
     component: LoginFormComponent,
