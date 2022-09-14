@@ -26,6 +26,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'airplane',
+    loadChildren: () =>
+      import('../view/pages/airplane/airplane.module').then((m) => m.AirplaneModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'system-user',
     loadChildren: () =>
       import('../view/pages/system-user/system-user.module').then((m) => m.SystemUserModule),
@@ -60,7 +66,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      initialNavigation: 'enabled',
       preloadingStrategy: PreloadAllModules,
       scrollPositionRestoration: 'top',
     }),

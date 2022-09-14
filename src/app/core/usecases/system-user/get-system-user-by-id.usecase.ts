@@ -3,14 +3,17 @@ import { UseCase } from '../../utils/bases/use-case';
 import { Observable } from 'rxjs';
 import { SystemUserModel } from '../../models/system-user.model';
 import { SystemUserRepository } from '../../repositories/system-user.repository';
+import { SingleResultModel } from '../../utils/responses/single-result.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PostSystemUserUsecase implements UseCase<SystemUserModel, SystemUserModel> {
+export class GetSystemUserByIdUsecase
+  implements UseCase<string, SingleResultModel<SystemUserModel>>
+{
   constructor(private systemUserRepository: SystemUserRepository) {}
 
-  execute(params: SystemUserModel): Observable<SystemUserModel> {
-    return this.systemUserRepository.postSystemUser(params);
+  execute(id: string): Observable<SingleResultModel<SystemUserModel>> {
+    return this.systemUserRepository.getSystemUserById(id);
   }
 }

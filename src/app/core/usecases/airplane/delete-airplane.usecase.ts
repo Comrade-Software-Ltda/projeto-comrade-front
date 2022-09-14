@@ -6,10 +6,10 @@ import { AirplaneRepository } from '../../repositories/airplane.repository';
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteAirplaneUsercase implements UseCase<number, void> {
+export class DeleteAirplaneUsecase implements UseCase<string, void> {
   constructor(private airplaneRepository: AirplaneRepository) {}
 
-  execute(id: number): Observable<void> {
+  execute(id: string): Observable<void> {
     return this.airplaneRepository.deleteAirplane(id);
   }
 }

@@ -1,0 +1,42 @@
+<div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowRemoving)="delete($event)"
+    (onRowInserting)="beforeSave($event)"
+    (onRowInserted)="save($event)"
+    (onRowUpdated)="update($event)"
+  >
+    <dxo-paging [enabled]="true"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="Airplane" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="code"></dxi-item>
+          <dxi-item dataField="model"></dxi-item>
+          <dxi-item dataField="passengerQuantity"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="code" caption="Title"></dxi-column>
+    <dxi-column dataField="model"></dxi-column>
+    <dxi-column dataField="passengerQuantity"></dxi-column>
+    <dxi-column dataField="registerDate"></dxi-column>
+  </dx-data-grid>
+</div>
+
+<button (click)="showInfo()">teste</button>
+
+<app-modal
+  id="modal-pesquisa"
+  [cssModal]=""
+  [className]="'teste'"
+  [title]="'Resultado da Pesquisa'"
+>
+  asd asd
+
+  <button>tessstete</button>
+</app-modal>

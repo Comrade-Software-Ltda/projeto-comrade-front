@@ -9,7 +9,6 @@ export class TaskComponent {
   priority: any[];
 
   constructor() {
-    console.log('teste');
     this.dataSource = {
       store: {
         type: 'odata',

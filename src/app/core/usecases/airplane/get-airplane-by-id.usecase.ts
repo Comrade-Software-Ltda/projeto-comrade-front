@@ -8,10 +8,10 @@ import { SingleResultModel } from '../../utils/responses/single-result.model';
 @Injectable({
   providedIn: 'root',
 })
-export class GetAirplaneByIdUsecase implements UseCase<number, SingleResultModel<AirplaneModel>> {
+export class GetAirplaneByIdUsecase implements UseCase<string, SingleResultModel<AirplaneModel>> {
   constructor(private airplaneRepository: AirplaneRepository) {}
 
-  execute(id: number): Observable<SingleResultModel<AirplaneModel>> {
+  execute(id: string): Observable<SingleResultModel<AirplaneModel>> {
     return this.airplaneRepository.getAirplaneById(id);
   }
 }

@@ -23,6 +23,10 @@ export const navigation = [
     icon: 'folder',
     items: [
       {
+        text: 'Airplane',
+        path: '/airplane',
+      },
+      {
         text: 'System User',
         path: '/system-user',
       },

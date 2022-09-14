@@ -7,6 +7,7 @@ export class AirplaneWebRepositoryMapper extends Mapper<AirplaneWebEntity, Airpl
     return {
       id: param.id,
       code: param.code,
+      codeDiferente: param.code + param.model,
       model: param.model,
       passengerQuantity: param.passengerQuantity,
       registerDate: new Date(param.registerDate),

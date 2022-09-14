@@ -27,20 +27,22 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "allowedCommonJsDependencies": [],
+            "allowedCommonJsDependencies": [
+              "jszip",
+              "luxon",
+              "devexpress-diagram",
+              "devexpress-gantt",
+              "devextreme-quill"
+            ],
             "assets": ["src/favicon.ico", "src/assets", "src/assets/svg/*"],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/devextreme/dist/css/dx.common.css",
               "src/themes/generated/theme.base.css",
               "src/themes/generated/theme.additional.css",
               "src/dx-styles.scss",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
