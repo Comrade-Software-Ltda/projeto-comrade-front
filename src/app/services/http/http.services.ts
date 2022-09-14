@@ -45,7 +45,7 @@ export class HttpService {
     });
   }
 
-  delete<T>(url: string, id: number): Observable<DefaultResponse<T>> {
+  delete<T>(url: string, id: string): Observable<DefaultResponse<T>> {
     return this.request<T>('DELETE', `${url}`, { id });
   }
 

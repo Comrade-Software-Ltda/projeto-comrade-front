@@ -13,7 +13,7 @@ import { AuthenticationRepository } from '../core/repositories/authentication.re
 import { TokenWebRepository } from '../data/repository/token-web-reporitory/token-web.repository';
 import { TokenRepository } from '../core/repositories/token.repository';
 import { SystemUserLookupRepository } from '../core/lookups/ba-usu-lookup/system-user-lookup.repository';
-import { SystemUserLookupWebRepository } from '../data/lookup-repository/usuario-sistema-lookup-web.repository';
+import { SystemUserLookupWebRepository } from '../data/lookup-repository/system-user-lookup-web.repository';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
 import { ComradeTokenRepository } from '../core/repositories/comrade-token.repository';

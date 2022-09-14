@@ -1,0 +1,17 @@
+﻿<div class="modal" data-target="#modal">
+  <section class="dialog {{ className }}">
+    <header>
+      <h5>{{ title }}</h5>
+    </header>
+
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="dialog-actions">
+      <button (click)="close()">X</button>
+    </div>
+  </section>
+
+  <div class="overlay" (click)="close()"></div>
+</div>

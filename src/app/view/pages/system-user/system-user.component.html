@@ -1,5 +1,11 @@
 <div id="data-grid-demo">
-  <dx-data-grid id="gridContainer" [dataSource]="dataSource" keyExpr="id" [showBorders]="true">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowRemoving)="delete($event)"
+  >
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
       <dxo-popup title="Employee Info" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>

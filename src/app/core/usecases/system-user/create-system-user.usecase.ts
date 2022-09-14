@@ -7,10 +7,10 @@ import { SystemUserRepository } from '../../repositories/system-user.repository'
 @Injectable({
   providedIn: 'root',
 })
-export class PutSystemUserUsecase implements UseCase<SystemUserModel, void> {
+export class CreateSystemUserUsecase implements UseCase<SystemUserModel, SystemUserModel> {
   constructor(private systemUserRepository: SystemUserRepository) {}
 
-  execute(params: SystemUserModel): Observable<void> {
-    return this.systemUserRepository.putSystemUser(params);
+  execute(params: SystemUserModel): Observable<SystemUserModel> {
+    return this.systemUserRepository.createSystemUser(params);
   }
 }

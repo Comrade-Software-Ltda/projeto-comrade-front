@@ -1,0 +1,65 @@
+﻿@use '../../../../themes/settings/mixins.scss' as m;
+
+app-modal {
+  visibility: hidden;
+
+  .modal {
+    .dialog {
+      padding: 20px;
+      background: rgb(62, 57, 57);
+      position: fixed;
+      top: 6em;
+      right: 18em;
+      bottom: 6em;
+      left: 18em;
+      z-index: 900;
+      @include m.border-radius(12px);
+      box-shadow: (
+        0 11px 15px -7px rgb(0 0 0 / 20%),
+        0 24px 38px 3px rgb(0 0 0 / 14%),
+        0 9px 46px 8px rgb(0 0 0 / 12%)
+      );
+      @include m.opacity(0);
+      @include m.scale(0.8);
+      @include m.transition(all 0.1s ease-in-out);
+
+      .dialog-actions {
+        position: fixed;
+        top: 1em;
+        right: 1em;
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 800;
+      overflow: auto;
+      background: transparentize(black, 0.68);
+      @include m.opacity(0);
+      @include m.transition(opacity 0.8s cubic-bezier(0.25, 0.8, 0.25, 1));
+    }
+  }
+}
+
+/* //////////////////////////////////////////////////////////////////// */
+
+.modal-open {
+  app-modal {
+    visibility: visible;
+
+    .modal {
+      .dialog {
+        @include m.scale(1);
+        @include m.opacity(1);
+      }
+
+      .overlay {
+        @include m.opacity(1);
+      }
+    }
+  }
+}
