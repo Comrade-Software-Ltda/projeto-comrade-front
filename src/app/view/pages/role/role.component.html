@@ -1,0 +1,29 @@
+<div>
+  <button (click)="getAll()">GET</button>
+</div>
+
+<div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainerRole"
+    [dataSource]="dataSource"
+    keyExpr="name"
+    [showBorders]="true"
+    (onRowInserting)="create($event)"
+    (onRowUpdating)="edit($event)"
+    (onRowRemoving)="delete($event)"
+  >
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="Roles" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
+          <dxi-item dataField="name"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+    <dxo-paging [enabled]="true"></dxo-paging>
+    <dxo-toolbar>
+      <dxi-item name="addRowButton"> </dxi-item>
+    </dxo-toolbar>
+    <dxi-column dataField="name" caption="Name"></dxi-column>
+  </dx-data-grid>
+</div>

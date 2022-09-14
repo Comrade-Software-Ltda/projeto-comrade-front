@@ -32,4 +32,28 @@ export const navigation = [
       },
     ],
   },
+<<<<<<< HEAD
+=======
+  {
+  text: 'Role',
+  icon: 'folder',
+  items: [
+    {
+      text: 'Role',
+      path: '/role',
+    },
+  ],
+  },
+  {
+    text: 'Financial', //Muda esse nome aqui
+    icon: 'folder',
+    items: [
+      {
+        text: 'Financial Information',
+        path: '/financial-information',
+      },
+    ],
+  },
+
+>>>>>>> e11fb11 (feat: Criado entidade Role)
 ];
