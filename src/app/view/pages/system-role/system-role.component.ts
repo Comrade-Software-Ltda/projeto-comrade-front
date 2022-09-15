@@ -40,13 +40,8 @@ export class SystemRoleComponent implements OnInit {
     name: new FormControl(''),
   });
 
-  ngOnInit(): void {}
-
-  onSubmit() {
-    this.info = {
-      name: this.formTransaction.get('name')?.value,
-    };
-    this.postSystemRoleUseCase.execute(this.info).subscribe();
+  ngOnInit(): void {
+    this.getButton();
   }
 
   getButton() {
@@ -73,9 +68,8 @@ export class SystemRoleComponent implements OnInit {
   addRow(e: any): void {
     console.log('ADD ROW');
     this.info = {
-      //id: e.key,
       name: e.data.name,
     };
-    this.postSystemRoleUseCase.execute(this.info).subscribe();
+    this.postSystemRoleUseCase.execute(e.data).subscribe();
   }
 }
