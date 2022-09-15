@@ -46,6 +46,15 @@ const routes: Routes = [
   },
 
   {
+    path: 'system-permission',
+    loadChildren: () =>
+      import('../view/pages/system-permission/system-permission.module').then(
+        (m) => m.SystemPermissionModule
+      ),
+    canActivate: [AuthGuard],
+  },
+
+  {
     path: 'login-form',
     component: LoginFormComponent,
     canActivate: [AuthGuardService],

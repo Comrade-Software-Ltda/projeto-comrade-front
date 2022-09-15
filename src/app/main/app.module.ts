@@ -15,6 +15,8 @@ import { TokenRepository } from '../core/repositories/token.repository';
 import { SystemUserLookupRepository } from '../core/lookups/ba-usu-lookup/system-user-lookup.repository';
 import { SystemRoleLookupRepository } from '../core/lookups/ba-usu-lookup/system-role-lookup.repository';
 import { SystemRoleLookupWebRepository } from '../data/lookup-repository/cargo-sistema-lookup-web.repository';
+import { SystemPermissionLookupRepository } from '../core/lookups/ba-usu-lookup/system-permission-lookup.repository';
+import { SystemPermissionLookupWebRepository } from '../data/lookup-repository/permissao-sistema-lookup-web.repository';
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/system-user-lookup-web.repository';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
@@ -40,6 +42,8 @@ import { SystemUserRepository } from '../core/repositories/system-user.repositor
 import { SystemUserWebRepository } from '../data/repository/system-user-web-repository/system-user-web.repository';
 import { SystemRoleRepository } from '../core/repositories/system-role.repository';
 import { SystemRoleWebRepository } from '../data/repository/system-role-web-repository/system-role-web.repository';
+import { SystemPermissionRepository } from '../core/repositories/system-permission.repository';
+import { SystemPermissionWebRepository } from '../data/repository/system-permission-web-repository/system-permission-web.repository';
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
 }
@@ -79,11 +83,16 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     { provide: AirplaneRepository, useClass: AirplaneWebRepository },
     { provide: SystemUserRepository, useClass: SystemUserWebRepository },
     { provide: SystemRoleRepository, useClass: SystemRoleWebRepository },
+    { provide: SystemPermissionRepository, useClass: SystemPermissionWebRepository },
     { provide: AuthenticationRepository, useClass: AuthenticationWebRepository },
     { provide: TokenRepository, useClass: TokenWebRepository },
     {
       provide: SystemRoleLookupRepository,
       useClass: SystemRoleLookupWebRepository,
+    },
+    {
+      provide: SystemPermissionLookupRepository,
+      useClass: SystemPermissionLookupWebRepository,
     },
   ],
   bootstrap: [AppComponent],

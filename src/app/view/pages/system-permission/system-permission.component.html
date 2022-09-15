@@ -1,4 +1,5 @@
-<div class="system-role">
+<div class="system-permission">
+  {{ fileName || 'No file uploaded yet.' }}
   <div>
     <button (click)="getButton()">GET</button>
   </div>
@@ -15,16 +16,17 @@
     >
       <dxo-paging [enabled]="true"></dxo-paging>
       <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
-        <dxo-popup title="Transaction Info" [showTitle]="true" [width]="700" [height]="525">
-        </dxo-popup>
+        <dxo-popup title="Permissions" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
         <dxo-form>
           <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
             <dxi-item dataField="name"></dxi-item>
+            <dxi-item dataField="tag"></dxi-item>
           </dxi-item>
         </dxo-form>
       </dxo-editing>
 
       <dxi-column dataField="name"></dxi-column>
+      <dxi-column dataField="tag"></dxi-column>
     </dx-data-grid>
   </div>
 </div>
