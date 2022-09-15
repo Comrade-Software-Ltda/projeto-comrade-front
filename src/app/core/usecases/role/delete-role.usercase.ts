@@ -6,10 +6,10 @@ import { RoleRepository } from '../../repositories/role.repository';
 @Injectable({
   providedIn: 'root',
 })
-export class DeleteRoleUsercase implements UseCase<number, void> {
+export class DeleteRoleUsercase implements UseCase<string, void> {
   constructor(private roleRepository: RoleRepository) {}
 
-  execute(id: number): Observable<void> {
+  execute(id: string): Observable<void> {
     return this.roleRepository.deleteRole(id);
   }
 }

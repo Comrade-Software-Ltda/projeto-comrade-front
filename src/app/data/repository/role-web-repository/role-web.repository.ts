@@ -22,7 +22,7 @@ export class RoleWebRepository extends RoleRepository {
     super();
   }
 
-  getRoleById(id: number): Observable<SingleResultModel<RoleModel>> {
+  getRoleById(id: string): Observable<SingleResultModel<RoleModel>> {
     PageResultModel;
     return this.http
       .get<SingleResultModel<RoleWebEntity>>(
@@ -60,7 +60,7 @@ export class RoleWebRepository extends RoleRepository {
       .pipe(map((x) => x.data));
   }
 
-  deleteRole(id: number): Observable<void> {
+  deleteRole(id: string): Observable<void> {
     return this.http
       .delete<void>(`${environment.ROLE}role/delete/${id}`, id)
       .pipe(map((x) => x.data));

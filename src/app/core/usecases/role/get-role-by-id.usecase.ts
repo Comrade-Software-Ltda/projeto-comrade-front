@@ -9,11 +9,11 @@ import { SingleResultModel } from '../../utils/responses/single-result.model';
   providedIn: 'root',
 })
 export class GetRoleByIdUsecase
-  implements UseCase<number, SingleResultModel<RoleModel>>
+  implements UseCase<string, SingleResultModel<RoleModel>>
 {
   constructor(private roleRepository: RoleRepository) {}
 
-  execute(id: number): Observable<SingleResultModel<RoleModel>> {
+  execute(id: string): Observable<SingleResultModel<RoleModel>> {
     return this.roleRepository.getRoleById(id);
   }
 }

@@ -5,9 +5,9 @@ import { PageResultModel } from '../utils/responses/page-result.model';
 import { SingleResultModel } from '../utils/responses/single-result.model';
 
 export abstract class RoleRepository {
-  abstract getRoleById(id: number): Observable<SingleResultModel<RoleModel>>;
+  abstract getRoleById(id: string): Observable<SingleResultModel<RoleModel>>;
   abstract getAllRole(filter: PageFilterModel): Observable<PageResultModel<RoleModel>>;
   abstract postRole(param: RoleModel): Observable<RoleModel>;
   abstract putRole(param: RoleModel): Observable<void>;
-  abstract deleteRole(id: number): Observable<void>;
+  abstract deleteRole(id: string): Observable<void>;
 }
