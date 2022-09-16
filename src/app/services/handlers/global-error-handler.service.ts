@@ -11,7 +11,7 @@ export class GlobalErrorHandlerService implements ErrorHandler {
   handleError(error: any) {
     const router = this.injector.get(Router);
 
-    if (true) {
+    if (environment.enableHandlerErrorPage) {
       console.log('URL: ' + router.url);
 
       console.log('Esse erro foi pego no incerceptador !!!');

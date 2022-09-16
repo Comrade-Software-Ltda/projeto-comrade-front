@@ -1,0 +1,29 @@
+<div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowRemoving)="delete($event)"
+    (onRowInserting)="beforeSave($event)"
+    (onRowInserted)="save($event)"
+    (onRowUpdated)="update($event)"
+  >
+    <dxo-paging [enabled]="true"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="System Menu Info" [showTitle]="true" [width]="700" [height]="525">
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
+          <dxi-item dataField="title"></dxi-item>
+          <dxi-item dataField="description"></dxi-item>
+          <dxi-item dataField="route"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="title" caption="Title"></dxi-column>
+    <dxi-column dataField="description"></dxi-column>
+    <dxi-column dataField="route"></dxi-column>
+  </dx-data-grid>
+</div>

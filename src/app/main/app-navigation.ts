@@ -19,16 +19,23 @@ export const navigation = [
     ],
   },
   {
-    text: 'qwe123',
-    icon: 'folder',
+    text: 'Configuration',
+    icon: 'preferences',
     items: [
       {
         text: 'Airplane',
         path: '/airplane',
+        icon: 'airplane',
       },
       {
         text: 'System User',
         path: '/system-user',
+        icon: 'user',
+      },
+      {
+        text: 'System Menu',
+        path: '/system-menu',
+        icon: 'hierarchy',
       },
     ],
   },

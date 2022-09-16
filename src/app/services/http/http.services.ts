@@ -72,7 +72,8 @@ export class HttpService {
         shareReplay(),
         retry(0),
         delay(this.randomInteger(250, 450)),
-        map((x) => this.onsuccess<T>(type, x))
+        map((x) => this.onsuccess<T>(type, x)),
+        catchError(async (x) => this.oncatch<T>(x))
       );
 
     if (environment.traceRequest) {
@@ -99,6 +100,7 @@ export class HttpService {
 
   private oncatch<T>(e: any) {
     const result = new DefaultResponse<T>();
+    console.log('oncatch');
     result.responseError(e);
     return result;
   }

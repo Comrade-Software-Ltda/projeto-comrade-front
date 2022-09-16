@@ -36,6 +36,8 @@ import { GlobalErrorHandlerService } from '../services/handlers/global-error-han
 import { AuthInterceptor } from '../services/interceptors/auth.interceptor';
 import { SystemUserRepository } from '../core/repositories/system-user.repository';
 import { SystemUserWebRepository } from '../data/repository/system-user-web-repository/system-user-web.repository';
+import { SystemMenuRepository } from '../core/repositories/system-menu.repository';
+import { SystemMenuWebRepository } from '../data/repository/system-menu-web-repository/system-menu-web.repository';
 
 export function getBaseHref(platformLocation: PlatformLocation): string {
   return platformLocation.getBaseHrefFromDOM();
@@ -75,6 +77,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     { provide: AirplaneRepository, useClass: AirplaneWebRepository },
     { provide: SystemUserRepository, useClass: SystemUserWebRepository },
+    { provide: SystemMenuRepository, useClass: SystemMenuWebRepository },
     { provide: AuthenticationRepository, useClass: AuthenticationWebRepository },
     { provide: TokenRepository, useClass: TokenWebRepository },
     { provide: SystemUserLookupRepository, useClass: SystemUserLookupWebRepository },
