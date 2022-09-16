@@ -54,22 +54,14 @@ export class SystemRoleComponent implements OnInit {
   }
 
   deleteRow(e: any): void {
-    var rowIndex = e.component.getRowIndexByKey(e.key);
-
-    console.log(e);
     this.deleteSystemRoleUseCase.execute(e.key).subscribe();
   }
 
   editRow(e: any): void {
-    console.log('EDIT');
     this.putSystemRoleUseCase.execute(e.data).subscribe();
   }
 
   addRow(e: any): void {
-    console.log('ADD ROW');
-    this.info = {
-      name: e.data.name,
-    };
     this.postSystemRoleUseCase.execute(e.data).subscribe();
   }
 }

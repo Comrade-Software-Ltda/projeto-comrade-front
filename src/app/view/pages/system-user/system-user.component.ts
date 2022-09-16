@@ -14,6 +14,7 @@ import { CreateSystemUserUsecase } from 'src/app/core/usecases/system-user/creat
 })
 export class SystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
+  filterValue!: Array<any>;
   constructor(
     private getAllSystemUser: GetAllSystemUserUsecase,
     private createSystemUser: CreateSystemUserUsecase,
