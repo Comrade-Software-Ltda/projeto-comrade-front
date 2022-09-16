@@ -42,5 +42,14 @@ export const navigation = [
     },
   ],
   },
-
+{
+text: 'SystemPermission',
+icon: 'folder',
+items: [
+  {
+    text: 'System Permission',
+    path: '/system-permission',
+  },
+],
+},
 ];
