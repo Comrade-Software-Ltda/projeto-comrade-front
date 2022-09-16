@@ -8,19 +8,31 @@ import {
   ElementRef,
   AfterViewInit,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
 import { ItemClickEvent } from 'devextreme/ui/tree_view';
 import { DxTreeViewModule, DxTreeViewComponent } from 'devextreme-angular/ui/tree-view';
 
 import * as events from 'devextreme/events';
 import { navigation } from '../../../main/app-navigation';
+import { GetAllMenuSystemMenuUsecase } from 'src/app/core/usecases/system-menu/get-all-menu-system-menu.usecase';
+import { SystemMenuModel } from 'src/app/core/models/system-menu.model';
+import { PageResultModel } from 'src/app/core/utils/responses/page-result.model';
+
+type MappedItem = {
+  path?: string;
+  text: string;
+  icon: string;
+  items: MappedItem[];
+  expanded: boolean;
+};
 
 @Component({
   selector: 'app-side-navigation-menu',
   templateUrl: './side-navigation-menu.component.html',
   styleUrls: ['./side-navigation-menu.component.scss'],
 })
-export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
+export class SideNavigationMenuComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(DxTreeViewComponent, { static: true })
   menu!: DxTreeViewComponent;
 
@@ -42,16 +54,9 @@ export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
   }
 
   private _items!: Record<string, unknown>[];
+  private _mappedItems!: Record<string, unknown>[];
   get items() {
-    if (!this._items) {
-      this._items = navigation.map((item) => {
-        if (item.path && !/^\//.test(item.path)) {
-          item.path = `/${item.path}`;
-        }
-        return { ...item, expanded: !this._compactMode };
-      });
-    }
-
+    if (this._mappedItems) return this._mappedItems;
     return this._items;
   }
 
@@ -74,7 +79,39 @@ export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    private getAllMenuSystemMenu: GetAllMenuSystemMenuUsecase
+  ) {}
+  ngOnInit(): void {
+    this._items = navigation.map((item) => {
+      item.path = this.checkPath(item.path);
+      return { ...item, expanded: !this._compactMode };
+    });
+    this.getAllMenuSystemMenu.execute({}).subscribe((grid: PageResultModel<SystemMenuModel>) => {
+      var mappedItems = grid.data?.map((item) => this.itemMenuMap(item));
+      if (mappedItems) {
+        console.log(mappedItems);
+        this._mappedItems = mappedItems;
+      }
+    });
+  }
+
+  checkPath(path: string | undefined) {
+    return path && !/^\//.test(path) ? `/${path}` : path;
+  }
+
+  itemMenuMap(item: SystemMenuModel) {
+    var items = item.submenus?.map((item) => this.itemMenuMap(item));
+    const mappedItem: MappedItem = {
+      path: this.checkPath(item.route),
+      text: item.title,
+      icon: 'home',
+      expanded: !this._compactMode,
+      items: items,
+    };
+    return mappedItem;
+  }
 
   onItemClick(event: ItemClickEvent) {
     this.selectedItemChanged.emit(event);

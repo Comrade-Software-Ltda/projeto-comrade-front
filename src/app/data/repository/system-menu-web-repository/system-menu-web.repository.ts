@@ -45,6 +45,18 @@ export class SystemMenuWebRepository extends SystemMenuRepository {
     return request;
   }
 
+  getAllMenuSystemMenu(filter: PageFilterModel): Observable<PageResultModel<SystemMenuModel>> {
+    var request = this.http
+      .getAll<PageResultModel<SystemMenuWebEntity>>(
+        `${environment.SYSTEMMENU}system-menu/get-all-menus${makeParamFilterGrid(filter)}`
+      )
+      .pipe(
+        map((x) => {
+          return this.mapper.responseGridWebMapFrom(x.data);
+        })
+      );
+    return request;
+  }
   createSystemMenu(param: SystemMenuModel) {
     return this.http
       .post<SystemMenuWebEntity>(
