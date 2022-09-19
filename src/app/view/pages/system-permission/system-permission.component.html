@@ -1,3 +1,4 @@
+<h2 class="content-block">System Permission</h2>
 <div>
   <button (click)="getAll()">GET</button>
 </div>
@@ -5,13 +6,21 @@
 <div id="data-grid-demo">
   <dx-data-grid
     id="gridContainerSystemPermission"
-    [dataSource]="dataSource"
-    keyExpr="id"
+    [dataSource]="dataSource"keyExpr="id"
     [showBorders]="true"
     (onRowInserting)="create($event)"
     (onRowUpdating)="edit($event)"
     (onRowRemoving)="delete($event)"
+    [focusedRowEnabled]="true"
+    [focusedRowIndex]="0"
+    [columnAutoWidth]="true"
+    [columnHidingEnabled]="true"
+    [showBorders]="true"
+    class="dx-card wide-card"
   >
+  <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
       <dxo-popup title="SystemPermission" [showTitle]="true" [width]="700" [height]="525"> </dxo-popup>
       <dxo-form>
