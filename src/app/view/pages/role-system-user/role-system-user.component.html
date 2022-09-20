@@ -1,34 +1,21 @@
-
 <h2 class="content-block">ROLE SYSTEM USER</h2>
 <div>
   <button (click)="getAll()">GET</button>
 </div>
-
 <div id="data-grid-demo">
-  <dx-data-grid
-
-    id="gridContainerRole"
-    [dataSource]="dataSource"keyExpr="id"
-    [focusedRowEnabled]="true"
-    [focusedRowIndex]="0"
-    [columnAutoWidth]="true"
-    [columnHidingEnabled]="true"
-    [showBorders]="true"
- 
-    class="dx-card wide-card"
-    >
-
+  <dx-data-grid id="gridContainerRole" [dataSource]="dataSource" keyExpr="id" [focusedRowEnabled]="true"
+    [focusedRowIndex]="0" [columnAutoWidth]="true" [columnHidingEnabled]="true" [showBorders]="true"
+    class="dx-card wide-card">
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
     <dxo-filter-row [visible]="true"></dxo-filter-row>
-  
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
-      <dxo-popup title="Roles" [showTitle]="true" [width]="700" [height]="525"> 
+      <dxo-popup title="Roles" [showTitle]="true" [width]="700" [height]="525">
       </dxo-popup>
       <dxo-form>
         <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
-         <dxi-item dataField="name">
-         </dxi-item>
+          <dxi-item dataField="name">
+          </dxi-item>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
@@ -36,7 +23,10 @@
     <dxo-toolbar>
       <dxi-item name="addRowButton"> </dxi-item>
     </dxo-toolbar>
-    
+
     <dxi-column dataField="name" caption="Name"></dxi-column>
+    <dxi-column caption="botões" type="buttons">
+      <dxi-button text="teste" [onClick]="NomeDaFuncao"></dxi-button>
+    </dxi-column>
   </dx-data-grid>
 </div>

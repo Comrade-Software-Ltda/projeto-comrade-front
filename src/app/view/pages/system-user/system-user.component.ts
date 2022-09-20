@@ -38,7 +38,6 @@ export class SystemUserComponent implements OnInit {
     this.postSystemUserUsecase.execute(model).subscribe();
     console.log(model);
   }
-  
   edit(e: any): void {
     console.log(e);
     const model = { ...e.oldData, ...e.newData } as SystemUserModel;
