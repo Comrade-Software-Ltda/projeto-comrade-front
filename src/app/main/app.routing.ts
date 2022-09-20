@@ -37,7 +37,12 @@ const routes: Routes = [
       import('../view/pages/role/role.module').then((m) => m.RoleModule),
     canActivate: [AuthGuard],
   },
-  
+  {
+    path: 'role-system-user',
+    loadChildren: () =>
+      import('../view/pages/role-system-user/role-system-user.module').then((m) => m.SystemUserModule),
+    canActivate: [AuthGuard],
+  },
   {
     path: 'system-user',
     loadChildren: () =>

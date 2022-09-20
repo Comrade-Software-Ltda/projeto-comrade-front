@@ -7,6 +7,7 @@ import { DeleteRoleUsercase } from 'src/app/core/usecases/role/delete-role.userc
 import { GetRoleByIdUsecase } from 'src/app/core/usecases/role/get-role-by-id.usecase';
 import { PutRoleUsecase } from 'src/app/core/usecases/role/put-role.usecase';
 import { SingleResultModel } from 'src/app/core/utils/responses/single-result.model';
+import { ModalService } from './../../components/modal/modal.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class RoleComponent implements OnInit {
     private getAllRoleUsecase: GetAllRoleUsecase,
     private getRoleByIdUsecase: GetRoleByIdUsecase,
     private postRoleUsecase: PostRoleUsecase,
-    private putRoleUsecase: PutRoleUsecase
+    private putRoleUsecase: PutRoleUsecase,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -60,5 +62,13 @@ export class RoleComponent implements OnInit {
     if (model.id) {
       this.deleteRoleUsercase.execute(model.id).subscribe();
     }
+  }
+  showInfo() {
+    console.log('teste');
+    this.modalService.open('modal-pesquisa');
+  }
+
+  closeDialog(rowIndex: any) {
+    return this.modalService.close('modal-pesquisa');
   }
 }

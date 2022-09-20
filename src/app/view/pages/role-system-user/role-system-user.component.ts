@@ -8,11 +8,11 @@ import { CreateSystemUserUsecase } from 'src/app/core/usecases/system-user/creat
 
 @Component({
   selector: 'app-system-user',
-  templateUrl: 'system-user.component.html',
-  styleUrls: ['system-user.component.scss'],
+  templateUrl: 'role-system-user.component.html',
+  styleUrls: ['role-system-user.component.scss'],
   providers: [],
 })
-export class SystemUserComponent implements OnInit {
+export class RoleSystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
   constructor(
     private getAllSystemUserUsecase: GetAllSystemUserUsecase,

@@ -1,18 +1,18 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
-import { RoleRoutingModule } from './role.routing';
+import { RoleRoutingModule } from './role-system-user.routing';
 import { throwIfAlreadyLoaded } from '../../../services/guards/module-import.guard';
-import { RoleComponent } from './role.component';
+import { RoleSystemUserComponent } from './role-system-user.component';
 import { ModalModule } from './../../components/modal/modal.module';
 
 @NgModule({
   imports: [DxDataGridModule, DxFormModule, RoleRoutingModule,ModalModule],
   exports: [],
-  declarations: [RoleComponent],
+  declarations: [RoleSystemUserComponent],
   providers: [],
 })
-export class RoleModule {
-  constructor(@Optional() @SkipSelf() parentModule: RoleModule) {
-    throwIfAlreadyLoaded(parentModule, 'RoleModule');
+export class SystemUserModule {
+  constructor(@Optional() @SkipSelf() parentModule: SystemUserModule) {
+    throwIfAlreadyLoaded(parentModule, 'SystemUserModule');
   }
 }

@@ -40,6 +40,10 @@ export const navigation = [
       text: 'Role',
       path: '/role',
     },
+    {
+      text: 'Role Sytem User',
+      path: '/role-system-user',
+    },
   ],
   },
 {

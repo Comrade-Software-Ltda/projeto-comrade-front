@@ -5,6 +5,8 @@
     keyExpr="id"
     [showBorders]="true"
     (onRowRemoving)="delete($event)"
+    (onRowInserted)="save($event)"
+    (onRowUpdate)="update($event)"
   >
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
