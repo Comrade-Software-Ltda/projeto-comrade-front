@@ -5,6 +5,7 @@ import { DeleteSystemUserUsecase } from 'src/app/core/usecases/system-user/delet
 import { GetAllSystemUserUsecase } from 'src/app/core/usecases/system-user/get-all-system-user.usecase';
 import { EditSystemUserUsecase } from 'src/app/core/usecases/system-user/edit-system-user.usecase';
 import { CreateSystemUserUsecase } from 'src/app/core/usecases/system-user/create-system-user.usecase';
+import { RoleModel } from 'src/app/core/models/role.model';
 
 @Component({
   selector: 'app-system-user',
@@ -14,6 +15,13 @@ import { CreateSystemUserUsecase } from 'src/app/core/usecases/system-user/creat
 })
 export class RoleSystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
+
+  roles: RoleModel[] = [
+    {id: "Admin",name:"Admin"},
+    {id: "Guest",name:"Guest"},
+    {id: "Officer",name:"Officer"},
+  ];
+  
   constructor(
     private getAllSystemUserUsecase: GetAllSystemUserUsecase,
     private postSystemUserUsecase: CreateSystemUserUsecase,
@@ -41,8 +49,6 @@ export class RoleSystemUserComponent implements OnInit {
   
   edit(e: any): void {
     console.log(e);
-    const model = { ...e.oldData, ...e.newData } as SystemUserModel;
-    this.putSystemUserUsecase.execute(model).subscribe();
   }
   delete(e: any): void {
     const model = e.data as SystemUserModel;

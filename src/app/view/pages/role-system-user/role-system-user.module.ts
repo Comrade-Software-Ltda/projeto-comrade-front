@@ -11,8 +11,8 @@ import { ModalModule } from './../../components/modal/modal.module';
   declarations: [RoleSystemUserComponent],
   providers: [],
 })
-export class SystemUserModule {
-  constructor(@Optional() @SkipSelf() parentModule: SystemUserModule) {
-    throwIfAlreadyLoaded(parentModule, 'SystemUserModule');
+export class RoleSystemUserModule {
+  constructor(@Optional() @SkipSelf() parentModule: RoleSystemUserModule) {
+    throwIfAlreadyLoaded(parentModule, 'RoleSystemUserModule');
   }
 }
