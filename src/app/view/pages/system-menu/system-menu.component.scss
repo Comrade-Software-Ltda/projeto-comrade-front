@@ -1,3 +1,19 @@
 ::ng-deep #data-grid-demo {
   min-height: 530px;
 }
+.custom-menu-item-selected {
+  display: inline-flex;
+  > i {
+    padding: 10px 0px 10px 10px;
+  }
+}
+
+.custom-menu-item {
+  display: inline-flex;
+  width: 180px;
+  padding: 0 1px 1px 0;
+  > i,
+  span {
+    padding: 5px;
+  }
+}
