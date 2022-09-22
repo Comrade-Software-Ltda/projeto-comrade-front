@@ -1,12 +1,15 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { DxPopupModule, DxDataGridModule, DxFormModule, DxButtonModule, DxTemplateModule } from 'devextreme-angular';
 import { RoleRoutingModule } from './role-system-user.routing';
 import { throwIfAlreadyLoaded } from '../../../services/guards/module-import.guard';
 import { RoleSystemUserComponent } from './role-system-user.component';
 import { ModalModule } from './../../components/modal/modal.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [DxDataGridModule, DxFormModule, RoleRoutingModule,ModalModule],
+  imports: [DxDataGridModule, DxFormModule, RoleRoutingModule, ModalModule, CommonModule, 
+    DxButtonModule,
+    DxTemplateModule],
   exports: [],
   declarations: [RoleSystemUserComponent],
   providers: [],

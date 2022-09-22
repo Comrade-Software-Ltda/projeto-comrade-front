@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PageResultModel } from 'src/app/core/utils/responses/page-result.model';
 import { SystemUserModel } from 'src/app/core/models/system-user.model';
-import { DeleteSystemUserUsecase } from 'src/app/core/usecases/system-user/delete-system-user.usecase';
 import { GetAllSystemUserUsecase } from 'src/app/core/usecases/system-user/get-all-system-user.usecase';
-import { EditSystemUserUsecase } from 'src/app/core/usecases/system-user/edit-system-user.usecase';
-import { CreateSystemUserUsecase } from 'src/app/core/usecases/system-user/create-system-user.usecase';
+import dxPopup from 'devextreme/ui/popup';
+import { ModalService } from '../../components/modal/modal.service';
 import { RoleModel } from 'src/app/core/models/role.model';
+import { GetAllRoleUsecase } from 'src/app/core/usecases/role/get-all-role.usecase';
 
 @Component({
   selector: 'app-system-user',
@@ -15,23 +15,24 @@ import { RoleModel } from 'src/app/core/models/role.model';
 })
 export class RoleSystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
+  dataSourceRole!:RoleModel[];
+  currentSystemUser!: SystemUserModel;  
+  popupVisible: boolean;
+  popup: any = {};
 
-  roles: RoleModel[] = [
-    {id: "Admin",name:"Admin"},
-    {id: "Guest",name:"Guest"},
-    {id: "Officer",name:"Officer"},
-  ];
-  
   constructor(
     private getAllSystemUserUsecase: GetAllSystemUserUsecase,
-    private postSystemUserUsecase: CreateSystemUserUsecase,
-    private deleteSystemUserUsercase: DeleteSystemUserUsecase,
-    private putSystemUserUsecase: EditSystemUserUsecase
-  ) {}
+    private getAllRoleUsecase: GetAllRoleUsecase,
+    private modalService: ModalService,
+  ) {
+    this.popupVisible = false;
+  }
 
   ngOnInit(): void {
     this.getAll();
+    this.getAllRole();
   }
+
   getAll(): void {
     this.getAllSystemUserUsecase
       .execute({ pageSize: 20, pageNumber: 1 })
@@ -39,21 +40,29 @@ export class RoleSystemUserComponent implements OnInit {
         this.dataSource = grid.data ?? [];
       });
   }
- 
-  create(e: any): void {
-    console.log(e);
-    const model = e.data as SystemUserModel;
-    this.postSystemUserUsecase.execute(model).subscribe();
-    console.log(model);
+  getAllRole(): void {
+    this.getAllRoleUsecase
+      .execute({ pageSize: 20, pageNumber: 1 })
+      .subscribe((grid: PageResultModel<RoleModel>) => {
+        console.log(grid.data);
+        this.dataSourceRole = grid.data ?? [];
+      });
   }
-  
-  edit(e: any): void {
-    console.log(e);
+
+  popUpInitialize(e: any){
+    console.log(e.component);
+    this.popup = e.component;
   }
-  delete(e: any): void {
-    const model = e.data as SystemUserModel;
-    if (model.id) {
-      this.deleteSystemUserUsercase.execute(model.id).subscribe();
-    }
+
+  showPopUp(){
+    // this.curentSystemUser = (event.row?.data as SystemUserModel);
+    console.log(this.popup);
+    this.popup.show();
+    this.popupVisible = true;
+  }
+
+  showInfo() {
+    console.log('teste');
+    this.modalService.open('modal-pesquisa');
   }
 }
