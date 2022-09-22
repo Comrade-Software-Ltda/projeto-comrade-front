@@ -4,6 +4,7 @@ import {
   LocationStrategy,
   APP_BASE_HREF,
   PlatformLocation,
+  CommonModule,
 } from '@angular/common';
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -52,6 +53,7 @@ export function getBaseHref(platformLocation: PlatformLocation): string {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    CommonModule,
     SideNavOuterToolbarModule,
     SideNavInnerToolbarModule,
     SingleCardModule,

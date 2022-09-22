@@ -1,0 +1,39 @@
+<div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="dataSource"
+    keyExpr="id"
+    [showBorders]="true"
+    (onCellClick)="showInfo()"
+  >
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+    <dxo-paging [enabled]="true"></dxo-paging>
+
+    <dxi-column dataField="name" caption="Title"></dxi-column>
+    <dxi-column dataField="email"></dxi-column>
+    <dxi-column dataField="registration"></dxi-column>
+    <dxi-column dataField="registerDate"></dxi-column>
+  </dx-data-grid>
+
+  <button (click)="showInfo()">teste</button>
+
+  <app-modal
+    id="modal-pesquisa"
+    [cssModal]=""
+    [className]="'teste'"
+    [title]="'Resultado da Pesquisa'"
+  >
+    <ul class="roles">
+      <li *ngFor="let role of roles">
+        <button type="button">
+          <span class="name">{{ role.name }}</span>
+        </button>
+      </li>
+    </ul>
+
+    <button>tessstete</button>
+  </app-modal>
+</div>
