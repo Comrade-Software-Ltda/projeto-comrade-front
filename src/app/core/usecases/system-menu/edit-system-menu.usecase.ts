@@ -11,7 +11,6 @@ export class EditSystemMenuUsecase implements UseCase<SystemMenuModel, void> {
   constructor(private systemMenuRepository: SystemMenuRepository) {}
 
   execute(params: SystemMenuModel): Observable<void> {
-    console.log(params);
     return this.systemMenuRepository.editSystemMenu(params);
   }
 }

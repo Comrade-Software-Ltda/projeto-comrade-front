@@ -106,7 +106,7 @@ export class SideNavigationMenuComponent implements OnInit, AfterViewInit, OnDes
     const mappedItem: MappedItem = {
       path: this.checkPath(item.route),
       text: item.title,
-      icon: 'home',
+      icon: item.icon,
       expanded: !this._compactMode,
       items: items,
     };

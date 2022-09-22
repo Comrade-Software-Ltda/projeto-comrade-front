@@ -10,6 +10,7 @@ export class SystemMenuWebRepositoryMapper extends Mapper<SystemMenuWebEntity, S
       systemMenu: param.systemMenu,
       submenus: param.submenus,
       title: param.title,
+      icon: param.icon,
       description: param.description,
       route: param.route,
     };
@@ -22,6 +23,7 @@ export class SystemMenuWebRepositoryMapper extends Mapper<SystemMenuWebEntity, S
       systemMenu: param.systemMenu,
       submenus: param.submenus,
       title: param.title,
+      icon: param.icon,
       description: param.description,
       route: param.route,
     };

@@ -4,6 +4,7 @@ export interface SystemMenuModel {
   systemMenu?: SystemMenuModel;
   submenus: SystemMenuModel[];
   title: string;
+  icon: string;
   description: string;
   route: string;
 }

@@ -4,6 +4,7 @@ export interface SystemMenuWebEntity {
   systemMenu?: SystemMenuWebEntity;
   submenus: SystemMenuWebEntity[];
   title: string;
+  icon: string;
   description: string;
   route: string;
 }
