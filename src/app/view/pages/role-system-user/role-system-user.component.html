@@ -6,18 +6,18 @@
     <dxo-filter-row [visible]="true"></dxo-filter-row>
     <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
 
-    <dxi-column dataField="name" caption="Name">
-    </dxi-column>
-    <dxi-column type="buttons">
-    </dxi-column>
+    <dxi-column dataField="name"> </dxi-column>
+    <dxi-column dataField="email"></dxi-column>
+    <dxi-column dataField="registration"></dxi-column>
+    <dxi-column dataField="registerDate"></dxi-column>
   </dx-data-grid>
 
-  <app-modal id="modal-pesquisa" [cssModal]="" [className]="'teste'" [title]="'Resultado da Pesquisa'">
+  <app-modal id="modal-pesquisa" [cssModal]="" [className]="'teste'" [title]="'Resultado da Pesquisa:'">
 
     <ul class="dataSourceRole">
 
       <li *ngFor="let role of dataSourceRole">
-        <input type="checkbox">
+        <input type="checkbox" onclick="save()">
         {{ role.name }}
       </li>
     </ul>

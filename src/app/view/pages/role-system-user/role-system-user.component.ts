@@ -62,7 +62,17 @@ export class RoleSystemUserComponent implements OnInit {
   }
 
   showInfo() {
-    console.log('teste');
+  
     this.modalService.open('modal-pesquisa');
   }
+  showClose() {
+  
+    this.modalService.close('modal-fechar');
+  }
+  save(){
+
+    this.modalService.add('modal-save');
+
+  }
+ 
 }

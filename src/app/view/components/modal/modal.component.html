@@ -8,10 +8,15 @@
       <ng-content></ng-content>
     </div>
 
-    <div class="dialog-actions">
-      <button (click)="close()">X</button>
+    <div>
+      <button class="dialog-actions-save" (click)="saved()">save </button>
+      <button class="dialog-actions" (click)="close()">X</button>
+
     </div>
   </section>
 
+  <div class="overlay" (click)="saved()"></div>
   <div class="overlay" (click)="close()"></div>
+
+
 </div>
