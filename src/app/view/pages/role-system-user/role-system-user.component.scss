@@ -1,3 +1,19 @@
 ::ng-deep #data-grid-demo {
   min-height: 530px;
 }
+.dataSourceRole li {
+
+  color:white ;
+  font-size: 14px;
+  display: block;
+  width: 400px;
+}
+
+
+.dataSourceRole input {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+}

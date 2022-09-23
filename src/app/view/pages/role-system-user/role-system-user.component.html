@@ -15,10 +15,13 @@
   <app-modal id="modal-pesquisa" [cssModal]="" [className]="'teste'" [title]="'Resultado da Pesquisa'">
 
     <ul class="dataSourceRole">
+
       <li *ngFor="let role of dataSourceRole">
+        <input type="checkbox">
         {{ role.name }}
       </li>
     </ul>
 
   </app-modal>
+
 </div>
