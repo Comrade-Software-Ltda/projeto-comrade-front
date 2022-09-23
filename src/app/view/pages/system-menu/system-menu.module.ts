@@ -1,25 +1,22 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import {
-  DxDataGridModule,
-  DxFormModule,
-  DxSelectBoxModule,
-  DxTextBoxModule,
   DxTreeListModule,
+  DxFormModule,
+  DxTextBoxModule,
+  DxLookupModule,
 } from 'devextreme-angular';
 import { SystemMenuRoutingModule } from './system-menu.routing';
 import { throwIfAlreadyLoaded } from '../../../services/guards/module-import.guard';
 import { SystemMenuComponent } from './system-menu.component';
 import { CommonModule } from '@angular/common';
-
 @NgModule({
   imports: [
     CommonModule,
-    DxDataGridModule,
-    DxSelectBoxModule,
     DxTreeListModule,
     DxFormModule,
     DxTextBoxModule,
     SystemMenuRoutingModule,
+    DxLookupModule,
   ],
   exports: [],
   declarations: [SystemMenuComponent],

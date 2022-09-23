@@ -6,6 +6,7 @@ import { GetAllSystemMenuUsecase } from 'src/app/core/usecases/system-menu/get-a
 import { EditSystemMenuUsecase } from 'src/app/core/usecases/system-menu/edit-system-menu.usecase';
 import { CreateSystemMenuUsecase } from 'src/app/core/usecases/system-menu/create-system-menu.usecase';
 import { MenuIcons } from 'src/assets/icons-menu';
+
 @Component({
   selector: 'app-system-menu',
   templateUrl: 'system-menu.component.html',
@@ -14,13 +15,7 @@ import { MenuIcons } from 'src/assets/icons-menu';
 })
 export class SystemMenuComponent implements OnInit {
   dataSource!: SystemMenuModel[];
-  systemMenuSelected?: SystemMenuModel;
   menuIcons: string[] = MenuIcons;
-
-  searchModeOption = 'contains';
-  searchTimeoutOption = 200;
-  minSearchLengthOption = 0;
-  showDataBeforeSearchOption = false;
 
   constructor(
     private getAllSystemMenu: GetAllSystemMenuUsecase,
@@ -41,19 +36,15 @@ export class SystemMenuComponent implements OnInit {
     this.deleteSystemMenu.execute(e.key).subscribe();
   }
 
-  beforeSave(e: any): void {
+  onRowInserting(e: any): void {
     e.data.registerDate = new Date();
   }
 
-  onEditingStart(e: any): void {
-    this.systemMenuSelected = e.data;
-  }
-
-  save(e: any): void {
+  onRowInserted(e: any): void {
     this.createSystemMenu.execute(e.data).subscribe();
   }
 
-  update(e: any): void {
+  onRowUpdated(e: any): void {
     this.editSystemMenu.execute(e.data).subscribe();
   }
 }

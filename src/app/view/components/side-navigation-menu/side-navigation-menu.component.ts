@@ -91,7 +91,6 @@ export class SideNavigationMenuComponent implements OnInit, AfterViewInit, OnDes
     this.getAllMenuSystemMenu.execute({}).subscribe((grid: PageResultModel<SystemMenuModel>) => {
       var mappedItems = grid.data?.map((item) => this.itemMenuMap(item));
       if (mappedItems) {
-        console.log(mappedItems);
         this._mappedItems = mappedItems;
       }
     });

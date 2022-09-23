@@ -6,10 +6,9 @@
     keyExpr="id"
     [showBorders]="true"
     (onRowRemoving)="delete($event)"
-    (onRowInserting)="beforeSave($event)"
-    (onRowInserted)="save($event)"
-    (onRowUpdated)="update($event)"
-    (onEditingStart)="onEditingStart($event)"
+    (onRowInserting)="onRowInserting($event)"
+    (onRowInserted)="onRowInserted($event)"
+    (onRowUpdated)="onRowUpdated($event)"
   >
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
@@ -18,44 +17,41 @@
       <dxo-form>
         <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
           <dxi-item dataField="title"></dxi-item>
-          <dxi-item itemType="group">
-            <dxi-item dataField="icon">
-              <dx-select-box
-                id="custom-templates"
-                [dataSource]="menuIcons"
-                [value]="systemMenuSelected?.icon"
-                fieldTemplate="field"
-                [searchMode]="searchModeOption"
-                [searchTimeout]="searchTimeoutOption"
-                [minSearchLength]="minSearchLengthOption"
-                [searchEnabled]="true"
-                [showDataBeforeSearch]="showDataBeforeSearchOption"
-              >
-                <div *dxTemplate="let data of 'field'">
-                  <div class="custom-menu-item-selected">
-                    <i *ngIf="data" class="dx-icon dx-icon-{{ data }}"></i>
-                    <dx-text-box [value]="data"></dx-text-box>
-                  </div>
-                </div>
-                <div *dxTemplate="let data of 'item'">
-                  <div class="custom-menu-item">
-                    <i *ngIf="data" class="dx-icon dx-icon-{{ data }}"></i>
-                    <span>{{ data }}</span>
-                  </div>
-                </div>
-              </dx-select-box>
-            </dxi-item>
-          </dxi-item>
+          <dxi-item dataField="icon"></dxi-item>
           <dxi-item dataField="description"></dxi-item>
           <dxi-item dataField="route"></dxi-item>
         </dxi-item>
       </dxo-form>
     </dxo-editing>
+    <dxi-column
+      dataField="icon"
+      caption="Icon"
+      [width]="100"
+      alignment="right"
+      [allowFiltering]="false"
+      [allowSorting]="false"
+      cellTemplate="cellTemplate"
+      [editorOptions]="{ itemTemplate: 'iconItemTemplate', fieldTemplate: 'iconFieldTemplate' }"
+    >
+      <div *dxTemplate="let item of 'cellTemplate'">
+        <i class="dx-icon dx-icon-{{ item.text }}"></i>
+      </div>
+      <dxo-lookup [dataSource]="menuIcons">
+        <div *dxTemplate="let item of 'iconFieldTemplate'">
+          <div class="custom-menu-item-selected">
+            <i *ngIf="item" class="dx-icon dx-icon-{{ item }}"></i>
+            <dx-text-box [value]="item"></dx-text-box>
+          </div>
+        </div>
+        <div *dxTemplate="let item of 'iconItemTemplate'">
+          <div class="custom-menu-item">
+            <i *ngIf="item" class="dx-icon dx-icon-{{ item }}"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </dxo-lookup>
+    </dxi-column>
 
-    <dxi-column dataField="icon" cellTemplate="cellTemplateIcon" [width]="100"></dxi-column>
-    <div *dxTemplate="let data of 'cellTemplateIcon'">
-      <i *ngIf="data?.value" class="dx-icon dx-icon-{{ data.value }}"></i>
-    </div>
     <dxi-column dataField="title" caption="Title"></dxi-column>
     <dxi-column dataField="description"></dxi-column>
     <dxi-column dataField="route"></dxi-column>
