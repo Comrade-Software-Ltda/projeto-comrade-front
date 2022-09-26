@@ -68,11 +68,5 @@ export class RoleSystemUserComponent implements OnInit {
   showClose() {
   
     this.modalService.close('modal-fechar');
-  }
-  save(){
-
-    this.modalService.add('modal-save');
-
-  }
- 
+  } 
 }

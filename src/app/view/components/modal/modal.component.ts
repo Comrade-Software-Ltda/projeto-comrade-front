@@ -59,7 +59,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   // open modal
   open(): void {
-    console.warn('teste2');
+    
     /*this.element.className = 'open';*/
     document.body.classList.add('modal-open');
   }
