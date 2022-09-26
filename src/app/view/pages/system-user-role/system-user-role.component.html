@@ -4,7 +4,7 @@
     [dataSource]="dataSource"
     keyExpr="id"
     [showBorders]="true"
-    (onCellClick)="showInfo()"
+    (onRowClick)="showInfo()"
   >
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
@@ -26,14 +26,19 @@
     [className]="'teste'"
     [title]="'Resultado da Pesquisa'"
   >
-    <ul class="roles">
-      <li *ngFor="let role of roles">
-        <button type="button">
-          <span class="name">{{ role.name }}</span>
-        </button>
-      </li>
-    </ul>
-
-    <button>tessstete</button>
+    <dx-tree-list
+      id="employees"
+      [dataSource]="roles"
+      keyExpr="id"
+      [showRowLines]="true"
+      [showBorders]="true"
+      [columnAutoWidth]="true"
+      [expandedRowKeys]="[1, 2, 10]"
+      [(selectedRowKeys)]="selectedRowKeys"
+      (onSelectionChanged)="onSelectionChanged($event)"
+    >
+      <dxo-selection mode="multiple" [recursive]="recursiveSelectionEnabled"> </dxo-selection>
+      <dxi-column dataField="name" caption="Role"></dxi-column>
+    </dx-tree-list>
   </app-modal>
 </div>

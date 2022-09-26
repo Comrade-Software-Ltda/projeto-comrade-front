@@ -15,6 +15,10 @@ import { GetAllSystemRoleUsecase } from 'src/app/core/usecases/system-role/get-a
 export class SystemUserRoleComponent implements OnInit {
   dataSource!: SystemUserModel[];
   roles!: SystemRoleModel[];
+  selectedRowKeys: any[] = [];
+  selectionMode = 'all';
+  selectedRoleNames = 'No Role Selected';
+  recursiveSelectionEnabled = false;
   constructor(
     private getAllSystemUser: GetAllSystemUserUsecase,
     private getAllSystemRole: GetAllSystemRoleUsecase,
@@ -52,5 +56,20 @@ export class SystemUserRoleComponent implements OnInit {
       .subscribe((grid: PageResultModel<SystemUserModel>) => {
         this.dataSource = grid.data!;
       });
+  }
+
+  onSelectionChanged(e: any) {
+    const selectedData: SystemRoleModel[] = e.component.getSelectedRowsData(this.selectionMode);
+    this.selectedRoleNames = this.getRoleNames(selectedData);
+  }
+
+  getRoleNames(roles: SystemRoleModel[]) {
+    if (roles.length > 0) {
+      return roles.map((role) => role.name).join(', ');
+    }
+    return 'No Role Selected';
+  }
+  onOptionsChanged(e: any) {
+    this.selectedRowKeys = [];
   }
 }
