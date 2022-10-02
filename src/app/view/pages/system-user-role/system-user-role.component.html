@@ -1,44 +1,63 @@
 <div id="data-grid-demo">
   <dx-data-grid
     id="gridContainer"
-    [dataSource]="dataSource"
+    [dataSource]="dataSourceAux"
     keyExpr="id"
     [showBorders]="true"
-    (onRowClick)="showInfo()"
+    (onRowClick)="showInfo($event)"
   >
     <dxo-paging [pageSize]="10"></dxo-paging>
     <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
     <dxo-filter-row [visible]="true"></dxo-filter-row>
-
     <dxo-paging [enabled]="true"></dxo-paging>
-
     <dxi-column dataField="name" caption="Title"></dxi-column>
     <dxi-column dataField="email"></dxi-column>
     <dxi-column dataField="registration"></dxi-column>
     <dxi-column dataField="registerDate"></dxi-column>
+    <dxi-column dataField="assignedRoles" [(visible)]="isRoleVisible"></dxi-column>
+
+    <!-- <dxo-editing mode="popup" [allowUpdating]="true">
+      <dxo-popup title="UserxRole Info" [showTitle]="true" [width]="700" [height]="525">
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item>
+          <dxo-selection mode="multiple" [recursive]="recursiveSelectionEnabled"> </dxo-selection>
+          <dxi-column dataField="name" caption="Role"></dxi-column>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing> -->
   </dx-data-grid>
-
-  <button (click)="showInfo()">teste</button>
-
-  <app-modal
+  <dx-popup
+    [showTitle]="true"
+    title="Information"
+    [dragEnabled]="false"
+    [hideOnOutsideClick]="true"
+    [showCloseButton]="true"
+    [(visible)]="popupVisible"
+  >
+    <dxi-item>
+      <div *ngFor="let role of roles">
+        <dx-check-box
+          [text]="role.name"
+          [value]="false"
+          (onValueChanged)="handleValueChanged(role)"
+          (onValueChanged)="showValue($event)"
+        ></dx-check-box>
+      </div>
+    </dxi-item>
+    <dxi-toolbar-item
+      widget="dxButton"
+      toolbar="bottom"
+      location="before"
+      [options]="applyButtonOption"
+    ></dxi-toolbar-item>
+  </dx-popup>
+  <!-- <app-modal
     id="modal-pesquisa"
     [cssModal]=""
     [className]="'teste'"
     [title]="'Resultado da Pesquisa'"
-  >
-    <dx-tree-list
-      id="employees"
-      [dataSource]="roles"
-      keyExpr="id"
-      [showRowLines]="true"
-      [showBorders]="true"
-      [columnAutoWidth]="true"
-      [expandedRowKeys]="[1, 2, 10]"
-      [(selectedRowKeys)]="selectedRowKeys"
-      (onSelectionChanged)="onSelectionChanged($event)"
-    >
-      <dxo-selection mode="multiple" [recursive]="recursiveSelectionEnabled"> </dxo-selection>
-      <dxi-column dataField="name" caption="Role"></dxi-column>
-    </dx-tree-list>
-  </app-modal>
+  > -->
+
+  <!-- </app-modal> -->
 </div>

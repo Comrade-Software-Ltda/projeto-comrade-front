@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import {
+  DxPopupModule,
   DxDataGridModule,
   DxFormModule,
   DxDropDownBoxModule,
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    DxPopupModule,
     DxDataGridModule,
     DxFormModule,
     SystemUserRoleRoutingModule,
