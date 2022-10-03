@@ -15,17 +15,6 @@
     <dxi-column dataField="registration"></dxi-column>
     <dxi-column dataField="registerDate"></dxi-column>
     <dxi-column dataField="assignedRoles" [(visible)]="isRoleVisible"></dxi-column>
-
-    <!-- <dxo-editing mode="popup" [allowUpdating]="true">
-      <dxo-popup title="UserxRole Info" [showTitle]="true" [width]="700" [height]="525">
-      </dxo-popup>
-      <dxo-form>
-        <dxi-item>
-          <dxo-selection mode="multiple" [recursive]="recursiveSelectionEnabled"> </dxo-selection>
-          <dxi-column dataField="name" caption="Role"></dxi-column>
-        </dxi-item>
-      </dxo-form>
-    </dxo-editing> -->
   </dx-data-grid>
   <dx-popup
     [showTitle]="true"
@@ -52,12 +41,4 @@
       [options]="applyButtonOption"
     ></dxi-toolbar-item>
   </dx-popup>
-  <!-- <app-modal
-    id="modal-pesquisa"
-    [cssModal]=""
-    [className]="'teste'"
-    [title]="'Resultado da Pesquisa'"
-  > -->
-
-  <!-- </app-modal> -->
 </div>

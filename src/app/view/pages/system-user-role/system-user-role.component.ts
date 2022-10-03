@@ -23,7 +23,7 @@ export class SystemUserRoleComponent implements OnInit {
   isRoleVisible = false;
   popupVisible = false;
   teste = false;
-  selectedSystemRole!: SystemRoleModel[];
+  selectedSystemUserRoles!: SystemRoleModel[];
   applyButtonOption = {
     text: 'apply',
     onClick() {},
@@ -44,11 +44,10 @@ export class SystemUserRoleComponent implements OnInit {
 
   showInfo(e: any) {
     this.selectedSystemUser = e.data;
-    this.selectedSystemRole = e.data.systemRoles;
+    this.selectedSystemUserRoles = e.data.systemRoles;
     this.popupVisible = true;
-    console.log('SHOW INFO: ' + this.roles.includes(this.selectedSystemUser.systemRoles[0]));
-
     console.log(this.selectedSystemUser);
+    console.log(this.selectedSystemUserRoles);
   }
 
   getRoles() {
@@ -71,30 +70,42 @@ export class SystemUserRoleComponent implements OnInit {
 
   mockUserList(): void {
     this.dataSourceAux = this.dataSource.map((u) => {
-      return {
-        ...u,
-        systemRoles: [
-          {
-            id: 'c22bcadf-ccd3-44af-c8b2-08da968ca774',
-            name: 'ADMNISTRADOR',
-          },
-        ],
-      };
+      if (u.id == '1be54cce-1870-c4d8-6a9d-d69ede8d8864') {
+        return {
+          ...u,
+          systemRoles: [
+            {
+              id: 'f388513a-9548-1601-cc6d-cd40ec157e81',
+              name: 'CAMARADA',
+            },
+          ],
+        };
+      } else {
+        return {
+          ...u,
+          systemRoles: [
+            {
+              id: 'c22bcadf-ccd3-44af-c8b2-08da968ca774',
+              name: 'ADMNISTRADOR',
+            },
+          ],
+        };
+      }
     });
   }
 
   handleValueChanged(role: SystemRoleModel) {
-    console.log(this.roles[0]);
-    console.log(this.selectedSystemUser.systemRoles[0]);
+    console.log(role);
+    this.teste = false;
     var i = 0;
     var j = 0;
-    for (i = 0; i < this.roles.length; i++) {
-      for (j = 0; j < this.selectedSystemUser.systemRoles.length; j++) {
-        if (this.selectedSystemUser.systemRoles[j].id == this.roles[i].id) {
-          this.teste = true;
-        }
+
+    for (j = 0; j < this.selectedSystemUser.systemRoles.length; j++) {
+      if (this.selectedSystemUser.systemRoles[j].id == role.id) {
+        this.teste = true;
       }
     }
+
     console.log('SHOW INFO: ' + this.teste);
   }
 
