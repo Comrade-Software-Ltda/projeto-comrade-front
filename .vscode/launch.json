@@ -2,6 +2,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:4200",
+      "sourceMaps": true,
+      "trace": true,
+      "webRoot": "${workspaceFolder}",
+      "userDataDir": "${workspaceRoot}/out/chrome",
+    },
+    {
       "name": "Attach Firefox Developer",
       "type": "firefox",
       "port": 9222,

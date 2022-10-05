@@ -48,3 +48,10 @@ Thumbs.db
 
 # Lock File
 package-lock.json
+out/*
+
+# .vs
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/projeto-comrade-front/v17/.suo
