@@ -28,9 +28,8 @@
       <div *ngFor="let role of roles">
         <dx-check-box
           [text]="role.name"
-          [value]="false"
-          (onValueChanged)="handleValueChanged(role)"
-          (onValueChanged)="showValue($event)"
+          [value]="setValue(role)"
+          (onValueChanged)="handleValueChanged(role, $event)"
         ></dx-check-box>
       </div>
     </dxi-item>

@@ -18,7 +18,6 @@ export class SystemUserRoleComponent implements OnInit {
   selectedRowKeys: any[] = [];
   selectionMode = 'all';
   selectedSystemUser!: SystemUserModel;
-  selectedRoleNames = 'No Role Selected';
   recursiveSelectionEnabled = false;
   isRoleVisible = false;
   popupVisible = false;
@@ -40,6 +39,14 @@ export class SystemUserRoleComponent implements OnInit {
   ngOnInit(): void {
     this.getRoles();
     this.getSystemUsers();
+  }
+
+  setValue(role: SystemRoleModel) {
+    var i = 0;
+    for (i = 0; i < this.selectedSystemUser.systemRoles.length; i++) {
+      if (role.id == this.selectedSystemUser.systemRoles[i].id) return true;
+    }
+    return false;
   }
 
   showInfo(e: any) {
@@ -94,24 +101,22 @@ export class SystemUserRoleComponent implements OnInit {
     });
   }
 
-  handleValueChanged(role: SystemRoleModel) {
+  handleValueChanged(role: SystemRoleModel, e: any) {
     console.log(role);
-    this.teste = false;
-    var i = 0;
-    var j = 0;
-
-    for (j = 0; j < this.selectedSystemUser.systemRoles.length; j++) {
-      if (this.selectedSystemUser.systemRoles[j].id == role.id) {
-        this.teste = true;
-      }
-    }
-
-    console.log('SHOW INFO: ' + this.teste);
-  }
-
-  showValue(e: any) {
+    console.log(this.selectedSystemUser);
     console.log(e.value);
+
+    if (e.value == true) {
+      this.selectedSystemUser.systemRoles.push(role);
+    } else {
+    }
+    console.log(this.selectedSystemUser);
   }
 
-  isInsideTheArray(element: SystemUserModel) {}
+  removeObjectById(arr: string[], role: SystemRoleModel) {
+    const index = arr.findIndex((num) => num === role.id);
+    console.log(index);
+
+    return arr;
+  }
 }
