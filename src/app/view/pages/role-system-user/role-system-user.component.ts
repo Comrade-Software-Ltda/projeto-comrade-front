@@ -15,9 +15,12 @@ import { GetAllRoleUsecase } from 'src/app/core/usecases/role/get-all-role.useca
 })
 export class RoleSystemUserComponent implements OnInit {
   dataSource!: SystemUserModel[];
+  dataSourceAux: any[] = [];
   dataSourceRole!:RoleModel[];
   currentSystemUser!: SystemUserModel;  
-  popupVisible: boolean;
+  popupVisible = false;
+  selectedRole!: RoleModel[];
+  
   popup: any = {};
 
   constructor(
@@ -25,7 +28,7 @@ export class RoleSystemUserComponent implements OnInit {
     private getAllRoleUsecase: GetAllRoleUsecase,
     private modalService: ModalService,
   ) {
-    this.popupVisible = false;
+    
   }
 
   ngOnInit(): void {
@@ -54,19 +57,54 @@ export class RoleSystemUserComponent implements OnInit {
     this.popup = e.component;
   }
 
-  showPopUp(){
-    // this.curentSystemUser = (event.row?.data as SystemUserModel);
-    console.log(this.popup);
-    this.popup.show();
-    this.popupVisible = true;
+  // showPopUp(){
+  //   // this.curentSystemUser = (event.row?.data as SystemUserModel);
+  //   console.log(this.popup);
+  //   this.popup.show();
+  //   this.popupVisible = true;
+  // }
+
+  mockUserList(): void {
+    this.dataSourceAux = this.dataSource.map((u) => {
+      if (u.id == 'ec872b9a-484f-437f-2ec2-08da9b39d088') {
+        return {
+          ...u,
+          Roles: [
+            {
+              id: '81696b17-7854-4967-4a9d-08da9687d7e8',
+              name: 'JUSEUS',
+            },
+          ],
+        };
+      } else {
+        return {
+          ...u,
+          Roles: [
+            {
+              id: 'c22bcadf-ccd3-44af-c8b2-08da968ca774',
+              name: 'ABELL',
+            },
+          ],
+        };
+      }
+    });
   }
 
-  showInfo() {
-  
-    this.modalService.open('modal-pesquisa');
+  showInfo(e:any) {
+    console.log(e.data);
+    this.selectedRole = e.data;
+    this.popupVisible = true;
   }
   showClose() {
   
     this.modalService.close('modal-fechar');
   } 
+
+  exemplo1(e:any){
+    console.log(e.value);
+  }
+
+  exemplo2(role: RoleModel){
+    console.log(role);
+  }
 }
