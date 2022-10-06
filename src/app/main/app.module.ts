@@ -15,9 +15,9 @@ import { TokenWebRepository } from '../data/repository/token-web-reporitory/toke
 import { TokenRepository } from '../core/repositories/token.repository';
 import { SystemUserLookupRepository } from '../core/lookups/ba-usu-lookup/system-user-lookup.repository';
 import { SystemRoleLookupRepository } from '../core/lookups/ba-usu-lookup/system-role-lookup.repository';
-import { SystemRoleLookupWebRepository } from '../data/lookup-repository/cargo-sistema-lookup-web.repository';
+import { SystemRoleLookupWebRepository } from '../data/lookup-repository/system-role-lookup-web.repository';
 import { SystemPermissionLookupRepository } from '../core/lookups/ba-usu-lookup/system-permission-lookup.repository';
-import { SystemPermissionLookupWebRepository } from '../data/lookup-repository/permissao-sistema-lookup-web.repository';
+import { SystemPermissionLookupWebRepository } from '../data/lookup-repository/system-permission-lookup-web.repository';
 import { SystemUserLookupWebRepository } from '../data/lookup-repository/system-user-lookup-web.repository';
 import { AirplaneRepository } from '../core/repositories/airplane.repository';
 import { AirplaneWebRepository } from '../data/repository/airplane-web-repository/airplane-web.repository';
