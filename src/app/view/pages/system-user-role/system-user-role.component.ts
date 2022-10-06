@@ -4,6 +4,7 @@ import { SystemUserModel } from 'src/app/core/models/system-user.model';
 import { SystemRoleModel } from 'src/app/core/models/system-role.model';
 import { GetAllSystemUserUsecase } from 'src/app/core/usecases/system-user/get-all-system-user.usecase';
 import { GetAllSystemRoleUsecase } from 'src/app/core/usecases/system-role/get-all-system-role.usecase';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-system-user-role',
@@ -17,7 +18,8 @@ export class SystemUserRoleComponent implements OnInit {
   roles: SystemRoleModel[] = [];
   selectedRowKeys: any[] = [];
   selectionMode = 'all';
-  selectedSystemUser!: SystemUserModel;
+  initialSelectedSystemUser!: SystemUserModel;
+  finalSelectedSystemUser!: SystemUserModel;
   recursiveSelectionEnabled = false;
   isRoleVisible = false;
   popupVisible = false;
@@ -42,18 +44,18 @@ export class SystemUserRoleComponent implements OnInit {
   }
 
   setValue(role: SystemRoleModel) {
-    var i = 0;
-    for (i = 0; i < this.selectedSystemUser.systemRoles.length; i++) {
-      if (role.id == this.selectedSystemUser.systemRoles[i].id) return true;
+    for (let i in this.initialSelectedSystemUser.systemRoles) {
+      if (role.id == this.initialSelectedSystemUser.systemRoles[i].id) return true;
     }
     return false;
   }
 
   showInfo(e: any) {
-    this.selectedSystemUser = e.data;
+    this.initialSelectedSystemUser = e.data;
+    this.finalSelectedSystemUser = e.data;
     this.selectedSystemUserRoles = e.data.systemRoles;
     this.popupVisible = true;
-    console.log(this.selectedSystemUser);
+    console.log(this.initialSelectedSystemUser);
     console.log(this.selectedSystemUserRoles);
   }
 
@@ -103,14 +105,14 @@ export class SystemUserRoleComponent implements OnInit {
 
   handleValueChanged(role: SystemRoleModel, e: any) {
     console.log(role);
-    console.log(this.selectedSystemUser);
+    console.log(this.initialSelectedSystemUser);
     console.log(e.value);
 
     if (e.value == true) {
-      this.selectedSystemUser.systemRoles.push(role);
+      this.initialSelectedSystemUser.systemRoles.push(role);
     } else {
     }
-    console.log(this.selectedSystemUser);
+    console.log(this.initialSelectedSystemUser);
   }
 
   removeObjectById(arr: string[], role: SystemRoleModel) {
