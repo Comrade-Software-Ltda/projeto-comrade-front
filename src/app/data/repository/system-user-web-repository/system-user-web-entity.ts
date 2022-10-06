@@ -6,5 +6,4 @@ export interface SystemUserWebEntity {
   email: string;
   registration: string;
   registerDate: Date;
-  systemRoles: SystemRoleModel[];
 }

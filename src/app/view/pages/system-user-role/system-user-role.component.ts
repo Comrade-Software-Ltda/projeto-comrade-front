@@ -5,6 +5,10 @@ import { SystemRoleModel } from 'src/app/core/models/system-role.model';
 import { GetAllSystemUserUsecase } from 'src/app/core/usecases/system-user/get-all-system-user.usecase';
 import { GetAllSystemRoleUsecase } from 'src/app/core/usecases/system-role/get-all-system-role.usecase';
 import { of } from 'rxjs';
+import { relativeTimeThreshold } from 'moment';
+import { SystemRoleLookupByNameUsecase } from 'src/app/core/lookups/ba-usu-lookup/system-role-lookup-by-name-usecase';
+import { SystemUserSystemRoleModel } from 'src/app/core/models/system-user-system-role.model';
+import { SystemUserSystemRoleManageModel } from 'src/app/core/models/system-user-system-role-manage.model';
 
 @Component({
   selector: 'app-system-user-role',
@@ -14,21 +18,12 @@ import { of } from 'rxjs';
 })
 export class SystemUserRoleComponent implements OnInit {
   dataSource!: SystemUserModel[];
-  dataSourceAux: any[] = [];
+  dataSourceAux: SystemUserSystemRoleModel[] = [];
   roles: SystemRoleModel[] = [];
-  selectedRowKeys: any[] = [];
-  selectionMode = 'all';
-  initialSelectedSystemUser!: SystemUserModel;
-  finalSelectedSystemUser!: SystemUserModel;
-  recursiveSelectionEnabled = false;
+  selectedSystemUser!: SystemUserSystemRoleModel;
+  toolbarOptions = { text: 'apply', onClick: () => this.applyChanges() };
   isRoleVisible = false;
   popupVisible = false;
-  teste = false;
-  selectedSystemUserRoles!: SystemRoleModel[];
-  applyButtonOption = {
-    text: 'apply',
-    onClick() {},
-  };
 
   constructor(
     private getAllSystemUser: GetAllSystemUserUsecase,
@@ -44,19 +39,14 @@ export class SystemUserRoleComponent implements OnInit {
   }
 
   setValue(role: SystemRoleModel) {
-    for (let i in this.initialSelectedSystemUser.systemRoles) {
-      if (role.id == this.initialSelectedSystemUser.systemRoles[i].id) return true;
-    }
-    return false;
+    return this.selectedSystemUser.systemRoles.some((systemRole) => role.id == systemRole.id);
   }
 
   showInfo(e: any) {
-    this.initialSelectedSystemUser = e.data;
-    this.finalSelectedSystemUser = e.data;
-    this.selectedSystemUserRoles = e.data.systemRoles;
+    this.selectedSystemUser = JSON.parse(JSON.stringify(e.data));
     this.popupVisible = true;
-    console.log(this.initialSelectedSystemUser);
-    console.log(this.selectedSystemUserRoles);
+    console.log(this.selectedSystemUser);
+    console.log(e.data);
   }
 
   getRoles() {
@@ -104,21 +94,33 @@ export class SystemUserRoleComponent implements OnInit {
   }
 
   handleValueChanged(role: SystemRoleModel, e: any) {
-    console.log(role);
-    console.log(this.initialSelectedSystemUser);
-    console.log(e.value);
-
     if (e.value == true) {
-      this.initialSelectedSystemUser.systemRoles.push(role);
+      this.selectedSystemUser.systemRoles.push(role);
+      console.log(this.selectedSystemUser);
     } else {
+      this.removeRoleById(role);
     }
-    console.log(this.initialSelectedSystemUser);
+
+    console.log(this.selectedSystemUser);
+    console.log(e);
   }
 
-  removeObjectById(arr: string[], role: SystemRoleModel) {
-    const index = arr.findIndex((num) => num === role.id);
-    console.log(index);
+  removeRoleById(role: SystemRoleModel) {
+    this.selectedSystemUser.systemRoles = this.selectedSystemUser.systemRoles.filter(
+      (systemRole) => systemRole.id != role.id
+    );
+  }
 
-    return arr;
+  applyChanges() {
+    this.addInDataSource();
+    console.log(this.dataSourceAux);
+    this.popupVisible = false;
+  }
+
+  addInDataSource() {
+    const indexOfObject = this.dataSourceAux.findIndex((object) => {
+      return object.id === this.selectedSystemUser.id;
+    });
+    this.dataSourceAux[indexOfObject] = this.selectedSystemUser;
   }
 }

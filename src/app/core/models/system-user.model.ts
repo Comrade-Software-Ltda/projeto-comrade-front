@@ -6,5 +6,4 @@ export interface SystemUserModel {
   email: string;
   registration: string;
   registerDate: Date;
-  systemRoles: SystemRoleModel[];
 }

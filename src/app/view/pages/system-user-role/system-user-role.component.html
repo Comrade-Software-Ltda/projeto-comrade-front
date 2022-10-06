@@ -24,7 +24,7 @@
     [showCloseButton]="true"
     [(visible)]="popupVisible"
   >
-    <dxi-item>
+    <dxi-item *ngIf="selectedSystemUser">
       <div *ngFor="let role of roles">
         <dx-check-box
           [text]="role.name"
@@ -37,7 +37,7 @@
       widget="dxButton"
       toolbar="bottom"
       location="before"
-      [options]="applyButtonOption"
+      [options]="toolbarOptions"
     ></dxi-toolbar-item>
   </dx-popup>
 </div>
