@@ -9,4 +9,5 @@ export const environment = {
   SYSTEMUSER: 'https://localhost:44304/api/v1/',
   SYSTEMROLE: 'https://localhost:44304/api/v1/',
   SYSTEMPERMISSION: 'https://localhost:44304/api/v1/',
+  SYSTEMUSERSYSTEMROLE: 'https://localhost:44304/api/v1/',
 };

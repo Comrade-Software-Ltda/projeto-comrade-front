@@ -9,6 +9,7 @@ import { relativeTimeThreshold } from 'moment';
 import { SystemRoleLookupByNameUsecase } from 'src/app/core/lookups/ba-usu-lookup/system-role-lookup-by-name-usecase';
 import { SystemUserSystemRoleModel } from 'src/app/core/models/system-user-system-role.model';
 import { SystemUserSystemRoleManageModel } from 'src/app/core/models/system-user-system-role-manage.model';
+import { PutSystemUserSystemRoleManageUsecase } from 'src/app/core/usecases/system-user-system-role/put-system-user-system-role-manage.usecase';
 
 @Component({
   selector: 'app-system-user-role',
@@ -27,7 +28,8 @@ export class SystemUserRoleComponent implements OnInit {
 
   constructor(
     private getAllSystemUser: GetAllSystemUserUsecase,
-    private getAllSystemRole: GetAllSystemRoleUsecase
+    private getAllSystemRole: GetAllSystemRoleUsecase,
+    private putSystemUserSystemRoleManageUseCase: PutSystemUserSystemRoleManageUsecase
   ) {}
 
   handleCellClick(e: any) {
@@ -122,5 +124,12 @@ export class SystemUserRoleComponent implements OnInit {
       return object.id === this.selectedSystemUser.id;
     });
     this.dataSourceAux[indexOfObject] = this.selectedSystemUser;
+  }
+  putSystemUserSystemRoles() {
+    let body: SystemUserSystemRoleManageModel = {
+      id: this.selectedSystemUser.id,
+      systemRoles: this.selectedSystemUser.systemRoles.map((role) => role.id),
+    };
+    this.putSystemUserSystemRoleManageUseCase.execute(body).subscribe();
   }
 }
