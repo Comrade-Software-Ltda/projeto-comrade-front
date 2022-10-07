@@ -39,9 +39,9 @@ export class SystemUserSystemRoleManageWebRepository extends SystemUserSystemRol
   ): Observable<PageResultModel<SystemUserSystemRoleManageModel>> {
     var request = this.http
       .getAll<PageResultModel<SystemUserSystemRoleManageWebEntity>>(
-        `${environment.SYSTEMROLE}system-user-system-role-manage/get-all${makeParamFilterGrid(
-          filter
-        )}`
+        `${
+          environment.SYSTEMUSERSYSTEMROLE
+        }system-user-system-role-manage/get-all${makeParamFilterGrid(filter)}`
       )
       .pipe(
         map((x) => {
@@ -56,7 +56,7 @@ export class SystemUserSystemRoleManageWebRepository extends SystemUserSystemRol
   ): Observable<SystemUserSystemRoleManageModel> {
     return this.http
       .post<SystemUserSystemRoleManageWebEntity>(
-        `${environment.SYSTEMROLE}system-user-system-role-manage/create`,
+        `${environment.SYSTEMUSERSYSTEMROLE}system-user-system-role-manage/create`,
         this.mapper.mapTo(param)
       )
       .pipe(map((x) => this.mapper.mapFrom(x.data)));
@@ -65,7 +65,7 @@ export class SystemUserSystemRoleManageWebRepository extends SystemUserSystemRol
   putSystemUserSystemRoleManage(param: SystemUserSystemRoleManageModel) {
     return this.http
       .put<void>(
-        `${environment.SYSTEMROLE}system-user-system-role-manage/edit`,
+        `${environment.SYSTEMUSERSYSTEMROLE}system-user-system-role-manage/edit`,
         this.mapper.mapTo(param)
       )
       .pipe(map((x) => x.data));
@@ -73,7 +73,10 @@ export class SystemUserSystemRoleManageWebRepository extends SystemUserSystemRol
 
   deleteSystemUserSystemRoleManage(id: string): Observable<void> {
     return this.http
-      .delete<void>(`${environment.SYSTEMROLE}system-user-system-role-manage/delete/${id}`, id)
+      .delete<void>(
+        `${environment.SYSTEMUSERSYSTEMROLE}system-user-system-role-manage/delete/${id}`,
+        id
+      )
       .pipe(map((x) => x.data));
   }
 }
