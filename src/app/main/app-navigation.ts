@@ -1,35 +1,13 @@
-export const navigation = [
+export type MenuNavigation = {
+  text: string;
+  icon?: string;
+  path?: string;
+  items?: MenuNavigation[];
+};
+export const navigation: MenuNavigation[] = [
   {
     text: 'Home',
     path: '/home',
     icon: 'home',
-  },
-  {
-    text: 'Examples',
-    icon: 'folder',
-    items: [
-      {
-        text: 'Profile',
-        path: '/profile',
-      },
-      {
-        text: 'Task',
-        path: '/task',
-      },
-    ],
-  },
-  {
-    text: 'qwe123',
-    icon: 'folder',
-    items: [
-      {
-        text: 'Airplane',
-        path: '/airplane',
-      },
-      {
-        text: 'System User',
-        path: '/system-user',
-      },
-    ],
   },
 ];

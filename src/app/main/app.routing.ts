@@ -38,6 +38,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'system-menu',
+    loadChildren: () =>
+      import('../view/pages/system-menu/system-menu.module').then((m) => m.SystemMenuModule),
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'login-form',
     component: LoginFormComponent,
     canActivate: [AuthGuardService],

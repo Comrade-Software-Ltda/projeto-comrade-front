@@ -1,0 +1,59 @@
+<div id="data-grid-demo">
+  <dx-tree-list
+    id="gridContainer"
+    [dataSource]="dataSource"
+    parentIdExpr="menuId"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowRemoving)="delete($event)"
+    (onRowInserting)="onRowInserting($event)"
+    (onRowInserted)="onRowInserted($event)"
+    (onRowUpdated)="onRowUpdated($event)"
+  >
+    <dxo-paging [enabled]="true"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="System Menu Info" [showTitle]="true" [width]="700" [height]="525">
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="1" [colSpan]="1">
+          <dxi-item dataField="title"></dxi-item>
+          <dxi-item dataField="icon"></dxi-item>
+          <dxi-item dataField="description"></dxi-item>
+          <dxi-item dataField="route"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+    <dxi-column
+      dataField="icon"
+      caption="Icon"
+      [width]="100"
+      alignment="right"
+      [allowFiltering]="false"
+      [allowSorting]="false"
+      cellTemplate="cellTemplate"
+      [editorOptions]="{ itemTemplate: 'iconItemTemplate', fieldTemplate: 'iconFieldTemplate' }"
+    >
+      <div *dxTemplate="let item of 'cellTemplate'">
+        <i class="dx-icon dx-icon-{{ item.text }}"></i>
+      </div>
+      <dxo-lookup [dataSource]="menuIcons">
+        <div *dxTemplate="let item of 'iconFieldTemplate'">
+          <div class="custom-menu-item-selected">
+            <i *ngIf="item" class="dx-icon dx-icon-{{ item }}"></i>
+            <dx-text-box [value]="item"></dx-text-box>
+          </div>
+        </div>
+        <div *dxTemplate="let item of 'iconItemTemplate'">
+          <div class="custom-menu-item">
+            <i *ngIf="item" class="dx-icon dx-icon-{{ item }}"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </dxo-lookup>
+    </dxi-column>
+
+    <dxi-column dataField="title" caption="Title"></dxi-column>
+    <dxi-column dataField="description"></dxi-column>
+    <dxi-column dataField="route"></dxi-column>
+  </dx-tree-list>
+</div>
