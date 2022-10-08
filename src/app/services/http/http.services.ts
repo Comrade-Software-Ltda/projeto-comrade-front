@@ -100,7 +100,6 @@ export class HttpService {
 
   private oncatch<T>(e: any) {
     const result = new DefaultResponse<T>();
-    console.log('oncatch');
     result.responseError(e);
     return result;
   }

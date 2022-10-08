@@ -13,7 +13,6 @@ export class ModalService {
 
   open(id: string) {
     // open modal specified by id
-    console.log('teste 3');
     const modal: any = this.modals.filter((x) => x.id === id)[0];
     modal.open();
   }

@@ -67,7 +67,6 @@ export class SystemMenuWebRepository extends SystemMenuRepository {
   }
 
   editSystemMenu(param: SystemMenuModel) {
-    console.log(param);
     return this.http
       .put<void>(`${environment.SYSTEMMENU}system-menu/edit`, this.mapper.mapTo(param))
       .pipe(map((x) => x.data));

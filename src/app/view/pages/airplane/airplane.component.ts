@@ -48,7 +48,6 @@ export class AirplaneComponent implements OnInit {
   }
 
   showInfo() {
-    console.log('teste');
     this.modalService.open('modal-pesquisa');
   }
 
