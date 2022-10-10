@@ -5,7 +5,6 @@ import { DeleteSystemUserUsecase } from 'src/app/core/usecases/system-user/delet
 import { GetAllSystemUserUsecase } from 'src/app/core/usecases/system-user/get-all-system-user.usecase';
 import { EditSystemUserUsecase } from 'src/app/core/usecases/system-user/edit-system-user.usecase';
 import { CreateSystemUserUsecase } from 'src/app/core/usecases/system-user/create-system-user.usecase';
-import { ModalService } from '../../components/modal/modal.service';
 
 @Component({
   selector: 'app-system-user-permission',
@@ -15,13 +14,7 @@ import { ModalService } from '../../components/modal/modal.service';
 })
 export class SystemUserPermissionComponent implements OnInit {
   dataSource!: SystemUserModel[];
-  constructor(
-    private getAllSystemUser: GetAllSystemUserUsecase,
-    private createSystemUser: CreateSystemUserUsecase,
-    private deleteSystemUser: DeleteSystemUserUsecase,
-    private editSystemUser: EditSystemUserUsecase,
-    private modalService: ModalService
-  ) {}
+  constructor(private getAllSystemUser: GetAllSystemUserUsecase) {}
 
   ngOnInit(): void {
     this.getAllSystemUser
@@ -29,21 +22,5 @@ export class SystemUserPermissionComponent implements OnInit {
       .subscribe((grid: PageResultModel<SystemUserModel>) => {
         this.dataSource = grid.data!;
       });
-  }
-
-  delete(e: any): void {
-    this.deleteSystemUser.execute(e.key).subscribe();
-  }
-
-  beforeSave(e: any): void {
-    e.data.registerDate = new Date();
-  }
-
-  save(e: any): void {
-    this.createSystemUser.execute(e.data).subscribe();
-  }
-
-  update(e: any): void {
-    this.editSystemUser.execute(e.data).subscribe();
   }
 }
