@@ -1,4 +1,4 @@
 export interface SystemRoleWebEntity {
-  id?: string;
+  id: string;
   name: string;
 }
