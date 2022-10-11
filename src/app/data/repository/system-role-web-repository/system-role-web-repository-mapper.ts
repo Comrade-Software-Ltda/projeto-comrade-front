@@ -6,6 +6,7 @@ export class SystemRoleWebRepositoryMapper extends Mapper<SystemRoleWebEntity, S
     return {
       id: param.id,
       name: param.name,
+      tag: param.tag,
     };
   }
 
@@ -13,6 +14,7 @@ export class SystemRoleWebRepositoryMapper extends Mapper<SystemRoleWebEntity, S
     return {
       id: param.id,
       name: param.name,
+      tag: param.tag,
     };
   }
 }

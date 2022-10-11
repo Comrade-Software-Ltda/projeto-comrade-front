@@ -9,7 +9,8 @@ import { relativeTimeThreshold } from 'moment';
 import { SystemRoleLookupByNameUsecase } from 'src/app/core/lookups/ba-usu-lookup/system-role-lookup-by-name-usecase';
 import { SystemUserSystemRoleModel } from 'src/app/core/models/system-user-system-role.model';
 import { SystemUserSystemRoleManageModel } from 'src/app/core/models/system-user-system-role-manage.model';
-import { PutSystemUserSystemRoleManageUsecase } from 'src/app/core/usecases/system-user-system-role/put-system-user-system-role-manage.usecase';
+import { PutSystemUserSystemRoleManageUsecase } from 'src/app/core/usecases/system-user-system-role-manage/put-system-user-system-role-manage.usecase';
+import { GetAllSystemUserWithRolesUsecase } from 'src/app/core/usecases/system-user-system-role/get-all-system-user-with-roles.usecase';
 
 @Component({
   selector: 'app-system-user-role',
@@ -22,12 +23,12 @@ export class SystemUserRoleComponent implements OnInit {
   dataSourceAux: SystemUserSystemRoleModel[] = [];
   roles: SystemRoleModel[] = [];
   selectedSystemUser!: SystemUserSystemRoleModel;
-  toolbarOptions = { text: 'apply', onClick: () => this.applyChanges() };
+  toolbarOptions = { text: 'apply', onClick: () => this.applyButtonModal() };
   isRoleVisible = false;
   popupVisible = false;
 
   constructor(
-    private getAllSystemUser: GetAllSystemUserUsecase,
+    private getAllSystemUser: GetAllSystemUserWithRolesUsecase,
     private getAllSystemRole: GetAllSystemRoleUsecase,
     private putSystemUserSystemRoleManageUseCase: PutSystemUserSystemRoleManageUsecase
   ) {}
@@ -65,46 +66,43 @@ export class SystemUserRoleComponent implements OnInit {
       .execute({ pageSize: 20, pageNumber: 1 })
       .subscribe((grid: PageResultModel<SystemUserModel>) => {
         this.dataSource = grid.data!;
-        this.mockUserList();
       });
   }
 
-  mockUserList(): void {
-    this.dataSourceAux = this.dataSource.map((u) => {
-      if (u.id == '1be54cce-1870-c4d8-6a9d-d69ede8d8864') {
-        return {
-          ...u,
-          systemRoles: [
-            {
-              id: 'f388513a-9548-1601-cc6d-cd40ec157e81',
-              name: 'CAMARADA',
-            },
-          ],
-        };
-      } else {
-        return {
-          ...u,
-          systemRoles: [
-            {
-              id: 'c22bcadf-ccd3-44af-c8b2-08da968ca774',
-              name: 'ADMNISTRADOR',
-            },
-          ],
-        };
-      }
-    });
-  }
+  // mockUserList(): void {
+  //   this.dataSourceAux = this.dataSource.map((u) => {
+  //     if (u.id == '1be54cce-1870-c4d8-6a9d-d69ede8d8864') {
+  //       return {
+  //         ...u,
+  //         systemRoles: [
+  //           {
+  //             id: 'f388513a-9548-1601-cc6d-cd40ec157e81',
+  //             name: 'CAMARADA',
+  //             tag: 'teste',
+  //           },
+  //         ],
+  //       };
+  //     } else {
+  //       return {
+  //         ...u,
+  //         systemRoles: [
+  //           {
+  //             id: 'c22bcadf-ccd3-44af-c8b2-08da968ca774',
+  //             name: 'ADMNISTRADOR',
+  //             tag: 'teste',
+  //           },
+  //         ],
+  //       };
+  //     }
+  //   });
+  // }
 
   handleValueChanged(role: SystemRoleModel, e: any) {
     if (e.value == true) {
       this.selectedSystemUser.systemRoles.push(role);
-      console.log(this.selectedSystemUser);
     } else {
       this.removeRoleById(role);
     }
-
-    console.log(this.selectedSystemUser);
-    console.log(e);
   }
 
   removeRoleById(role: SystemRoleModel) {
@@ -113,9 +111,8 @@ export class SystemUserRoleComponent implements OnInit {
     );
   }
 
-  applyChanges() {
+  applyButtonModal() {
     this.addInDataSource();
-    console.log(this.dataSourceAux);
     this.popupVisible = false;
   }
 
