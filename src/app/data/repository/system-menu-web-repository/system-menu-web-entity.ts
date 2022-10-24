@@ -3,7 +3,7 @@ export interface SystemMenuWebEntity {
   menuId?: string;
   systemMenu?: SystemMenuWebEntity;
   submenus: SystemMenuWebEntity[];
-  title: string;
+  text: string;
   icon: string;
   description: string;
   route: string;

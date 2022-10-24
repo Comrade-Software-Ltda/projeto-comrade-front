@@ -2,6 +2,7 @@
   "name": "comrade-project",
   "version": "0.0.1",
   "scripts": {
+    "start:stubby": "node .bless.js && node ./node_modules/@angular/cli/bin/ng serve --configuration=stubby --hmr",
     "start:debug": "node .bless.js && node ./node_modules/@angular/cli/bin/ng serve --configuration=debug --hmr",
     "start:optimized": "node .bless.js && node ./node_modules/@angular/cli/bin/ng serve --configuration=optimized --hmr",
     "build:analyze": "ng build --stats-json",
@@ -12,7 +13,9 @@
     "test": "ng test",
     "lint": "eslint --color --fix -c .eslintrc.json --ext .ts ./src/app",
     "format:override": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,json,html}\"",
-    "format:enforce": "prettier --check --ignore-path .gitignore \"**/*.{js,ts,json,html}\""
+    "format:enforce": "prettier --check --ignore-path .gitignore \"**/*.{js,ts,json,html}\"",
+    "stubs": "stubby -s 1500 -d stubbs/stubby.json -w",
+    "stubby": "concurrently \"npm run start:stubby\" \"npm run stubs\""
   },
   "private": true,
   "dependencies": {
@@ -26,6 +29,7 @@
     "@angular/platform-browser-dynamic": "^14.2.1",
     "@angular/router": "~14.2.1",
     "@popperjs/core": "^2.11.6",
+    "concurrently": "^7.4.0",
     "core-js": "^3.25.1",
     "destroy": "^1.2.0",
     "devextreme": "^22.1.5",
@@ -39,6 +43,7 @@
     "ngx-mask": "^14.2.1",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.6",
+    "stubby": "^5.1.0",
     "tslib": "^2.4.0",
     "uuid": "^9.0.0",
     "zone.js": "~0.11.8"

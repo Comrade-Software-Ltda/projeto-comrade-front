@@ -3,7 +3,7 @@ export interface SystemMenuModel {
   menuId?: string;
   systemMenu?: SystemMenuModel;
   submenus: SystemMenuModel[];
-  title: string;
+  text: string;
   icon: string;
   description: string;
   route: string;

@@ -1,0 +1,59 @@
+{
+  "pageNumber": 1,
+  "pageSize": 50,
+  "nextPage": 2,
+  "previousPage": null,
+  "data": [
+    {
+      "menuId": null,
+      "menu": null,
+      "submenus": [],
+      "text": "Menu 1",
+      "description": "Menu 1 - Description",
+      "route": "/menu-1",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a6"
+    },
+    {
+      "menuId": null,
+      "menu": null,
+      "submenus": [],
+      "text": "Menu 2",
+      "description": "Menu 2 - Description",
+      "route": "/menu-2",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a7"
+    },
+    {
+      "menuId": null,
+      "menu": null,
+      "submenus": [
+        {
+          "menuId": "6adf10d0-1b83-46f2-91eb-0c64f1c638a8",
+          "menu": null,
+          "submenus": null,
+          "text": "SubMenu 3.1",
+          "description": "SubMenu 3.1 - Description",
+          "route": "/menu-3-1",
+          "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a9"
+        },
+        {
+          "menuId": "6adf10d0-1b83-46f2-91eb-0c64f1c638a8",
+          "menu": null,
+          "submenus": null,
+          "text": "SubMenu 3.2",
+          "description": "SubMenu 3.2 - Description",
+          "route": "/menu-3-2",
+          "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638b1"
+        }
+      ],
+      "text": "Menu 3",
+      "description": "Menu 3 - Description",
+      "route": "/menu-3",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a8"
+    }
+  ],
+  "exceptionMessage": null,
+  "messages": null,
+  "code": 200,
+  "success": true,
+  "message": ""
+}
