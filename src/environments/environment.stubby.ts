@@ -6,8 +6,8 @@ export const environment = {
   logRequest: false,
   traceRequest: false,
   googleMapsApiKey: '',
-  AIRPLANE: 'https://localhost:44304/api/v1/',
-  TOKEN: 'https://localhost:44304/api/v1/',
-  SYSTEMUSER: 'https://localhost:44304/api/v1/',
-  SYSTEMMENU: 'https://localhost:44304/api/v1/',
+  AIRPLANE: 'http://localhost:1500/api/v1/',
+  TOKEN: 'http://localhost:1500/api/v1/',
+  SYSTEMUSER: 'http://localhost:1500/api/v1/',
+  SYSTEMMENU: 'http://localhost:1500/api/v1/',
 };

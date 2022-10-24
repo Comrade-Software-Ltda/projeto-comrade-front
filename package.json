@@ -2,6 +2,7 @@
   "name": "comrade-project",
   "version": "0.0.1",
   "scripts": {
+    "start:stubby": "node .bless.js && node ./node_modules/@angular/cli/bin/ng serve --configuration=stubby --hmr",
     "start:debug": "node .bless.js && node ./node_modules/@angular/cli/bin/ng serve --configuration=debug --hmr",
     "start:optimized": "node .bless.js && node ./node_modules/@angular/cli/bin/ng serve --configuration=optimized --hmr",
     "build:analyze": "ng build --stats-json",
@@ -14,7 +15,7 @@
     "format:override": "prettier --write --ignore-path .gitignore \"**/*.{js,ts,json,html}\"",
     "format:enforce": "prettier --check --ignore-path .gitignore \"**/*.{js,ts,json,html}\"",
     "stubs": "stubby -s 1500 -d stubbs/stubby.json -w",
-    "stubby": "concurrently \"npm run start:debug\" \"npm run stubs\""
+    "stubby": "concurrently \"npm run start:stubby\" \"npm run stubs\""
   },
   "private": true,
   "dependencies": {

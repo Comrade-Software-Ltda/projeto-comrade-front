@@ -75,6 +75,24 @@
                 }
               ]
             },
+            "stubby": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stubby.ts"
+                }
+              ],
+              "progress": true,
+              "optimization": false,
+              "buildOptimizer": false,
+              "aot": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "namedChunks": true,
+              "commonChunk": true,
+              "vendorChunk": true,
+              "verbose": true
+            },
             "debug": {
               "progress": true,
               "optimization": false,
@@ -105,6 +123,9 @@
             "host": "0.0.0.0"
           },
           "configurations": {
+            "stubby": {
+              "browserTarget": "comrade-project:build:stubby"
+            },
             "debug": {
               "browserTarget": "comrade-project:build:debug"
             },

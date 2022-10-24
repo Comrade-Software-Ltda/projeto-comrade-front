@@ -11,7 +11,7 @@
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "http://localhost:4200"
       },
-      "file": "data/get-all-menus.json"
+      "file": "data/system-menu/get-all-menus.json"
     }
   }
 ]
