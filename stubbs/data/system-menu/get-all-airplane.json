@@ -1,0 +1,34 @@
+{
+  "pageNumber": 1,
+  "pageSize": 50,
+  "nextPage": 2,
+  "previousPage": null,
+  "data": [
+    {
+      "code": "567",
+      "model": "333",
+      "passengerQuantity": 12,
+      "registerDate": "2017-05-18T00:00:00",
+      "id": "64cf5861-0b69-41b0-9a07-060f7eeb4ad6"
+    },
+    {
+      "code": "456",
+      "model": "222",
+      "passengerQuantity": 23,
+      "registerDate": "2017-07-18T00:00:00",
+      "id": "84ceb636-bbc5-49ed-8b5f-512931f649ec"
+    },
+    {
+      "code": "123",
+      "model": "111",
+      "passengerQuantity": 34,
+      "registerDate": "2017-06-18T00:00:00",
+      "id": "063f44b8-df8b-4f96-889a-75b9d67c546f"
+    }
+  ],
+  "exceptionMessage": null,
+  "messages": null,
+  "code": 200,
+  "success": true,
+  "message": ""
+}
