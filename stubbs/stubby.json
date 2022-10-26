@@ -13,5 +13,35 @@
       },
       "file": "data/system-menu/get-all-menus.json"
     }
+  },
+  {
+    "request": {
+      "url": "api/v1/airplane/get-all-airplane",
+      "method": "get"
+    },
+    "response": {
+      "status": 200,
+      "latency": 500,
+      "headers": {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:4200"
+      },
+      "file": "data/airplane/get-all-airplane.json"
+    }
+  },
+  {
+    "request": {
+      "url": "api/v1/system-user/get-all-system-user",
+      "method": "get"
+    },
+    "response": {
+      "status": 200,
+      "latency": 500,
+      "headers": {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:4200"
+      },
+      "file": "data/system-user/get-all-system-user.json"
+    }
   }
 ]
