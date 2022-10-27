@@ -1,0 +1,41 @@
+{
+  "pageNumber": 1,
+  "pageSize": 50,
+  "nextPage": 2,
+  "previousPage": null,
+  "data": [
+    {
+      "name": "aaaa",
+      "email": "777@testObject",
+      "registration": "123",
+      "registerDate": "2019-05-13T08:25:00",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a5"
+    },
+    {
+      "name": "cccc",
+      "email": "999@testObject",
+      "registration": "345",
+      "registerDate": "2019-07-13T08:25:00",
+      "id": "4e052f7c-8e42-42ce-b85c-32d6d59948af"
+    },
+    {
+      "name": "dddd",
+      "email": "444@testObject",
+      "registration": "568",
+      "registerDate": "2019-09-13T08:25:00",
+      "id": "bc9a9d33-a10f-4bcd-a943-b669002033d7"
+    },
+    {
+      "name": "bbbb",
+      "email": "888@testObject",
+      "registration": "234",
+      "registerDate": "2019-06-13T08:25:00",
+      "id": "4d4c2560-f7f2-4bcf-83aa-f832b17ed47f"
+    }
+  ],
+  "exceptionMessage": null,
+  "messages": null,
+  "code": 200,
+  "success": true,
+  "message": ""
+}
