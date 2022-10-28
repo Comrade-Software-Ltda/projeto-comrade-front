@@ -8,47 +8,46 @@
       "menuId": null,
       "menu": null,
       "submenus": [],
-      "text": "Menu 1",
-      "description": "Menu 1 - Description",
-      "route": "/menu-1",
+      "text": "Home",
+      "description": "Home - Description",
+      "route": "/home",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a5"
+    },
+    {
+      "menuId": null,
+      "menu": null,
+      "submenus": [],
+      "text": "Airplane",
+      "description": "Airplane - Description",
+      "route": "/airplane",
       "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a6"
     },
     {
       "menuId": null,
       "menu": null,
       "submenus": [],
-      "text": "Menu 2",
-      "description": "Menu 2 - Description",
-      "route": "/menu-2",
-      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a7"
+      "text": "System User",
+      "description": "System User - Description",
+      "route": "/system-user",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c635a7"
     },
     {
       "menuId": null,
       "menu": null,
-      "submenus": [
-        {
-          "menuId": "6adf10d0-1b83-46f2-91eb-0c64f1c638a8",
-          "menu": null,
-          "submenus": null,
-          "text": "SubMenu 3.1",
-          "description": "SubMenu 3.1 - Description",
-          "route": "/menu-3-1",
-          "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a9"
-        },
-        {
-          "menuId": "6adf10d0-1b83-46f2-91eb-0c64f1c638a8",
-          "menu": null,
-          "submenus": null,
-          "text": "SubMenu 3.2",
-          "description": "SubMenu 3.2 - Description",
-          "route": "/menu-3-2",
-          "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638b1"
-        }
-      ],
-      "text": "Menu 3",
-      "description": "Menu 3 - Description",
-      "route": "/menu-3",
-      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a8"
+      "submenus": [],
+      "text": "Task",
+      "description": "Task - Description",
+      "route": "/task",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c632a7"
+    },
+    {
+      "menuId": null,
+      "menu": null,
+      "submenus": [],
+      "text": "Profile",
+      "description": "Profile - Description",
+      "route": "/profile",
+      "id": "6adf10d0-1b83-46f2-91eb-0c64f1c638a7"
     }
   ],
   "exceptionMessage": null,
