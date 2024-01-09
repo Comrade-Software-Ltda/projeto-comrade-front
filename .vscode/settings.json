@@ -44,5 +44,10 @@
     },
     "editor.formatOnSave": true
   },
-  "i18n-ally.localesPaths": []
+  "i18n-ally.localesPaths": [],
+  "[html][javascript][json][scss][typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  }
 }
